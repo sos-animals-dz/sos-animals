@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import pin from '../assets/pin.png'
+import pin from '../assets/pin.svg'
 
 interface IProps {
   index: number
