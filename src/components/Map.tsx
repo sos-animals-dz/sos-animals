@@ -12,7 +12,7 @@ interface IProps {
   setViewport: (viewport: ViewportProps) => void
 }
 
-export default class Map extends Component<IProps, any> {
+export default class Map extends Component<IProps> {
   
   componentDidMount () {
     setRTLTextPlugin( 'https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-rtl-text/v0.2.3/mapbox-gl-rtl-text.js', (err) => console.log(err), true )
@@ -33,12 +33,13 @@ export default class Map extends Component<IProps, any> {
           mapStyle={'mapbox://styles/am-77/ckca59r03371f1ileiqk2x44x'}
           onViewportChange={(viewport: ViewportProps) => setViewport(viewport) }
           onDblClick={(e) => this.addMarker(e)}
-          // mapOptions={{
-          //   maxBounds: [
-          //     [2.76765511962885, 37], // [west, south]
-          //     [3.5246777037396604, 36.47872329439055]  // [east, north]
-          //   ],
-          // }} TO ADD LATER
+          minZoom={12}
+          mapOptions={{
+            maxBounds: [
+              [2.65, 36.45],
+              [3.8, 36.95]
+            ]
+          }}
           >
           <Markers markers={markers} />
         </ReactMapGl>
