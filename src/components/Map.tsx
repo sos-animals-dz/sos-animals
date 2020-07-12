@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import ReactMapGl, { PointerEvent, Marker, ViewportProps, MarkerProps } from 'react-map-gl'
+import ReactMapGl, { PointerEvent, ViewportProps, MarkerProps } from 'react-map-gl'
 import {setRTLTextPlugin} from 'mapbox-gl'
 import "mapbox-gl/dist/mapbox-gl.css"
-import pin from '../pin.png'
+import Markers from './Markers'
 
 interface IProps {
   viewport: ViewportProps
@@ -13,20 +13,14 @@ interface IProps {
 }
 
 export default class Map extends Component<IProps, any> {
-
-  selected = (e:PointerEvent) => {
-    const { addMarker } = this.props
-
-    console.log(e.lngLat)
-    addMarker({ "longitude": e.lngLat[0], "latitude": e.lngLat[1] })
-  }
   
   componentDidMount () {
     setRTLTextPlugin( 'https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-rtl-text/v0.2.3/mapbox-gl-rtl-text.js', (err) => console.log(err), true )
   }
 
-  onPinClick = (index: number) => {
-    console.log(index)
+  addMarker = (e:PointerEvent) => {
+    const { addMarker } = this.props
+    addMarker({ "longitude": e.lngLat[0], "latitude": e.lngLat[1] })
   }
 
   render() {
@@ -38,27 +32,15 @@ export default class Map extends Component<IProps, any> {
           mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
           mapStyle={'mapbox://styles/am-77/ckca59r03371f1ileiqk2x44x'}
           onViewportChange={(viewport: ViewportProps) => setViewport(viewport) }
-          onDblClick={(e) => this.selected(e)}
-          mapOptions={{
-            // maxBounds: [
-            //   [2.76765511962885, 37], // [west, south]
-            //   [3.5246777037396604, 36.47872329439055]  // [east, north]
-            // ],
-          }}
+          onDblClick={(e) => this.addMarker(e)}
+          // mapOptions={{
+          //   maxBounds: [
+          //     [2.76765511962885, 37], // [west, south]
+          //     [3.5246777037396604, 36.47872329439055]  // [east, north]
+          //   ],
+          // }} TO ADD LATER
           >
-          {
-            markers.map(({longitude, latitude}: MarkerProps, index:number) => (
-              <Marker 
-                key={index}
-                longitude={ longitude }
-                latitude={ latitude }
-                >
-                <div onClick={() => this.onPinClick(index)} className="pin" style={{ position: 'relative', cursor: 'pointer'}}>
-                  <img src={pin} alt='pin' style={{ position: 'absolute', top: '-50%' }} />
-                </div>
-              </Marker>
-            ))
-          }
+          <Markers markers={markers} />
         </ReactMapGl>
       </div>
     )
