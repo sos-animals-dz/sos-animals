@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { ViewportProps, MarkerProps } from 'react-map-gl'
 
 import Map from './components/Map'
+import Navbar from './components/Navbar'
 
 interface IState {
   viewport: ViewportProps
@@ -33,6 +34,7 @@ export default class App extends Component<any, IState> {
     const { viewport, markers } = this.state
     return (
       <div className="app-container">
+        <Navbar setViewport={this.setViewport} />
         <Map 
           viewport={viewport} 
           markers={markers} 
