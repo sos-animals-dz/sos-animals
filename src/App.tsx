@@ -30,9 +30,16 @@ export default class App extends Component<any, IState> {
   removeMarker = (index: number) => this.setState((state) => ({ markers: [...state.markers.filter((m, idx) => index !== idx)] }))
   
   render() {
+    const { viewport, markers } = this.state
     return (
       <div className="app-container">
-        <Map />
+        <Map 
+          viewport={viewport} 
+          markers={markers} 
+          addMarker={this.addMarker} 
+          removeMarker={this.removeMarker}
+          setViewport={this.setViewport} 
+          />
       </div>
     )
   }
