@@ -26,6 +26,9 @@ export default class App extends Component<any, IState> {
 
   setViewport = (viewport: ViewportProps) => this.setState({ viewport })
 
+  addMarker = (marker: MarkerProps) => this.setState((state) => ({ markers: [...state.markers, marker] }))
+  removeMarker = (index: number) => this.setState((state) => ({ markers: [...state.markers.filter((m, idx) => index !== idx)] }))
+  
   render() {
     return (
       <div className="app-container">
