@@ -24,6 +24,8 @@ export default class App extends Component<any, IState> {
     }
   }
 
+  setViewport = (viewport: ViewportProps) => this.setState({ viewport })
+
   render() {
     return (
       <div className="app-container">
