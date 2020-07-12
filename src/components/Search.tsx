@@ -40,11 +40,10 @@ export default class Search extends Component<IProps, IState> {
     const search = e.currentTarget.value
     if (search !== "") {
       this.setState({ searching: true })
-      axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${search}.json?proximity=3.04197,36.7525&bbox=-1.6493083537856015,33.99304840532303,8.149238947687452,37.545748538885896&access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`)
+      axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${search}.json?proximity=3.04197,36.7525&bbox=2.65,36.45,3.8,36.95&access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`)
       .then(res => {
         const { data: { features } } = res
 
-        console.log(res)
         if( features.length > 0 ) {
           const list = features.map((feature: any) => ({ 
                                       long: feature.center[0], 
@@ -70,7 +69,7 @@ export default class Search extends Component<IProps, IState> {
   onChoosePlace = (index: number) => {
     const { setViewport } = this.props
     const { long, lat } = this.state.found.list[index]
-    setViewport({ width: '100vw', height: '100vh', zoom: 14, longitude: long, latitude: lat })
+    setViewport({ width: '100vw', height: '100vh', zoom: 13, longitude: long, latitude: lat })
     this.setState({found: { list: [] } })
   }
 
