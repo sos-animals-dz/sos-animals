@@ -26,7 +26,7 @@ export default class Map extends Component<IProps, any> {
   render() {
     const {viewport, markers, setViewport} = this.props
     return (
-      <div>
+      <div className="map-container">
         <ReactMapGl 
           {...viewport}
           mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
