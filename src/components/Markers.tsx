@@ -1,24 +1,25 @@
 import React, { Component } from 'react'
-import { Marker, MarkerProps } from 'react-map-gl'
+import { Marker } from 'react-map-gl'
 import Pin from './Pin'
+import IAnimal from '../interfaces/IAnimal'
 
 interface IProps {
-  markers: MarkerProps[]
+  animals: IAnimal[]
 }
 
 export default class Markers extends Component<IProps> {
   render() {
-    const { markers } = this.props
+    const { animals } = this.props
     return (
       <div className="markers-container">
         {
-          markers.map(({longitude, latitude}: MarkerProps, index:number) => (
+          animals.map(({marker, id }) => (
             <Marker 
-              key={index}
-              longitude={ longitude }
-              latitude={ latitude }
+              key={id}
+              longitude={ marker.longitude }
+              latitude={ marker.latitude }
               >
-                <Pin index={index} />
+                <Pin id={id} />
             </Marker>
           ))
         }
