@@ -9,6 +9,7 @@ interface IState {
   viewport: ViewportProps
   markers: MarkerProps[]
   isAddAnimal: boolean
+  isSideOpen: boolean
 }
 
 export default class App extends Component<any, IState> {
@@ -24,7 +25,8 @@ export default class App extends Component<any, IState> {
         latitude: 36.7525
       },
       markers: [],
-      isAddAnimal: false
+      isAddAnimal: false,
+      isSideOpen: true
     }
   }
 
@@ -36,13 +38,15 @@ export default class App extends Component<any, IState> {
       this.setState((state) => ({ markers: [...state.markers, marker] }))
     }
   }
-  
+
   removeMarker = (index: number) => this.setState((state) => ({ markers: [...state.markers.filter((m, idx) => index !== idx)] }))
   
   addAnimal = () => this.setState((state) => ({ isAddAnimal: !state.isAddAnimal }))
 
+  toggleSide = (isSideOpen: boolean) => this.setState({isSideOpen})
+
   render() {
-    const { viewport, markers, isAddAnimal } = this.state
+    const { viewport, markers, isAddAnimal, isSideOpen } = this.state
     return (
       <div className="app-container">
         <Navbar
@@ -51,13 +55,14 @@ export default class App extends Component<any, IState> {
           isAddAnimal={isAddAnimal}
           />
         <div className="map-container">
-          <Sidebar />
+          <Sidebar isSideOpen={isSideOpen} toggleSide={this.toggleSide} />
           <Map 
             viewport={viewport} 
             markers={markers} 
             addMarker={this.addMarker} 
             removeMarker={this.removeMarker}
             setViewport={this.setViewport} 
+            isSideOpen={isSideOpen}
             />
         </div>
       </div>
