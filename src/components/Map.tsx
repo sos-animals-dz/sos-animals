@@ -26,8 +26,7 @@ export default class Map extends Component<IProps> {
   render() {
     const {viewport, markers, setViewport} = this.props
     return (
-      <div className="map-container">
-        <ReactMapGl 
+      <ReactMapGl 
           {...viewport}
           mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
           mapStyle={'mapbox://styles/am-77/ckca59r03371f1ileiqk2x44x'}
@@ -42,8 +41,7 @@ export default class Map extends Component<IProps> {
           }}
           >
           <Markers markers={markers} />
-        </ReactMapGl>
-      </div>
+      </ReactMapGl>
     )
   }
 }
