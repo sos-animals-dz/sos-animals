@@ -1,15 +1,142 @@
+:root {
+  --red: #CC0202;
+  --white: #F8F8F8;
+  --light: #e1e2e3;
+  --dark: #212121;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box
 }
 
-.pin {
-  width: 20px;
-  height: 35px; 
+.spinner {
+  width: 100%;
+  height: 100%;
+  position: relative;
 }
 
-.pin img {
+.spinner:before {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -10px;
+  margin-left: -10px;
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  border: 2px solid var(--light);
+  border-top-color: var(--red);
+  animation: spinner .6s linear infinite;
+}
+
+@keyframes spinner {
+  to {transform: rotate(360deg);}
+}
+
+.app-container {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.navbar-container {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  height: 45px;
+  padding: 0 25px;
+  background: var(--red);
+  box-shadow: 0 1px 3px -1px var(--dark);
+  z-index: 1;
+  position: absolute;
+}
+
+.navbar-container .logo {
+  width: 45px;
+  height: 45px;
+}
+
+.navbar-container .logo img {
+  width: 100%;
+  height: 100%;
+}
+
+.navbar-container .search-container  {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: auto;
+  height: 45px;
+  position: relative;
+}
+
+.navbar-container .search-container .search {
+  display: flex;
+  align-items: center;
+  background: var(--white);
+  padding: 2px 10px;
+  border-radius: 25px;
+}
+
+.navbar-container .search-container .search .icon {
+  width: 25px;
+  height: 25px;
+}
+
+.navbar-container .search-container .search .icon img {
+  width: 100%;
+  height: 100%;
+}
+
+.navbar-container .search-container .search .input-field input {
+  width: 175px;
+  background: var(--white);
+  padding: 5px;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  color: var(--dark)
+}
+
+.navbar-container .search-container .suggestions {
+  position: absolute;
+  top: 42px;
+  width: 100%;
+  background: var(--white);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 0 4px -2px var(--dark)
+}
+
+.navbar-container .search-container .suggestions .sug {
+  font-size: 14px;
+  padding: 14px 22px;
+  font-family: 'Roboto', 'arial', sans-serif;
+  color: var(--dark);
+  background-color: var(--white);
+  cursor: pointer;
+  transition: all 250ms ease;
+}
+
+.navbar-container .search-container .suggestions .sug:hover {
+  color: var(--red);
+  background-color: var(--light);
+}
+
+.map-container {
+  padding-top: 45px
+}
+
+.map-container .pin {
+  width: 15px;
+  height: 15px;
+}
+
+.map-container .pin img {
   height: 100%;
   width: 100%;
 }
