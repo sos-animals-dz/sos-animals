@@ -64,6 +64,10 @@ export default class App extends Component<any, IState> {
 
   toggleSide = (isSideOpen: boolean) => this.setState({isSideOpen})
 
+  displayAnimal = (id: number) => {
+
+  }
+
   render() {
     const { viewport, animals, isAddAnimal, isSideOpen } = this.state
     return (
@@ -87,6 +91,7 @@ export default class App extends Component<any, IState> {
             removeMarker={this.removeMarker}
             setViewport={this.setViewport} 
             isSideOpen={isSideOpen}
+            displayAnimal={this.displayAnimal}
             />
         </div>
       </div>

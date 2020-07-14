@@ -12,6 +12,7 @@ interface IProps {
   removeMarker: (index: number) =>  void
   setViewport: (viewport: ViewportProps) => void
   isSideOpen: boolean
+  displayAnimal: (id: number) => void
 }
 
 export default class Map extends Component<IProps> {
@@ -26,7 +27,7 @@ export default class Map extends Component<IProps> {
   }
 
   render() {
-    const { viewport, animals, setViewport, isSideOpen } = this.props
+    const { viewport, animals, setViewport, isSideOpen, displayAnimal } = this.props
     return (
       <div className={`map-gl-container ${isSideOpen ? 'side-open': ''}`}>
         <ReactMapGl 
@@ -43,7 +44,7 @@ export default class Map extends Component<IProps> {
             ]
           }}
           >
-          <Markers animals={animals} />
+          <Markers animals={animals} displayAnimal={displayAnimal} />
         </ReactMapGl>
       </div>
     )

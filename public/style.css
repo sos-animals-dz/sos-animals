@@ -1,0 +1,19 @@
+body {
+  opacity: 1;
+}
+
+.show-type {
+  display: block;
+  position: absolute;
+  top: -30px;
+  left: -18px;
+  width: 50px;
+  height: 20px;
+  border-radius: 3px;
+  background: var(--white);
+  box-shadow: 0 0 4px -2px var(--dark)
+}
+
+.show-type p {
+  color: var(--red)
+}

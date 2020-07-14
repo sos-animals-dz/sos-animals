@@ -4,6 +4,7 @@ import pin from '../assets/pin.svg'
 interface IProps {
   id: number
   type: string
+  displayAnimal: (id: number) => void
 }
 
 interface IState {
@@ -27,7 +28,7 @@ export default class Pin extends Component<IProps, IState> {
 
   // add spatail pins (dog, cat, bird)
   render() {
-    const { id, type } = this.props
+    const { id, type, displayAnimal } = this.props
     const { showType } = this.state
     return (
       <div className="pin-container">
@@ -36,7 +37,7 @@ export default class Pin extends Component<IProps, IState> {
             <p>{ type }</p>
           </div>
         }
-        <div onDoubleClick={() => this.onPinDoubleClick} onClick={() => this.onPinClick()} className="pin">
+        <div onDoubleClick={() => displayAnimal(id)} onClick={() => this.onPinClick()} className="pin">
           <img src={pin} alt='pin' />
         </div>
       </div>
