@@ -13,7 +13,7 @@ export default class DisplayAnimal extends Component<IProps> {
   render() {
     const { animal: { type, picture, description, id }, toggleSide, reportAnimal } = this.props
     return (
-      <div className="display-animal">
+      <div className="display-animal-container">
         <div className="animal-type">
           <h3>{type}</h3>
         </div>
@@ -26,6 +26,7 @@ export default class DisplayAnimal extends Component<IProps> {
           }
         </div>
         <div className="animal-description">
+          <h4>description: </h4>
           <p>{description}</p>
         </div>
         <div className="footer">
