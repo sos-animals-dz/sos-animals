@@ -2,9 +2,11 @@
 
 :root {
   --red: #CC0202;
+  --green: #119955;
   --white: #F8F8F8;
   --light: #e1e2e3;
   --dark: #212121;
+  --dark-grey: #767676;
 }
 
 * {
@@ -214,9 +216,188 @@
   flex-direction: column;
   max-width: 320px;
   width: 100%;
-  min-height: 100vh;
+  height: calc(100vh - 45px);
   overflow-y: auto;
   background-color: var(--white);
   box-shadow: 1px 2px 4px -2px var(--dark);
   z-index: 1;
+}
+
+.sidebar-container .add-animal-container {
+  height: 100%;
+  padding: 20px 20px 20px 20px;
+  overflow-y: auto;
+}
+
+.add-animal-container .header {
+  text-align: center;
+}
+
+.add-animal-container .header h2 {
+  font-family: 'Roboto', Arial, sans-serif;
+  text-transform: uppercase;
+  color: var(--dark);
+}
+
+.add-animal-container .form-animal {
+  display: flex;
+  flex-direction: column;
+  margin: 25px 0;
+}
+
+.add-animal-container .form-animal .input-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.add-animal-container .form-animal .input-form label {
+  font-family: 'Roboto', Arial, sans-serif;
+  color: var(--dark);
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.add-animal-container  .form-animal .input-form label .red {
+  color: var(--red);
+  cursor: help;
+}
+
+.add-animal-container  .form-animal .input-form select {
+  font-family: 'Roboto', Arial, sans-serif !important;
+  font-weight: 700 !important;
+  color: var(--dark);
+  padding: 8px;
+  border: 1px solid var(--dark-grey);
+  border-radius: 3px;
+  outline: none;
+  background: var(--white);
+  cursor: pointer;
+  transition: all 250ms ease;
+}
+
+.add-animal-container .form-animal .input-form textarea {
+  font-family: 'Roboto', Arial, sans-serif !important;
+  letter-spacing: 0.25px;
+  font-size: 15px;
+  min-width: 100%;
+  max-width: 100%;
+  min-height: 60px;
+  max-height: 120px;
+  padding: 10px;
+  border: 1px solid var(--dark-grey);
+  border-radius: 3px;
+  outline: none;
+}
+
+.add-animal-container .form-animal .input-form select:hover,
+.add-animal-container .form-animal .input-form textarea:hover {
+  border-color: var(--red)
+}
+
+.add-animal-container .add-file {
+  width: 160px;
+  height: 38px;
+  overflow: hidden;
+  position: relative;
+}
+
+.add-animal-container .add-file button {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Roboto', Arial, sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--dark);
+  font-size: 12px;
+  cursor: pointer;
+  background: var(--white);
+  border: 1px solid var(--dark-grey);
+  border-radius: 3px;
+  outline: none;
+}
+
+.add-animal-container .add-file button img {
+  height: 25px;
+  margin-left: 10px;
+}
+
+.add-animal-container .add-file input {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  opacity: 0;
+  outline: none;
+}
+
+.add-animal-container .preview-picture {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.add-animal-container .preview-picture button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  z-index: 10;
+  padding: 8px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  outline: none;
+}
+
+.add-animal-container .preview-picture button img {
+  width: 100%;
+}
+
+.add-animal-container .preview-picture .picture img {
+  width: 100%;
+  height: 100%;
+  border: 1px solid var(--dark-grey);
+  border-radius: 3px;
+}
+
+.add-animal-container .footer {
+  display: flex;
+}
+
+.add-animal-container .footer button {
+  padding: 10px 15px;
+  margin-right: 10px;
+  background: var(--white);
+  box-shadow: 0 0 4px -3px var(--dark-grey);
+  border: 1px solid var(--dark-grey);
+  border-radius: 3px;
+  font-family: 'Roboto', Arial, sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--dark);
+  font-size: 12px;
+  cursor: pointer;
+  outline: none;
+  transition: all 250ms ease;
+}
+
+.add-animal-container .footer button.save:hover {
+  border-color: var(--green);
+  color: var(--green)
+}
+
+.add-animal-container .footer button.cancel:hover {
+  border-color: var(--red);
+  color: var(--red)
 }
