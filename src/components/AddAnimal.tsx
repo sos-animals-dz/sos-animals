@@ -2,6 +2,7 @@ import React, { Component, ChangeEvent } from 'react'
 
 import addPicture from '../assets/add-picture.svg'
 import close from '../assets/close.svg'
+import IAnimal from '../interfaces/IAnimal'
 
 interface IState {
   type: string
@@ -10,7 +11,7 @@ interface IState {
 }
 
 interface IProps {
-  toggleSide: (isSideOpen: false | 'display-animal' | 'add-animal') => void
+  toggleSide: (isSideOpen: false | IAnimal | 'add-animal') => void
   saveAnimal: (type: string, description: string, picture: string) => void
   cancelAnimal: () => void
 }
