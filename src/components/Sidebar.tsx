@@ -5,7 +5,7 @@ import AddAnimal from './AddAnimal'
 interface IProps {
   isSideOpen: boolean
   toggleSide: (isSideOpen: boolean) => void
-  saveAnimal: () => void
+  saveAnimal: (type: string, description: string, picture: string) => void
   cancelAnimal: () => void
 }
 
