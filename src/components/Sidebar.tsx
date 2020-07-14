@@ -1,19 +1,17 @@
 import React, { Component } from 'react'
 
 import AddAnimal from './AddAnimal'
-import DisplayAnimal from './DisplayAnimal';
+import DisplayAnimal from './DisplayAnimal'
+import IAnimal from '../interfaces/IAnimal'
 
 interface IProps {
-  isSideOpen: false | 'display-animal' | 'add-animal'
-  toggleSide: (isSideOpen: false | 'display-animal' | 'add-animal') => void
+  isSideOpen: false | IAnimal | 'add-animal'
+  toggleSide: (isSideOpen: false | IAnimal | 'add-animal') => void
   saveAnimal: (type: string, description: string, picture: string) => void
   cancelAnimal: () => void
 }
 
 export default class Sidebar extends Component<IProps> {
-  constructor(props: IProps) {
-    super(props)
-  }
 
   render() {
     const { isSideOpen, toggleSide, saveAnimal, cancelAnimal } = this.props
@@ -28,7 +26,7 @@ export default class Sidebar extends Component<IProps> {
               cancelAnimal={cancelAnimal}
               />
             :
-            <DisplayAnimal />
+            isSideOpen !== false ? <DisplayAnimal animal={isSideOpen}/> : <></>
         }
       </div>
     )
