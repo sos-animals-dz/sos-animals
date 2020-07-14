@@ -7,7 +7,7 @@ import Markers from './Markers'
 interface IProps {
   viewport: ViewportProps
   markers: MarkerProps[]
-  addMarker: (marker: MarkerProps) => void
+  addAnimalMarker: (marker: MarkerProps) => void
   removeMarker: (index: number) =>  void
   setViewport: (viewport: ViewportProps) => void
   isSideOpen: boolean
@@ -20,8 +20,8 @@ export default class Map extends Component<IProps> {
   }
 
   addMarker = (e:PointerEvent) => {
-    const { addMarker } = this.props
-    addMarker({ "longitude": e.lngLat[0], "latitude": e.lngLat[1] })
+    const { addAnimalMarker } = this.props
+    addAnimalMarker({ "longitude": e.lngLat[0], "latitude": e.lngLat[1] })
   }
 
   render() {
