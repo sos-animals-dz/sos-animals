@@ -7,6 +7,7 @@ import Navbar from './components/Navbar'
 interface IState {
   viewport: ViewportProps
   markers: MarkerProps[]
+  isAddAnimal: boolean
 }
 
 export default class App extends Component<any, IState> {
@@ -21,20 +22,32 @@ export default class App extends Component<any, IState> {
         longitude: 3.04197,
         latitude: 36.7525
       },
-      markers: []
+      markers: [],
+      isAddAnimal: false
     }
   }
 
   setViewport = (viewport: ViewportProps) => this.setState({ viewport })
 
-  addMarker = (marker: MarkerProps) => this.setState((state) => ({ markers: [...state.markers, marker] }))
+  addMarker = (marker: MarkerProps) => {
+    const { isAddAnimal } = this.state
+    if (isAddAnimal) {
+      this.setState((state) => ({ markers: [...state.markers, marker] }))
+    }
+  }
   removeMarker = (index: number) => this.setState((state) => ({ markers: [...state.markers.filter((m, idx) => index !== idx)] }))
   
+  addAnimal = () => this.setState((state) => ({ isAddAnimal: !state.isAddAnimal }))
+
   render() {
-    const { viewport, markers } = this.state
+    const { viewport, markers, isAddAnimal } = this.state
     return (
       <div className="app-container">
-        <Navbar setViewport={this.setViewport} />
+        <Navbar
+          setViewport={this.setViewport} 
+          addAnimal={this.addAnimal}
+          isAddAnimal={isAddAnimal}
+          />
         <Map 
           viewport={viewport} 
           markers={markers} 
