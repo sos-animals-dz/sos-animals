@@ -9,12 +9,13 @@ interface IProps {
   toggleSide: (isSideOpen: false | IAnimal | 'add-animal') => void
   saveAnimal: (type: string, description: string, picture: string) => void
   cancelAnimal: () => void
+  reportAnimal: (id: number) => void
 }
 
 export default class Sidebar extends Component<IProps> {
 
   render() {
-    const { isSideOpen, toggleSide, saveAnimal, cancelAnimal } = this.props
+    const { isSideOpen, toggleSide, saveAnimal, cancelAnimal, reportAnimal } = this.props
 
     return (
       <div className={`sidebar-container ${isSideOpen ? 'side-open': ''}`}>
@@ -26,7 +27,7 @@ export default class Sidebar extends Component<IProps> {
               cancelAnimal={cancelAnimal}
               />
             :
-            isSideOpen !== false ? <DisplayAnimal animal={isSideOpen}/> : <></>
+            isSideOpen !== false ? <DisplayAnimal animal={isSideOpen} toggleSide={toggleSide} reportAnimal={reportAnimal}/> : <></>
         }
       </div>
     )
