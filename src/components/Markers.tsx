@@ -13,13 +13,13 @@ export default class Markers extends Component<IProps> {
     return (
       <div className="markers-container">
         {
-          animals.map(({marker, id }) => (
+          animals.map(({marker, id, type}) => (
             <Marker 
               key={id}
               longitude={ marker.longitude }
               latitude={ marker.latitude }
               >
-                <Pin id={id} />
+                <Pin id={id} type={type} />
             </Marker>
           ))
         }
