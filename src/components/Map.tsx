@@ -10,6 +10,7 @@ interface IProps {
   addMarker: (marker: MarkerProps) => void
   removeMarker: (index: number) =>  void
   setViewport: (viewport: ViewportProps) => void
+  isSideOpen: boolean
 }
 
 export default class Map extends Component<IProps> {
@@ -24,9 +25,10 @@ export default class Map extends Component<IProps> {
   }
 
   render() {
-    const {viewport, markers, setViewport} = this.props
+    const { viewport, markers, setViewport, isSideOpen } = this.props
     return (
-      <ReactMapGl 
+      <div className={`map-gl-container ${isSideOpen ? 'side-open': ''}`}>
+        <ReactMapGl 
           {...viewport}
           mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
           mapStyle={'mapbox://styles/am-77/ckca59r03371f1ileiqk2x44x'}
@@ -41,7 +43,8 @@ export default class Map extends Component<IProps> {
           }}
           >
           <Markers markers={markers} />
-      </ReactMapGl>
+        </ReactMapGl>
+      </div>
     )
   }
 }
