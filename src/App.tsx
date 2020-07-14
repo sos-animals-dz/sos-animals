@@ -3,11 +3,12 @@ import { ViewportProps, MarkerProps } from 'react-map-gl'
 
 import Map from './components/Map'
 import Navbar from './components/Navbar'
-import Sidebar from './components/Sidebar';
+import Sidebar from './components/Sidebar'
+import IAnimal from './interfaces/IAnimal'
 
 interface IState {
   viewport: ViewportProps
-  markers: MarkerProps[]
+  animals: IAnimal[]
   isAddAnimal: boolean
   isSideOpen: boolean
 }
@@ -24,7 +25,7 @@ export default class App extends Component<any, IState> {
         longitude: 3.04197,
         latitude: 36.7525
       },
-      markers: [],
+      animals: [],
       isAddAnimal: false,
       isSideOpen: false
     }
@@ -35,28 +36,33 @@ export default class App extends Component<any, IState> {
   addAnimalMarker = (marker: MarkerProps) => {
     const { isAddAnimal } = this.state
     if (isAddAnimal) {
-      this.setState((state) => ({ markers: [...state.markers, marker], isSideOpen: true }))
+      this.setState((state) => ({ animals: [...state.animals, { id: new Date().getTime(), type: "", description: "", marker }], isSideOpen: true }))
     }
   }
 
-  removeMarker = (index: number) => this.setState((state) => ({ markers: [...state.markers.filter((m, idx) => index !== idx)] }))
+  removeMarker = (id: number) => {} // this.setState((state) => ({ animals: [...state.animals.filter((animal) => animal.id !== id)] })) 
   
   toggleIsAddAnimal = () => {
     this.setState((state) => ({ isAddAnimal: !state.isAddAnimal }))
   }
 
-  saveAnimal = () => {
-    console.log("animal")
+  saveAnimal = (type: string, description: string, picture: string) => {
+    let { animals } = this.state
+    animals[animals.length - 1].description = description
+    animals[animals.length - 1].type = type
+    if( picture ) animals[animals.length - 1].picture = picture
+    
+    this.setState({ animals })
   }
 
   cancelAnimal = () => {
-    this.setState((state) => ({ markers: [...state.markers.slice(0, state.markers.length - 2)] }))
+    this.setState((state) => ({ animals: [...state.animals.slice(0, state.animals.length - 2)] }))
   }
 
   toggleSide = (isSideOpen: boolean) => this.setState({isSideOpen})
 
   render() {
-    const { viewport, markers, isAddAnimal, isSideOpen } = this.state
+    const { viewport, animals, isAddAnimal, isSideOpen } = this.state
     return (
       <div className="app-container">
         <Navbar
@@ -73,7 +79,7 @@ export default class App extends Component<any, IState> {
             />
           <Map 
             viewport={viewport} 
-            markers={markers} 
+            animals={animals} 
             addAnimalMarker={this.addAnimalMarker} 
             removeMarker={this.removeMarker}
             setViewport={this.setViewport} 
