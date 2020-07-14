@@ -3,7 +3,7 @@
 :root {
   --red: #CC0202;
   --green: #119955;
-  --white: #F8F8F8;
+  --white: #fafbfc;
   --light: #e1e2e3;
   --dark: #212121;
   --dark-grey: #767676;
@@ -201,6 +201,15 @@
   padding-top: 45px;
 }
 
+.map-gl-container {
+  padding-left: 0;
+  transition: all 500ms ease;
+}
+
+.map-gl-container.side-open {
+  padding-left: 300px
+}
+
 .map-container .pin {
   width: 15px;
   height: 15px;
@@ -214,13 +223,20 @@
 .map-container .sidebar-container {
   display: flex;
   flex-direction: column;
-  max-width: 320px;
-  width: 100%;
+  min-width: 300px;
+  max-width: 300px;
   height: calc(100vh - 45px);
   overflow-y: auto;
-  background-color: var(--white);
+  background-color: #fff;
   box-shadow: 1px 2px 4px -2px var(--dark);
   z-index: 1;
+  position: absolute;
+  left: -300px;
+  transition: all 500ms ease;
+}
+
+.map-container .sidebar-container.side-open {
+  left: 0
 }
 
 .sidebar-container .add-animal-container {
@@ -288,6 +304,7 @@
   min-height: 60px;
   max-height: 120px;
   padding: 10px;
+  background-color: var(--white);
   border: 1px solid var(--dark-grey);
   border-radius: 3px;
   outline: none;
@@ -299,7 +316,7 @@
 }
 
 .add-animal-container .add-file {
-  width: 160px;
+  width: 100%;
   height: 38px;
   overflow: hidden;
   position: relative;
@@ -376,8 +393,8 @@
 }
 
 .add-animal-container .footer button {
+  width: 100%;
   padding: 10px 15px;
-  margin-right: 10px;
   background: var(--white);
   box-shadow: 0 0 4px -3px var(--dark-grey);
   border: 1px solid var(--dark-grey);
@@ -390,6 +407,14 @@
   cursor: pointer;
   outline: none;
   transition: all 250ms ease;
+}
+
+.add-animal-container .footer button.save{
+  margin-right: 10px;
+}
+
+.add-animal-container .footer button.cancel{
+  margin-left: 10px;
 }
 
 .add-animal-container .footer button.save:hover {
