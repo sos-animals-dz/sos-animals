@@ -26,22 +26,32 @@ export default class App extends Component<any, IState> {
       },
       markers: [],
       isAddAnimal: false,
-      isSideOpen: true
+      isSideOpen: false
     }
   }
 
   setViewport = (viewport: ViewportProps) => this.setState({ viewport })
 
-  addMarker = (marker: MarkerProps) => {
+  addAnimalMarker = (marker: MarkerProps) => {
     const { isAddAnimal } = this.state
     if (isAddAnimal) {
-      this.setState((state) => ({ markers: [...state.markers, marker] }))
+      this.setState((state) => ({ markers: [...state.markers, marker], isSideOpen: true }))
     }
   }
 
   removeMarker = (index: number) => this.setState((state) => ({ markers: [...state.markers.filter((m, idx) => index !== idx)] }))
   
-  addAnimal = () => this.setState((state) => ({ isAddAnimal: !state.isAddAnimal }))
+  toggleIsAddAnimal = () => {
+    this.setState((state) => ({ isAddAnimal: !state.isAddAnimal }))
+  }
+
+  saveAnimal = () => {
+    console.log("animal")
+  }
+
+  cancelAnimal = () => {
+    this.setState((state) => ({ markers: [...state.markers.slice(0, state.markers.length - 2)] }))
+  }
 
   toggleSide = (isSideOpen: boolean) => this.setState({isSideOpen})
 
@@ -51,15 +61,20 @@ export default class App extends Component<any, IState> {
       <div className="app-container">
         <Navbar
           setViewport={this.setViewport} 
-          addAnimal={this.addAnimal}
+          toggleIsAddAnimal={this.toggleIsAddAnimal}
           isAddAnimal={isAddAnimal}
           />
         <div className="map-container">
-          <Sidebar isSideOpen={isSideOpen} toggleSide={this.toggleSide} />
+          <Sidebar 
+            isSideOpen={isSideOpen} 
+            toggleSide={this.toggleSide} 
+            saveAnimal={this.saveAnimal}
+            cancelAnimal={this.cancelAnimal}
+            />
           <Map 
             viewport={viewport} 
             markers={markers} 
-            addMarker={this.addMarker} 
+            addAnimalMarker={this.addAnimalMarker} 
             removeMarker={this.removeMarker}
             setViewport={this.setViewport} 
             isSideOpen={isSideOpen}
