@@ -11,7 +11,7 @@ interface IState {
 
 interface IProps {
   toggleSide: (isSideOpen: boolean) => void
-  saveAnimal: () => void
+  saveAnimal: (type: string, description: string, picture: string) => void
   cancelAnimal: () => void
 }
 
@@ -51,7 +51,8 @@ export default class AddAnimal extends Component<IProps, IState> {
 
   saveAnimal = () =>{
     const { saveAnimal } = this.props
-    saveAnimal()
+    const { type, description, picture } = this.state
+    saveAnimal(type, description, picture)
   }
 
   closeSidebar = () => {
