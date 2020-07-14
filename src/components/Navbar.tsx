@@ -4,6 +4,7 @@ import Search from './Search'
 
 import logo from '../assets/logo.jpg'
 import add from '../assets/add.jpg'
+import addActive from '../assets/add-active.jpg'
 
 interface IProps {
   setViewport: (viewport: ViewportProps) => void
@@ -20,7 +21,12 @@ export default class Navbar extends Component<IProps> {
           <img src={logo} alt='SOS Animal' />
         </div>
         <button className={`add-animal ${isAddAnimal ? 'active' : ''}`} onClick={addAnimal}>
-          <img src={add} alt='add animal' />
+        {
+          isAddAnimal ?
+            <img src={addActive} alt='add animal' /> 
+            : 
+            <img src={add} alt='add animal' />
+        }  
         </button>
         <Search setViewport={setViewport} />
       </div>
