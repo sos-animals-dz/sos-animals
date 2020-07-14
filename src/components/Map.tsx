@@ -3,10 +3,11 @@ import ReactMapGl, { PointerEvent, ViewportProps, MarkerProps } from 'react-map-
 import {setRTLTextPlugin} from 'mapbox-gl'
 import "mapbox-gl/dist/mapbox-gl.css"
 import Markers from './Markers'
+import IAnimal from '../interfaces/IAnimal'
 
 interface IProps {
   viewport: ViewportProps
-  markers: MarkerProps[]
+  animals: IAnimal[]
   addAnimalMarker: (marker: MarkerProps) => void
   removeMarker: (index: number) =>  void
   setViewport: (viewport: ViewportProps) => void
@@ -25,7 +26,7 @@ export default class Map extends Component<IProps> {
   }
 
   render() {
-    const { viewport, markers, setViewport, isSideOpen } = this.props
+    const { viewport, animals, setViewport, isSideOpen } = this.props
     return (
       <div className={`map-gl-container ${isSideOpen ? 'side-open': ''}`}>
         <ReactMapGl 
@@ -42,7 +43,7 @@ export default class Map extends Component<IProps> {
             ]
           }}
           >
-          <Markers markers={markers} />
+          <Markers animals={animals} />
         </ReactMapGl>
       </div>
     )
