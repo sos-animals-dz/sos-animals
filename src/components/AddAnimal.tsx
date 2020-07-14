@@ -9,9 +9,13 @@ interface IState {
   picture: string
 }
 
-export default class AddAnimal extends Component<unknown, IState> {
+interface IProps {
+  toggleSide: (isSideOpen: boolean) => void
+}
 
-  constructor(props: unknown) {
+export default class AddAnimal extends Component<IProps, IState> {
+
+  constructor(props: IProps) {
     super(props)
     this.state = {
       type: "",
@@ -45,7 +49,10 @@ export default class AddAnimal extends Component<unknown, IState> {
 
   savePin = () => console.log("saved ...")
 
-  closeSidebar = () => console.log("closed ...")
+  closeSidebar = () => {
+    const { toggleSide } = this.props
+    this.setState({ type: "", description: "", picture: "" }, () => toggleSide(false))
+  }
 
   render() {
     const { type, description, picture } = this.state
