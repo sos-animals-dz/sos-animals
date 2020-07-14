@@ -53,6 +53,7 @@ export default class AddAnimal extends Component<IProps, IState> {
     const { saveAnimal } = this.props
     const { type, description, picture } = this.state
     saveAnimal(type, description, picture)
+    this.setState({type: "", description: "", picture: ""})
   }
 
   closeSidebar = () => {
