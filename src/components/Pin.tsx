@@ -3,21 +3,41 @@ import pin from '../assets/pin.svg'
 
 interface IProps {
   id: number
+  type: string
 }
 
-export default class Pin extends Component<IProps> {
+interface IState {
+  showType: boolean
+}
 
-  onPinClick = (id: number) => {
-    console.log(id)
+export default class Pin extends Component<IProps, IState> {
+
+  constructor(props: IProps) {
+    super(props)
+    this.state = {
+      showType: false
+    }
+  }
+
+  onPinClick = () => this.setState({ showType: true }, () => setTimeout(() => this.setState({showType: false}), 2000))
+
+  onPinDoubleClick = () => {
     // display infos
   }
 
+  // add spatail pins (dog, cat, bird)
   render() {
-    const { id } = this.props
+    const { id, type } = this.props
+    const { showType } = this.state
     return (
       <div className="pin-container">
-        <div onClick={() => this.onPinClick(id)} className="pin" style={{ position: 'relative', cursor: 'pointer'}}>
-          <img src={pin} alt='pin' style={{ position: 'absolute', top: '-50%' }} />
+        {
+          showType && <div className="show-type">
+            <p>{ type }</p>
+          </div>
+        }
+        <div onDoubleClick={() => this.onPinDoubleClick} onClick={() => this.onPinClick()} className="pin">
+          <img src={pin} alt='pin' />
         </div>
       </div>
     )
