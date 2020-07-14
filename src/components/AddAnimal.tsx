@@ -84,9 +84,10 @@ export default class AddAnimal extends Component<unknown, IState> {
               </div>
               :
               <div className="add-file">
-                <div className="add-picture">
+                <button className="add-picture">
+                  the animal's pic
                   <img src={addPicture} alt='upload__picture' />
-                </div>
+                </button>
                 <input 
                   className="input-picture" 
                   type="file" 
@@ -98,8 +99,8 @@ export default class AddAnimal extends Component<unknown, IState> {
           </div>
         </div>
         <div className="footer">
-            <button onClick={this.savePin}>save</button>
-            <button onClick={this.closeSidebar}>cancel</button>
+            <button className="save" onClick={this.savePin}>save</button>
+            <button className="cancel" onClick={this.closeSidebar}>cancel</button>
         </div>
       </div>
     )
