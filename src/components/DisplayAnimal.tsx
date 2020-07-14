@@ -1,10 +1,37 @@
 import React, { Component } from 'react'
+import IAnimal from '../interfaces/IAnimal'
 
-export default class DisplayAnimal extends Component {
+import noImage from '../assets/no-img-available.jpg'
+
+interface IProps {
+  animal: IAnimal
+  toggleSide: (isSideOpen: false | IAnimal | 'add-animal') => void
+  reportAnimal: (id: number) => void
+}
+
+export default class DisplayAnimal extends Component<IProps> {
   render() {
+    const { animal: { type, picture, description, id }, toggleSide, reportAnimal } = this.props
     return (
-      <div>
-        
+      <div className="display-animal">
+        <div className="animal-type">
+          <h3>{type}</h3>
+        </div>
+        <div className="animal-picture">
+          {
+            picture ?
+              <img src={picture} alt='animal' />
+              : 
+              <img src={noImage} alt='no animal' />
+          }
+        </div>
+        <div className="animal-description">
+          <p>{description}</p>
+        </div>
+        <div className="footer">
+          <button className="close" onClick={() => toggleSide(false)}>close</button>
+          <button className="report" onClick={() => reportAnimal(id)}>report</button>
+        </div>
       </div>
     )
   }
