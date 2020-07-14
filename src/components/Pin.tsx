@@ -22,10 +22,6 @@ export default class Pin extends Component<IProps, IState> {
 
   onPinClick = () => this.setState({ showType: true }, () => setTimeout(() => this.setState({showType: false}), 2000))
 
-  onPinDoubleClick = () => {
-    // display infos
-  }
-
   // add spatail pins (dog, cat, bird)
   render() {
     const { id, type, displayAnimal } = this.props

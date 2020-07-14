@@ -36,7 +36,7 @@ export default class App extends Component<any, IState> {
   addAnimalMarker = (marker: MarkerProps) => {
     const { isAddAnimal } = this.state
     if (isAddAnimal) {
-      this.setState((state) => ({ animals: [...state.animals, { id: new Date().getTime(), type: "", description: "", marker }], isSideOpen: 'add-animal' }))
+      this.setState((state) => ({ isAddAnimal: false, animals: [...state.animals, { id: new Date().getTime(), type: "", description: "", marker }], isSideOpen: 'add-animal' }))
     }
   }
 
