@@ -3,6 +3,7 @@ import { ViewportProps, MarkerProps } from 'react-map-gl'
 
 import Map from './components/Map'
 import Navbar from './components/Navbar'
+import Sidebar from './components/Sidebar';
 
 interface IState {
   viewport: ViewportProps
@@ -35,6 +36,7 @@ export default class App extends Component<any, IState> {
       this.setState((state) => ({ markers: [...state.markers, marker] }))
     }
   }
+  
   removeMarker = (index: number) => this.setState((state) => ({ markers: [...state.markers.filter((m, idx) => index !== idx)] }))
   
   addAnimal = () => this.setState((state) => ({ isAddAnimal: !state.isAddAnimal }))
@@ -48,13 +50,16 @@ export default class App extends Component<any, IState> {
           addAnimal={this.addAnimal}
           isAddAnimal={isAddAnimal}
           />
-        <Map 
-          viewport={viewport} 
-          markers={markers} 
-          addMarker={this.addMarker} 
-          removeMarker={this.removeMarker}
-          setViewport={this.setViewport} 
-          />
+        <div className="map-container">
+          <Sidebar />
+          <Map 
+            viewport={viewport} 
+            markers={markers} 
+            addMarker={this.addMarker} 
+            removeMarker={this.removeMarker}
+            setViewport={this.setViewport} 
+            />
+        </div>
       </div>
     )
   }
