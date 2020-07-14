@@ -40,7 +40,7 @@ export default class App extends Component<any, IState> {
     }
   }
 
-  removeMarker = (id: number) => {} // this.setState((state) => ({ animals: [...state.animals.filter((animal) => animal.id !== id)] })) 
+  removeMarker = (id: number) => {} // this.setState((state) => ({ animals: [...state.animals.filter((animal) => animal.id !== id)] })) // THIS IS AN ADMIN/BOT FUNCTIONALITY TO BE ADDED LATER.
   
   toggleIsAddAnimal = () => {
     this.setState((state) => ({ isAddAnimal: !state.isAddAnimal }))
@@ -51,8 +51,11 @@ export default class App extends Component<any, IState> {
     animals[animals.length - 1].description = description
     animals[animals.length - 1].type = type
     if( picture ) animals[animals.length - 1].picture = picture
-    
-    this.setState({ animals })
+
+    this.setState({ animals}, () => {
+      // display success message then hide the form
+      this.toggleSide(false)
+    })
   }
 
   cancelAnimal = () => {
