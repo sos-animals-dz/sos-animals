@@ -6,5 +6,6 @@ export default interface IAnimal {
   description: string
   marker: MarkerProps
   picture?: string  
+  reports?: number
 }
 
