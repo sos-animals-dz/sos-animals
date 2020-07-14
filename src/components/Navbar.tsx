@@ -8,19 +8,19 @@ import addActive from '../assets/add-active.jpg'
 
 interface IProps {
   setViewport: (viewport: ViewportProps) => void
-  addAnimal: () => void
+  toggleIsAddAnimal: () => void
   isAddAnimal: boolean
 }
 
 export default class Navbar extends Component<IProps> {
   render() {
-    const { setViewport, addAnimal, isAddAnimal } = this.props
+    const { setViewport, toggleIsAddAnimal, isAddAnimal } = this.props
     return (
       <div className="navbar-container">
         <div className="logo">
           <img src={logo} alt='SOS Animal' />
         </div>
-        <button className={`add-animal ${isAddAnimal ? 'active' : ''}`} onClick={addAnimal}>
+        <button className={`add-animal ${isAddAnimal ? 'active' : ''}`} onClick={toggleIsAddAnimal}>
         {
           isAddAnimal ?
             <img src={addActive} alt='add animal' /> 
