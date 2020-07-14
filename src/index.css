@@ -213,11 +213,36 @@
 .map-container .pin {
   width: 15px;
   height: 15px;
+  position: relative;
+  cursor: pointer
 }
 
-.map-container .pin img {
+.pin-container .pin img {
   height: 100%;
   width: 100%;
+  position: absolute;
+  top: -50%
+}
+
+.pin-container .show-type {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: -30px;
+  left: -15px;
+  width: 44px;
+  height: 20px;
+  border-radius: 3px;
+  background: var(--white);
+  box-shadow: 0 0 4px -2px var(--red);
+}
+
+.pin-container .show-type p {
+  color: var(--red);
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 13.5px;
+  font-weight: 700;
 }
 
 .map-container .sidebar-container {
