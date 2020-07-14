@@ -70,6 +70,18 @@ export default class App extends Component<any, IState> {
     this.toggleSide(animal)
   }
 
+  reportAnimal = (id: number) => {
+    const { animals } = this.state
+    let reported = animals.map(animal => {
+      if (animal.id === id) {
+        animal.reports = animal.reports ? animal.reports + 1 : 0
+      }
+      return animal
+    })
+
+    this.setState({animals: reported})
+  }
+
   render() {
     const { viewport, animals, isAddAnimal, isSideOpen } = this.state
     return (
@@ -85,6 +97,7 @@ export default class App extends Component<any, IState> {
             toggleSide={this.toggleSide} 
             saveAnimal={this.saveAnimal}
             cancelAnimal={this.cancelAnimal}
+            reportAnimal={this.reportAnimal}
             />
           <Map 
             viewport={viewport} 
