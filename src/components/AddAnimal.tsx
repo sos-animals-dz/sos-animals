@@ -10,7 +10,7 @@ interface IState {
 }
 
 interface IProps {
-  toggleSide: (isSideOpen: boolean) => void
+  toggleSide: (isSideOpen: false | 'display-animal' | 'add-animal') => void
   saveAnimal: (type: string, description: string, picture: string) => void
   cancelAnimal: () => void
 }

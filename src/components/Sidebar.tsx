@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 
 import AddAnimal from './AddAnimal'
+import DisplayAnimal from './DisplayAnimal';
 
 interface IProps {
-  isSideOpen: boolean
-  toggleSide: (isSideOpen: boolean) => void
+  isSideOpen: false | 'display-animal' | 'add-animal'
+  toggleSide: (isSideOpen: false | 'display-animal' | 'add-animal') => void
   saveAnimal: (type: string, description: string, picture: string) => void
   cancelAnimal: () => void
 }
@@ -19,12 +20,16 @@ export default class Sidebar extends Component<IProps> {
 
     return (
       <div className={`sidebar-container ${isSideOpen ? 'side-open': ''}`}>
-        <AddAnimal 
-          toggleSide={toggleSide} 
-          saveAnimal={saveAnimal}
-          cancelAnimal={cancelAnimal}
-          />
-        {/* Display animal  */}
+        {
+          isSideOpen === "add-animal" ?
+            <AddAnimal 
+              toggleSide={toggleSide} 
+              saveAnimal={saveAnimal}
+              cancelAnimal={cancelAnimal}
+              />
+            :
+            <DisplayAnimal />
+        }
       </div>
     )
   }

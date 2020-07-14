@@ -10,7 +10,7 @@ interface IState {
   viewport: ViewportProps
   animals: IAnimal[]
   isAddAnimal: boolean
-  isSideOpen: boolean
+  isSideOpen: false | 'display-animal' | 'add-animal'
 }
 
 export default class App extends Component<any, IState> {
@@ -36,7 +36,7 @@ export default class App extends Component<any, IState> {
   addAnimalMarker = (marker: MarkerProps) => {
     const { isAddAnimal } = this.state
     if (isAddAnimal) {
-      this.setState((state) => ({ animals: [...state.animals, { id: new Date().getTime(), type: "", description: "", marker }], isSideOpen: true }))
+      this.setState((state) => ({ animals: [...state.animals, { id: new Date().getTime(), type: "", description: "", marker }], isSideOpen: 'add-animal' }))
     }
   }
 
@@ -62,7 +62,7 @@ export default class App extends Component<any, IState> {
     this.setState((state) => ({ animals: [...state.animals.slice(0, state.animals.length - 2)] }))
   }
 
-  toggleSide = (isSideOpen: boolean) => this.setState({isSideOpen})
+  toggleSide = (isSideOpen: false | 'display-animal' | 'add-animal') => this.setState({isSideOpen})
 
   displayAnimal = (id: number) => {
 
