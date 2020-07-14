@@ -11,6 +11,8 @@ interface IState {
 
 interface IProps {
   toggleSide: (isSideOpen: boolean) => void
+  saveAnimal: () => void
+  cancelAnimal: () => void
 }
 
 export default class AddAnimal extends Component<IProps, IState> {
@@ -47,10 +49,14 @@ export default class AddAnimal extends Component<IProps, IState> {
 
   removePicture = () => this.setImageToState("")
 
-  savePin = () => console.log("saved ...")
+  saveAnimal = () =>{
+    const { saveAnimal } = this.props
+    saveAnimal()
+  }
 
   closeSidebar = () => {
-    const { toggleSide } = this.props
+    const { toggleSide, cancelAnimal } = this.props
+    cancelAnimal()
     this.setState({ type: "", description: "", picture: "" }, () => toggleSide(false))
   }
 
@@ -106,7 +112,7 @@ export default class AddAnimal extends Component<IProps, IState> {
           </div>
         </div>
         <div className="footer">
-            <button className="save" onClick={this.savePin}>save</button>
+            <button className="save" onClick={this.saveAnimal}>save</button>
             <button className="cancel" onClick={this.closeSidebar}>cancel</button>
         </div>
       </div>
