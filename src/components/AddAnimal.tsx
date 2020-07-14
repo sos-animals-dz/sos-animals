@@ -74,10 +74,11 @@ export default class AddAnimal extends Component<IProps, IState> {
           <div className="input-form">
             <label>Animal's type <span className="red">*</span></label>
             <select onChange={this.onInputChange} name="type" value={type}>
-              <option>Bird</option>
-              <option>Cat</option>
-              <option>Dog</option>
-              <option>Other</option>
+              <option value="" disabled>Select type</option>
+              <option value="Bird">Bird</option>
+              <option value="Cat">Cat</option>
+              <option value="Dog">Dog</option>
+              <option value="Other">Other</option>
             </select>
           </div>
           <div className="input-form">
