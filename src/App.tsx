@@ -10,7 +10,7 @@ interface IState {
   viewport: ViewportProps
   animals: IAnimal[]
   isAddAnimal: boolean
-  isSideOpen: false | 'display-animal' | 'add-animal'
+  isSideOpen: false | IAnimal | 'add-animal'
 }
 
 export default class App extends Component<any, IState> {
@@ -62,10 +62,12 @@ export default class App extends Component<any, IState> {
     this.setState((state) => ({ animals: [...state.animals.slice(0, state.animals.length - 2)] }))
   }
 
-  toggleSide = (isSideOpen: false | 'display-animal' | 'add-animal') => this.setState({isSideOpen})
+  toggleSide = (isSideOpen: false | IAnimal | 'add-animal') => this.setState({isSideOpen})
 
   displayAnimal = (id: number) => {
-
+    const { animals } = this.state
+    const animal = animals.filter(animal => animal.id === id)[0]
+    this.toggleSide(animal)
   }
 
   render() {
