@@ -73,7 +73,7 @@
   width: 32px;
   border-radius: 50%;
   border: none;
-  padding: 4px;
+  padding: 1px;
   background: var(--white);
   cursor: pointer;
   margin-left: auto;
