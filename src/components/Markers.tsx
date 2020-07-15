@@ -6,11 +6,12 @@ import IAnimal from '../interfaces/IAnimal'
 interface IProps {
   animals: IAnimal[]
   displayAnimal: (id: number) => void
+  isSideOpen: false | IAnimal | 'add-animal'
 }
 
 export default class Markers extends Component<IProps> {
   render() {
-    const { animals, displayAnimal } = this.props
+    const { animals, displayAnimal, isSideOpen } = this.props
     return (
       <div className="markers-container">
         {
@@ -20,7 +21,7 @@ export default class Markers extends Component<IProps> {
               longitude={ marker.longitude }
               latitude={ marker.latitude }
               >
-                <Pin id={id} type={type} displayAnimal={displayAnimal} />
+                <Pin id={id} type={type} displayAnimal={displayAnimal} isSideOpen={isSideOpen}/>
             </Marker>
           ))
         }
