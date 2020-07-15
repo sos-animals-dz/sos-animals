@@ -264,7 +264,7 @@
   left: 0
 }
 
-.sidebar-container .add-animal-container {
+.sidebar-container .add-animal-container{
   height: 100%;
   padding: 20px 20px 20px 20px;
   overflow-y: auto;
@@ -326,8 +326,8 @@
   font-size: 15px;
   min-width: 100%;
   max-width: 100%;
-  min-height: 60px;
-  max-height: 120px;
+  min-height: 150px;
+  max-height: 150px;
   padding: 10px;
   background-color: var(--white);
   border: 1px solid var(--dark-grey);
@@ -413,11 +413,13 @@
   border-radius: 3px;
 }
 
-.add-animal-container .footer {
+.add-animal-container .footer,
+.display-animal-container .footer {
   display: flex;
 }
 
-.add-animal-container .footer button {
+.add-animal-container .footer button,
+.display-animal-container .footer button {
   width: 100%;
   padding: 10px 15px;
   background: var(--white);
@@ -434,11 +436,13 @@
   transition: all 250ms ease;
 }
 
-.add-animal-container .footer button.save{
+.add-animal-container .footer button.save, 
+.display-animal-container .footer button.close {
   margin-right: 10px;
 }
 
-.add-animal-container .footer button.cancel{
+.add-animal-container .footer button.cancel,
+.display-animal-container .footer button.report {
   margin-left: 10px;
 }
 
@@ -447,7 +451,62 @@
   color: var(--green)
 }
 
-.add-animal-container .footer button.cancel:hover {
+.add-animal-container .footer button.cancel:hover,
+.display-animal-container .footer button.report:hover {
   border-color: var(--red);
   color: var(--red)
+}
+
+
+.sidebar-container .display-animal-container {
+  height: 100%;
+  padding: 20px 20px 20px 20px;
+  overflow-y: auto;
+}
+
+.display-animal-container .animal-type {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.display-animal-container .animal-type h3 {
+  color: var(--red);
+  font-size: 24px;
+  font-family: 'Roboto', Arial, sans-serif;
+  text-transform: uppercase;
+}
+
+.display-animal-container .animal-picture {
+  width: 100%;
+  overflow: hidden;
+}
+
+.display-animal-container .animal-picture img {
+  width: 100%;
+  border-radius: 3px;
+  border: 1px solid var(--red);
+  margin-bottom: 15px;
+}
+
+.display-animal-container .animal-description {
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 25px;
+}
+
+.display-animal-container .animal-description h4{
+  color: var(--red);
+  font-size: 18px;
+  font-family: 'Roboto', Arial, sans-serif;
+  text-transform: uppercase;
+}
+
+.display-animal-container .animal-description p {
+  width: 100%;
+  word-break: break-all;
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 16px;
+  color: var(--dark);
+  letter-spacing: 0.25px;
+  line-height: 1.5
 }
