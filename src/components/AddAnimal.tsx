@@ -8,6 +8,7 @@ interface IState {
   type: string
   description: string
   picture: string
+  error: { type?: boolean, description?: boolean, picture?: boolean }
 }
 
 interface IProps {
@@ -23,7 +24,8 @@ export default class AddAnimal extends Component<IProps, IState> {
     this.state = {
       type: "",
       description: "",
-      picture: ""
+      picture: "",
+      error: { type: false, description: false, picture: false }
     }
   }
 
@@ -32,17 +34,25 @@ export default class AddAnimal extends Component<IProps, IState> {
     e.currentTarget.name === 'type' ? this.setState({ type: value }) : this.setState({ description: value })     
   }
   
-  
   uploadPicture = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) this.uploadImage(e.target.files, this.setImageToState)
   }
 
   uploadImage = (files: FileList, setImageToState: (images: string) => void ) => {
     const file = files[0]
-    const reader = new FileReader()
-    reader.readAsDataURL(file)
-    reader.onloadend = function() { 
-      if (reader.result) setImageToState(reader.result.toString())
+    if (file.size > 1000000) {
+      this.setState((state) => ({ 
+        picture: "",
+        error: { ...state.error, picture: true } 
+      }), () => setTimeout(() => this.setState({ 
+        error: { type: false, description: false} 
+      }), 4000))
+    } else {
+      const reader = new FileReader()
+      reader.readAsDataURL(file)
+      reader.onloadend = function() { 
+        if (reader.result) setImageToState(reader.result.toString())
+      }
     }
   }
 
@@ -53,8 +63,11 @@ export default class AddAnimal extends Component<IProps, IState> {
   saveAnimal = () =>{
     const { saveAnimal } = this.props
     const { type, description, picture } = this.state
-    saveAnimal(type, description, picture)
-    this.setState({type: "", description: "", picture: ""})
+
+    if (this.validateInput(type, description)) {
+      saveAnimal(type, description, picture)
+      this.setState({type: "", description: "", picture: ""})
+    }
   }
 
   closeSidebar = () => {
@@ -63,8 +76,24 @@ export default class AddAnimal extends Component<IProps, IState> {
     this.setState({ type: "", description: "", picture: "" }, () => toggleSide(false))
   }
 
+  validateInput = (type: string, description: string) => {
+    const error = { type: false, description: false }
+
+    if (type === "") error.type = true
+    if (description.length < 20) error.description = true
+
+    this.setState((state) => ({ 
+      error: { ...state.error, ...error } 
+    }), () => setTimeout(() => this.setState({ 
+      error: { type: false, description: false} 
+    }), 4000))
+
+    if (error.type || error.description) return false
+    else return true
+  }
+
   render() {
-    const { type, description, picture } = this.state
+    const { type, description, picture, error } = this.state
 
     return (
       <div className="add-animal-container">
@@ -73,7 +102,7 @@ export default class AddAnimal extends Component<IProps, IState> {
         </div>
         <div className="form-animal">
           <div className="input-form">
-            <label>Animal's type <span className="red">*</span></label>
+            <label>Animal's type <span className="red" title="Required field">*</span></label>
             <select onChange={this.onInputChange} name="type" value={type}>
               <option value="" disabled>Select type</option>
               <option value="Bird">Bird</option>
@@ -81,14 +110,19 @@ export default class AddAnimal extends Component<IProps, IState> {
               <option value="Dog">Dog</option>
               <option value="Other">Other</option>
             </select>
+          { error.type && <p className="error">Please select the animal's type.</p> }        
           </div>
           <div className="input-form">
-            <label>Add a description <span className="red">*</span></label>
-            <textarea onChange={this.onInputChange} name="description" value={description} placeholder="Add a description"></textarea>
+            <label>Add a description <span className="red" title="Required field">*</span></label>
+            <textarea 
+              onChange={this.onInputChange} 
+              name="description" value={description} 
+              placeholder="Add a description of the animal and how can we help.">
+            </textarea>
+          { error.description && <p className="error">Please add a description (at least 20 character).</p> }            
           </div>
           <div className="input-form">
             <label>Add a picture</label>
-
             { 
               picture ?
               <div className="preview-picture">
@@ -113,6 +147,7 @@ export default class AddAnimal extends Component<IProps, IState> {
                   />
               </div>
             }
+            { error.picture && <p className="error">Sorry, the picture size must be less then 1 Mb.</p> }
           </div>
         </div>
         <div className="footer">
