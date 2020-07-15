@@ -55,7 +55,7 @@
   padding: 0 25px;
   background: var(--red);
   box-shadow: 0 1px 3px -1px var(--dark);
-  z-index: 1;
+  z-index: 2;
   position: absolute;
 }
 
@@ -268,6 +268,13 @@
   height: 100%;
   padding: 20px 20px 20px 20px;
   overflow-y: auto;
+}
+
+.add-animal-container .error {
+  font-size: 13px;
+  font-family: 'Roboto', Arial, sans-serif;
+  color: var(--red);
+  padding: 4px 0;
 }
 
 .add-animal-container .header {
