@@ -90,6 +90,7 @@ export default class App extends Component<any, IState> {
           setViewport={this.setViewport} 
           toggleIsAddAnimal={this.toggleIsAddAnimal}
           isAddAnimal={isAddAnimal}
+          isSideOpen={isSideOpen}
           />
         <div className="map-container">
           <Sidebar 
