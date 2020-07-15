@@ -44,7 +44,7 @@ export default class Map extends Component<IProps> {
             ]
           }}
           >
-          <Markers animals={animals} displayAnimal={displayAnimal} />
+          <Markers isSideOpen={isSideOpen} animals={animals} displayAnimal={displayAnimal} />
         </ReactMapGl>
       </div>
     )
