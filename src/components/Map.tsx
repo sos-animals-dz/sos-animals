@@ -18,7 +18,7 @@ interface IProps {
 export default class Map extends Component<IProps> {
   
   componentDidMount () {
-    setRTLTextPlugin( 'https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-rtl-text/v0.2.3/mapbox-gl-rtl-text.js', (err) => console.log(err), true )
+    setRTLTextPlugin( 'https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-rtl-text/v0.2.3/mapbox-gl-rtl-text.js', (err) => console.error(err), true )
   }
 
   addMarker = (e:PointerEvent) => {
