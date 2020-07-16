@@ -22,6 +22,7 @@ interface IState {
     message?: string
     list: Sug[]
   }
+  isActiveSreach: boolean
 }
 
 export default class Search extends Component<IProps, IState> {
@@ -32,7 +33,8 @@ export default class Search extends Component<IProps, IState> {
       searching: false,
       found: {
         list: []
-      }
+      },
+      isActiveSreach: false
     }
   }
 
@@ -73,12 +75,14 @@ export default class Search extends Component<IProps, IState> {
     this.setState({found: { list: [] } })
   }
 
+  toggleSearch = () => this.setState((state) => ({isActiveSreach: !state.isActiveSreach}))
+
   render() {
-    const { searching, found } = this.state
+    const { searching, found, isActiveSreach } = this.state
     return (
-      <div className="search-container">
+      <div className={`search-container ${isActiveSreach ? 'active' : ''}`}>
           <div className="search">
-            <div className="icon">
+            <div onClick={this.toggleSearch} className="icon">
               <img src={searchIcon} alt="search" />
             </div>
             <div className="input-field">
@@ -102,7 +106,6 @@ export default class Search extends Component<IProps, IState> {
                 )}
               </div>
           }
-          
       </div>
     )
   }
