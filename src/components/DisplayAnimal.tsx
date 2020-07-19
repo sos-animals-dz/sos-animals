@@ -6,7 +6,7 @@ import noImage from '../assets/no-img-available.jpg'
 interface IProps {
   animal: IAnimal
   toggleSide: (isSideOpen: false | IAnimal | 'add-animal') => void
-  reportAnimal: (id: number) => void
+  reportAnimal: (id: number, report: string) => void
 }
 
 interface IState {
@@ -40,7 +40,7 @@ export default class DisplayAnimal extends Component<IProps, IState> {
     const { animal: { id }, reportAnimal } = this.props
     const { report } = this.state
 
-    console.log(id, report)
+    reportAnimal(id, report)
   }
 
   render() {
