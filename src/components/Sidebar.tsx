@@ -9,7 +9,7 @@ interface IProps {
   toggleSide: (isSideOpen: false | IAnimal | 'add-animal') => void
   saveAnimal: (type: string, description: string, picture: string) => void
   cancelAnimal: () => void
-  reportAnimal: (id: number) => void
+  reportAnimal: (id: number, report: string) => void
 }
 
 export default class Sidebar extends Component<IProps> {
