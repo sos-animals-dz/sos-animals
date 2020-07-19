@@ -433,8 +433,8 @@
 
 .add-animal-container .footer button,
 .display-animal-container .footer button {
-  width: 100%;
-  padding: 10px 15px;
+  width: 90px;
+  padding: 8px;
   background: var(--white);
   box-shadow: 0 0 4px -3px var(--dark-grey);
   border: 1px solid var(--dark-grey);
@@ -443,7 +443,7 @@
   text-transform: uppercase;
   font-weight: 700;
   color: var(--dark);
-  font-size: 12px;
+  font-size: 11px;
   cursor: pointer;
   outline: none;
   transition: all 250ms ease;
@@ -451,13 +451,9 @@
 
 .add-animal-container .footer button.save, 
 .display-animal-container .footer button.close {
-  margin-right: 10px;
+  margin-right: auto;
 }
 
-.add-animal-container .footer button.cancel,
-.display-animal-container .footer button.report {
-  margin-left: 10px;
-}
 
 .add-animal-container .footer button.save:hover {
   border-color: var(--green);
@@ -490,7 +486,8 @@
 }
 
 .display-animal-container .animal-picture {
-  width: 100%;
+  width: 90%;
+  margin: 0 auto;
   overflow: hidden;
 }
 
@@ -498,13 +495,12 @@
   width: 100%;
   border-radius: 3px;
   border: 1px solid var(--red);
-  margin-bottom: 15px;
 }
 
 .display-animal-container .animal-description {
   width: 100%;
   overflow: hidden;
-  margin-bottom: 25px;
+  margin: 25px 0;
 }
 
 .display-animal-container .animal-description h4{
@@ -512,16 +508,99 @@
   font-size: 18px;
   font-family: 'Roboto', Arial, sans-serif;
   text-transform: uppercase;
+  margin: 5px 0;
 }
 
 .display-animal-container .animal-description p {
   width: 100%;
   word-break: break-all;
   font-family: 'Roboto', Arial, sans-serif;
-  font-size: 16px;
+  font-size: 15px;
   color: var(--dark);
   letter-spacing: 0.25px;
-  line-height: 1.5
+  line-height: 1.5;
+}
+
+.display-animal-container .report-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+  height: 0px;
+  overflow: hidden;
+  transition: all 200ms ease;
+}
+
+.display-animal-container .report-container.active {
+  height: 160px;
+}
+
+.display-animal-container .report-container h4 {
+  color: var(--red);
+  font-size: 13px;
+  font-family: 'Roboto', Arial, sans-serif;
+  text-transform: uppercase;
+  margin: 5px 0;
+}
+
+.display-animal-container .report-container textarea {
+  font-family: 'Roboto', Arial, sans-serif !important;
+  letter-spacing: 0.25px;
+  font-size: 15px;
+  min-width: 100%;
+  max-width: 100%;
+  min-height: 70px;
+  max-height: 70px;
+  resize: none;
+  padding: 10px;
+  background-color: var(--white);
+  border: 1px solid var(--dark-grey);
+  border-radius: 3px;
+  outline: none;
+  margin-bottom: 7px;
+}
+
+.display-animal-container .report-container textarea:hover {
+  border-color: var(--red)
+}
+
+.display-animal-container .report-container .report-buttons {
+  margin-top: 10px;
+}
+
+.display-animal-container .report-container button {
+  padding: 2px;
+  background: transparent;
+  box-shadow: none;
+  border: none;
+  font-family: 'Roboto', Arial, sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--dark);
+  font-size: 10px;
+  cursor: pointer;
+  outline: none;
+  transition: all 250ms ease;
+}
+
+.display-animal-container .report-container button.submit {
+  margin-right: 15px;
+  color: var(--green)
+}
+
+.display-animal-container .report-container button.cancel {
+  color: var(--red)
+}
+
+.display-animal-container .report-container p.error {
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 13px;
+  color: var(--red);
+}
+
+.display-animal-container .report-container p.sent {
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 13px;
+  color: var(--green);
 }
 
 @media only screen and (max-width: 640px) {
