@@ -22,13 +22,20 @@ export default class Pin extends Component<IProps, IState> {
     }
   }
 
-  onPinClick = () => {
+  onPinMouseOver = () => {
     const { isSideOpen } = this.props
     if (isSideOpen !== "add-animal") {
-      this.setState({ showType: true }, () => setTimeout(() => this.setState({showType: false}), 2000))
+      this.setState({ showType: true })
     }
   }
 
+  onPinMouseLeave = () => {
+    const { isSideOpen } = this.props
+    if (isSideOpen !== "add-animal") {
+      this.setState({ showType: false })
+    }
+  }
+  
   onPinDoubleClick = () => {
     const { id, displayAnimal, isSideOpen } = this.props
     if (isSideOpen !== "add-animal") {
@@ -47,7 +54,12 @@ export default class Pin extends Component<IProps, IState> {
             <p>{ type }</p>
           </div>
         }
-        <div onDoubleClick={this.onPinDoubleClick} onClick={this.onPinClick} className="pin">
+        <div 
+          onDoubleClick={this.onPinDoubleClick} 
+          onMouseOver={this.onPinMouseOver} 
+          onMouseLeave={this.onPinMouseLeave}
+          className="pin"
+          >
           <img src={pin} alt='pin' />
         </div>
       </div>
