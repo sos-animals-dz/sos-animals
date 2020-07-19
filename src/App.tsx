@@ -70,11 +70,12 @@ export default class App extends Component<any, IState> {
     this.toggleSide(animal)
   }
 
-  reportAnimal = (id: number) => {
+  reportAnimal = (id: number, report: string) => {
     const { animals } = this.state
     let reported = animals.map(animal => {
       if (animal.id === id) {
-        animal.reports = animal.reports ? animal.reports + 1 : 0
+        if (animal.reports) animal.reports = [ ...animal.reports, report ]
+        else animal.reports= [ report ]
       }
       return animal
     })
