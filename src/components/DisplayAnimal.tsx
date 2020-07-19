@@ -12,6 +12,7 @@ interface IProps {
 interface IState {
   report: string
   isReporting: boolean
+  reportStatus: "sent" | "error" | "no-status"
 }
 
 export default class DisplayAnimal extends Component<IProps, IState> {
@@ -20,7 +21,8 @@ export default class DisplayAnimal extends Component<IProps, IState> {
     super(props)
     this.state = {
       report: "",
-      isReporting: false
+      isReporting: false,
+      reportStatus: "no-status"
     }
   }
 
@@ -40,12 +42,17 @@ export default class DisplayAnimal extends Component<IProps, IState> {
     const { animal: { id }, reportAnimal } = this.props
     const { report } = this.state
 
-    reportAnimal(id, report)
+    if (report.length < 20) {
+      this.setState({ reportStatus: "error" }, () => setTimeout(() => this.setState({ reportStatus: "no-status" }), 3000))
+    } else {
+      this.setState({ reportStatus: "sent" }, () => setTimeout(() => this.setState({ isReporting: false, reportStatus: "no-status" }), 4000))
+      reportAnimal(id, report)
+    }
   }
 
   render() {
     const { animal: { type, picture, description } } = this.props
-    const { report, isReporting } = this.state
+    const { report, isReporting, reportStatus } = this.state
     return (
       <div className="display-animal-container">
         <div className="animal-type">
@@ -75,7 +82,13 @@ export default class DisplayAnimal extends Component<IProps, IState> {
             placeholder='Please justify why are you reporting this.(at least 5 words)'
             onChange={this.onReportTextareaChange}
             ></textarea>
-
+            {
+              (reportStatus !== "no-status") &&
+                (reportStatus === "error") ? 
+                  <p className="error">Please write a simple report.</p>
+                  :
+                  (reportStatus === "sent") && <p className="sent">Thank you, we will process it as soon as possible.</p>
+            }
             <div className="report-buttons">
               <button className="submit" onClick={this.submitReport}>submit</button>
               <button className="cancel" onClick={() => this.toggleReport(false)}>cancel</button>
