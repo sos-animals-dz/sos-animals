@@ -43,7 +43,6 @@ export default class Pin extends Component<IProps, IState> {
     }
   }
 
-  // add spatail pins (dog, cat, bird)
   render() {
     const { type } = this.props
     const { showType } = this.state
