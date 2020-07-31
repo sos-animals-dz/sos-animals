@@ -31,6 +31,8 @@ export default class Map extends Component<IProps> {
     return (
       <div className={`map-gl-container ${isSideOpen ? 'side-open': ''}`}>
         <ReactMapGl 
+          width="100vw"
+          height="100vh"
           {...viewport}
           mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
           mapStyle={'mapbox://styles/am-77/ckca59r03371f1ileiqk2x44x'}
