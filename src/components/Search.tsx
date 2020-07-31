@@ -71,7 +71,7 @@ export default class Search extends Component<IProps, IState> {
   onChoosePlace = (index: number) => {
     const { setViewport } = this.props
     const { long, lat } = this.state.found.list[index]
-    setViewport({ width: '100vw', height: '100vh', zoom: 13, longitude: long, latitude: lat })
+    setViewport({ zoom: 13, longitude: long, latitude: lat })
     this.setState({found: { list: [] } })
   }
 
