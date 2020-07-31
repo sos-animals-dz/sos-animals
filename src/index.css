@@ -649,7 +649,8 @@
 
 .login-container {
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
+  overflow: auto;
   flex: 1;
   flex-direction: column;
   justify-content: center;
@@ -657,7 +658,15 @@
   background: var(--red)
 }
 
+.login-container a {
+  text-decoration: none;
+}
+
 .login-container .header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   max-width: 250px;
   text-align: center;
   margin: 10px 0;
@@ -670,11 +679,12 @@
 .login-container .header .logo {
   display: flex;
   justify-content: center;
-  width: 100%;
+  width: 120px;
+  height: 120px;
 }
 
 .login-container .header .logo img {
-  width: 70%;
+  width: 100%;
 }
 
 .login-container .header h3 {
@@ -725,8 +735,7 @@
   color: var(--dark);
 }
 
-
-.login-container form input[type="submit"] {
+.login-container form button {
   width: 140px;
   height: 38px;
   background: var(--white);
@@ -742,13 +751,104 @@
 }
 
 .login-container form .input input,
-.login-container form input[type="submit"] {
+.login-container form button {
   box-shadow: 0px 0px 8px -3px var(--dark);
   transition: all 250ms ease
 }
 
 .login-container form .input input:hover,
 .login-container form .input input:focus,
-.login-container form input[type="submit"]:hover{
+.login-container form button:hover{
   box-shadow: none;
+}
+
+.not-found-container {
+  background: var(--red);
+  display: flex;
+  min-height: 100vh;
+  overflow: auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.not-found-container .header {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  max-width: 120px;
+  text-align: center;
+  margin-bottom: 30px;
+    
+}
+
+.not-found-container .header .logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+}
+
+.not-found-container .header .logo img {
+  width: 100%;
+}
+
+.not-found-container .header h3 {
+  display: flex;
+  justify-content: center;
+  font-size: 15px;
+  font-family: "Roboto", Arial, sans-serif;
+  color: var(--light);
+  text-transform: uppercase;
+}
+
+.not-found-container .main{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  max-width: 350px;
+  width: 90%;
+  margin-bottom: 30px;
+}
+
+.not-found-container .main .not-found {
+  width: 200px;
+  margin-bottom: 15px;
+}
+
+.not-found-container .main .not-found img {
+  width: 100%;
+}
+
+.not-found-container .main h4 {
+  display: flex;
+  justify-content: center;
+  font-size: 40px;
+  font-weight: 700;
+  font-family: "Roboto", Arial, sans-serif;
+  color: var(--light);
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+.not-found-container .main p{
+  color: var(--light);
+  font-family: "Roboto", Arial, sans-serif;
+  margin-bottom: 15px;
+}
+
+.not-found-container .main a {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 13px;
+  color: var(--light);
+  font-family: "Roboto", Arial, sans-serif;
+  transition: all 250ms ease
+}
+
+.not-found-container .main a:hover {
+  color: var(--dark-grey)
 }
