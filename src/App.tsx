@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import { ViewportProps, MarkerProps } from 'react-map-gl'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
+import Admin from './components/Admin'
+import Login from './components/Login'
+import NotFound from './components/NotFound'
 import Map from './components/Map'
 import Navbar from './components/Navbar'
 import Sidebar from './components/Sidebar'
@@ -11,6 +15,7 @@ interface IState {
   animals: IAnimal[]
   isAddAnimal: boolean
   isSideOpen: false | IAnimal | 'add-animal'
+  isLogged: boolean
 }
 
 export default class App extends Component<any, IState> {
@@ -19,17 +24,18 @@ export default class App extends Component<any, IState> {
     super(props)
     this.state = {
       viewport: {
-        width: '100vw',
-        height: '100vh',
         zoom: 12,
         longitude: 3.04197,
         latitude: 36.7525
       },
       animals: [],
       isAddAnimal: false,
-      isSideOpen: false
+      isSideOpen: false,
+      isLogged: false
     }
   }
+
+  componentDidMount () { /* check is user logged */ }
 
   setViewport = (viewport: ViewportProps) => this.setState({ viewport })
 
@@ -83,34 +89,61 @@ export default class App extends Component<any, IState> {
     this.setState({animals: reported})
   }
 
-  render() {
+  renderHomePage = () => {
     const { viewport, animals, isAddAnimal, isSideOpen } = this.state
+    return <>
+      <Navbar
+        setViewport={this.setViewport} 
+        toggleIsAddAnimal={this.toggleIsAddAnimal}
+        isAddAnimal={isAddAnimal}
+        isSideOpen={isSideOpen}
+        />
+      <div className="map-container">
+        <Sidebar 
+          isSideOpen={isSideOpen} 
+          toggleSide={this.toggleSide} 
+          saveAnimal={this.saveAnimal}
+          cancelAnimal={this.cancelAnimal}
+          reportAnimal={this.reportAnimal}
+          />
+        <Map 
+          viewport={viewport} 
+          animals={animals} 
+          addAnimalMarker={this.addAnimalMarker} 
+          removeMarker={this.removeMarker}
+          setViewport={this.setViewport} 
+          isSideOpen={isSideOpen}
+          displayAnimal={this.displayAnimal}
+          />
+      </div>
+    </>
+  }
+
+  renderAdminPage = () => {
+    const { isLogged } = this.state
+    if (isLogged) return <Admin />
+    return <Login />
+  }
+  
+  renderLoginPage = () => {
+    const { isLogged } = this.state
+    if (isLogged) return <Admin />
+    return <Login />
+  }
+
+  renderNotFoundPage = () => <NotFound />
+
+  render() {
     return (
       <div className="app-container">
-        <Navbar
-          setViewport={this.setViewport} 
-          toggleIsAddAnimal={this.toggleIsAddAnimal}
-          isAddAnimal={isAddAnimal}
-          isSideOpen={isSideOpen}
-          />
-        <div className="map-container">
-          <Sidebar 
-            isSideOpen={isSideOpen} 
-            toggleSide={this.toggleSide} 
-            saveAnimal={this.saveAnimal}
-            cancelAnimal={this.cancelAnimal}
-            reportAnimal={this.reportAnimal}
-            />
-          <Map 
-            viewport={viewport} 
-            animals={animals} 
-            addAnimalMarker={this.addAnimalMarker} 
-            removeMarker={this.removeMarker}
-            setViewport={this.setViewport} 
-            isSideOpen={isSideOpen}
-            displayAnimal={this.displayAnimal}
-            />
-        </div>
+        <Router>
+          <Switch>
+            <Route path="/" exact render={this.renderHomePage} />
+            <Route path="/portal" render={this.renderLoginPage} />
+            <Route path="/admin" render={this.renderAdminPage} />
+            <Route render={this.renderNotFoundPage} />
+          </Switch>
+        </Router>
       </div>
     )
   }
