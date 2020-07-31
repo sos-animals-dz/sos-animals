@@ -1,4 +1,6 @@
 import React, { Component, ChangeEvent, FormEvent } from 'react'
+import { Link } from 'react-router-dom'
+
 import logo from  '../assets/logo.jpg'
 
 interface IState {
@@ -32,22 +34,24 @@ export default class Login extends Component<any, IState> {
     const { username, password } = this.state
     return (
       <div className="login-container">
-        <div className="header">
-            <div className="logo">
-              <img src={logo} alt="dz sos animal logo"/>
-            </div>
-            <h3>DZ SOS Animals</h3>
-        </div>
+        <Link to="/">
+          <div className="header">
+              <div className="logo">
+                <img src={logo} alt="dz sos animal logo"/>
+              </div>
+              <h3>DZ SOS Animal</h3>
+          </div>
+        </Link>
         <form onSubmit={this.onFormSubmit}>
         <div className="input">
-            <label>Username: </label>
+            <label>Your username: </label>
             <input type="text" onChange={this.onInputChange} value={username} name="username" />
           </div>
           <div className="input">
-            <label>Password: </label>
+            <label>Your password: </label>
             <input type="password" onChange={this.onInputChange} value={password} name="password" />
           </div>
-          <input type="submit" value="Login"/>
+          <button type="submit">Login</button>
         </form>
       </div>
     )
