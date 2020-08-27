@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
-import pin from '../assets/pin.svg'
 import IAnimal from '../interfaces/IAnimal'
+import pin from '../assets/pin.svg'
+import birdPin from '../assets/bird.svg'
+import dogPin from '../assets/dog.svg'
+import catPin from '../assets/cat.svg'
+import petPin from '../assets/pet.svg'
 
 interface IProps {
   id: number
@@ -59,7 +63,22 @@ export default class Pin extends Component<IProps, IState> {
           onMouseLeave={this.onPinMouseLeave}
           className="pin"
           >
-          <img src={pin} alt='pin' />
+
+	  {
+	    type === 'bird' ?
+	      <img src={birdPin} alt="pin" />
+	      :
+	      type === 'dog' ?
+		<img src={dogPin} alt="pin" />
+		:
+		type === 'cat' ?
+		  <img src={catPin} alt="pin" />
+		  :
+		  type === 'other' ?
+		    <img src={petPin} alt="pin" />
+		    :
+		    <img src={pin} alt="pin" />
+	  }
         </div>
       </div>
     )
