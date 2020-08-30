@@ -2,13 +2,11 @@ import React, { Component } from 'react'
 import { ViewportProps, MarkerProps } from 'react-map-gl'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
-import Admin from './components/Admin'
-import Login from './components/Login'
-import NotFound from './components/NotFound'
-import Map from './components/Map'
-import Navbar from './components/Navbar'
-import Sidebar from './components/Sidebar'
+import Admin from './pages/Admin'
+import Login from './pages/Login'
+import NotFound from './pages/NotFound'
 import IAnimal from './interfaces/IAnimal'
+import Home from './pages/Home'
 
 interface IState {
   viewport: ViewportProps
@@ -24,9 +22,18 @@ export default class App extends Component<any, IState> {
     super(props)
     this.state = {
       viewport: {
+        width: window.innerWidth,
+        height: window.innerHeight,
+        maxZoom: 15,
+        minZoom: 8,
         zoom: 12,
         longitude: 3.04197,
-        latitude: 36.7525
+        latitude: 36.7525,
+        bearing: 0,
+        pitch: 10,
+        altitude: 0,
+        maxPitch: 60,
+        minPitch: 0
       },
       animals: [],
       isAddAnimal: false,
@@ -37,8 +44,6 @@ export default class App extends Component<any, IState> {
 
   componentDidMount () { /* check is user logged */ }
 
-  setViewport = (viewport: ViewportProps) => this.setState({ viewport })
-
   addAnimalMarker = (marker: MarkerProps) => {
     const { isAddAnimal } = this.state
     if (isAddAnimal) {
@@ -46,11 +51,9 @@ export default class App extends Component<any, IState> {
     }
   }
 
-  removeMarker = (id: number) => {} // this.setState((state) => ({ animals: [...state.animals.filter((animal) => animal.id !== id)] })) // THIS IS AN ADMIN/BOT FUNCTIONALITY TO BE ADDED LATER.
+  removeMarker = (id: number) => { return; } // this.setState((state) => ({ animals: [...state.animals.filter((animal) => animal.id !== id)] })) // THIS IS AN ADMIN/BOT FUNCTIONALITY TO BE ADDED LATER.
   
-  toggleIsAddAnimal = () => {
-    this.setState((state) => ({ isAddAnimal: !state.isAddAnimal }))
-  }
+  toggleIsAddAnimal = () => this.setState((state) => ({ isAddAnimal: !state.isAddAnimal }))
 
   saveAnimal = (type: string, description: string, picture: string) => {
     let { animals } = this.state
@@ -91,32 +94,20 @@ export default class App extends Component<any, IState> {
 
   renderHomePage = () => {
     const { viewport, animals, isAddAnimal, isSideOpen } = this.state
-    return <>
-      <Navbar
-        setViewport={this.setViewport} 
-        toggleIsAddAnimal={this.toggleIsAddAnimal}
-        isAddAnimal={isAddAnimal}
-        isSideOpen={isSideOpen}
-        />
-      <div className="map-container">
-        <Sidebar 
-          isSideOpen={isSideOpen} 
-          toggleSide={this.toggleSide} 
-          saveAnimal={this.saveAnimal}
-          cancelAnimal={this.cancelAnimal}
-          reportAnimal={this.reportAnimal}
-          />
-        <Map 
-          viewport={viewport} 
-          animals={animals} 
-          addAnimalMarker={this.addAnimalMarker} 
-          removeMarker={this.removeMarker}
-          setViewport={this.setViewport} 
-          isSideOpen={isSideOpen}
-          displayAnimal={this.displayAnimal}
-          />
-      </div>
-    </>
+    return <Home 
+      viewport={viewport} 
+      animals={animals} 
+      isAddAnimal={isAddAnimal} 
+      isSideOpen={isSideOpen} 
+      toggleIsAddAnimal={this.toggleIsAddAnimal}
+      toggleSide={this.toggleSide}
+      saveAnimal={this.saveAnimal}
+      cancelAnimal={this.cancelAnimal}
+      reportAnimal={this.reportAnimal}
+      addAnimalMarker={this.addAnimalMarker}
+      removeMarker={this.removeMarker}
+      displayAnimal={this.displayAnimal}
+      />
   }
 
   renderAdminPage = () => {
