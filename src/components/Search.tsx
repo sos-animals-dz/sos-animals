@@ -5,7 +5,6 @@ import { ViewportProps } from 'react-map-gl'
 import Spinner from './Spinner'
 import searchIcon from '../assets/search.svg'
 
-
 interface IProps {
   setViewport: (viewport: ViewportProps) => void
 }
@@ -71,7 +70,20 @@ export default class Search extends Component<IProps, IState> {
   onChoosePlace = (index: number) => {
     const { setViewport } = this.props
     const { long, lat } = this.state.found.list[index]
-    setViewport({ zoom: 13, longitude: long, latitude: lat })
+    setViewport({
+      zoom: 13, 
+      longitude: long, 
+      latitude: lat,
+      width: window.innerWidth,
+      height: window.innerHeight,
+      maxZoom: 15,
+      minZoom: 8,
+      bearing: 0,
+      pitch: 0,
+      altitude: 1.5,
+      maxPitch: 60,
+      minPitch: 40
+    })
     this.setState({found: { list: [] } })
   }
 
