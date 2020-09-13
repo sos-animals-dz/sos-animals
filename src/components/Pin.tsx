@@ -47,6 +47,25 @@ export default class Pin extends Component<IProps, IState> {
     }
   }
 
+  renderPin = (type: string) => {
+    switch (type) {
+      case "bird":
+        return <img src={birdPin} alt="pin" /> 
+      
+      case "dog":
+        return <img src={dogPin} alt="pin" /> 
+      
+      case "cat":
+        return <img src={catPin} alt="pin" /> 
+      
+      case "other":
+        return <img src={petPin} alt="pin" /> 
+
+      default:
+        return <img src={pin} alt="pin" />
+    }
+  }
+
   render() {
     const { type } = this.props
     const { showType } = this.state
@@ -63,22 +82,7 @@ export default class Pin extends Component<IProps, IState> {
           onMouseLeave={this.onPinMouseLeave}
           className="pin"
           >
-
-	  {
-	    type === 'bird' ?
-	      <img src={birdPin} alt="pin" />
-	      :
-	      type === 'dog' ?
-		<img src={dogPin} alt="pin" />
-		:
-		type === 'cat' ?
-		  <img src={catPin} alt="pin" />
-		  :
-		  type === 'other' ?
-		    <img src={petPin} alt="pin" />
-		    :
-		    <img src={pin} alt="pin" />
-	  }
+          { this.renderPin(type) }
         </div>
       </div>
     )
