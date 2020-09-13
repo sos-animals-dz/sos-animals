@@ -15,6 +15,7 @@
     "@types/react-map-gl": "^5.2.4",
     "@types/react-router-dom": "^5.1.5",
     "axios": "^0.19.2",
+    "firebase": "^7.20.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-map-gl": "^5.2.7",
