@@ -3,10 +3,13 @@ import { Link } from 'react-router-dom'
 import { login } from '../firebase/utils'
 
 import logo from  '../assets/logo.jpg'
+import openEye from '../assets/eye-on.svg'
+import closeEye from '../assets/eye-off.svg'
 
 interface IState {
   email: string
   password: string
+  isShow: boolean
   error: string | null
 }
 
@@ -17,6 +20,7 @@ export default class Login extends Component<any, IState> {
     this.state = {
       email: "",
       password: "",
+      isShow: false,
       error: null
     }
   }
@@ -37,8 +41,10 @@ export default class Login extends Component<any, IState> {
     this.setState((state) => ({...state, [name]: value}))
   }
 
+  toggleShowPassword = () => this.setState(({ isShow }) => ({ isShow: !isShow })) 
+
   render() {
-    const { email, password, error } = this.state
+    const { email, password, isShow, error } = this.state
     return (
       <div className="login-container">
         <Link to="/">
@@ -59,9 +65,15 @@ export default class Login extends Component<any, IState> {
           </div>
           <div className="input">
             <label>Your password: </label>
-            <input type="password" onChange={this.onInputChange} value={password} name="password" />
+            <input type={isShow ? "text" : "password"} onChange={this.onInputChange} value={password} name="password" />
+            <button type="button" onClick={this.toggleShowPassword} className="eye-btn">
+              <img src={ isShow ? openEye : closeEye } alt="eye show/hide password" />
+            </button>
           </div>
-          <button type="submit">Login</button>
+          <div className="buttons">
+            <button type="submit">Login</button>
+            <Link to="/" className="home-link">Home Page</Link>
+          </div>
         </form>
       </div>
     )
