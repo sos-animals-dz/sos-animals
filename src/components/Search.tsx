@@ -100,7 +100,7 @@ export default class Search extends Component<IProps, IState> {
             <div className="input-field">
               <input onChange={this.findLocation} type="text" placeholder="Search for a place"/>
             </div>
-            <Spinner width={20} height={20} searching={searching} borderColor={'#dcdcdc'} borderTopColor={'#CC0202'} />
+            <Spinner width={20} height={20} laoding={searching} borderColor={'#dcdcdc'} borderTopColor={'#CC0202'} />
           </div>
           {
             found.message ? 
