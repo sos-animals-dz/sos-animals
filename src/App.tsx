@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { ViewportProps, MarkerProps } from 'react-map-gl'
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import { User as IUser } from 'firebase'
-import { authState } from './firebase/utils'
+import { authState, getAnimals } from './firebase/utils'
 
 import Home from './pages/Home'
 import Login from './pages/Login'
@@ -46,6 +46,11 @@ export default class App extends Component<any, IState> {
 
   authStateListener:any = null
   componentDidMount () { 
+
+    getAnimals()
+      .then(animals => { this.setState({ animals }) })
+      .catch(err => console.log("[!] Error@App.componentDidMount.getAnimals", err))
+
     this.authStateListener = authState((loggedUser: IUser | null) => this.setState({ loggedUser })) // add a loader in the login and Admin pages
   }
 
