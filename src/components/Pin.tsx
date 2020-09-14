@@ -9,37 +9,12 @@ import petPin from '../assets/pet.svg'
 interface IProps {
   id: number
   type: string
-  displayAnimal: (id: number) => void
   isSideOpen: false | IAnimal | 'add-animal'
+  displayAnimal: (id: number) => void
 }
 
-interface IState {
-  showType: boolean
-}
+export default class Pin extends Component<IProps> {
 
-export default class Pin extends Component<IProps, IState> {
-
-  constructor(props: IProps) {
-    super(props)
-    this.state = {
-      showType: false
-    }
-  }
-
-  onPinMouseOver = () => {
-    const { isSideOpen } = this.props
-    if (isSideOpen !== "add-animal") {
-      this.setState({ showType: true })
-    }
-  }
-
-  onPinMouseLeave = () => {
-    const { isSideOpen } = this.props
-    if (isSideOpen !== "add-animal") {
-      this.setState({ showType: false })
-    }
-  }
-  
   onPinDoubleClick = () => {
     const { id, displayAnimal, isSideOpen } = this.props
     if (isSideOpen !== "add-animal") {
@@ -48,7 +23,7 @@ export default class Pin extends Component<IProps, IState> {
   }
 
   renderPin = (type: string) => {
-    switch (type) {
+    switch (type.toLocaleLowerCase()) {
       case "bird":
         return <img src={birdPin} alt="pin" /> 
       
@@ -68,19 +43,12 @@ export default class Pin extends Component<IProps, IState> {
 
   render() {
     const { type } = this.props
-    const { showType } = this.state
     return (
       <div className="pin-container">
-        {
-          showType && <div className="show-type">
-            <p>{ type }</p>
-          </div>
-        }
         <div 
-          onDoubleClick={this.onPinDoubleClick} 
-          onMouseOver={this.onPinMouseOver} 
-          onMouseLeave={this.onPinMouseLeave}
+          onDoubleClick={this.onPinDoubleClick}
           className="pin"
+          title="Double click to get all the informations."
           >
           { this.renderPin(type) }
         </div>
