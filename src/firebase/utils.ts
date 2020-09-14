@@ -45,3 +45,12 @@ export const login = async (email: string, password: string) => {
 export const logout = async () => { 
   await auth.signOut()
 }
+
+export const getAnimals = async () => {
+  const animals = await firestore.collection(`animals`).get()
+
+  return animals.docs.map(res => {
+    const { type, description, marker, picture, reports } = res.data()
+    return { id: Number(res.id), type, description, marker: { latitude: marker.latitude, longitude: marker.longitude }, picture, reports}
+  })
+}
