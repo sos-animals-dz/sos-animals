@@ -15,7 +15,6 @@ interface IState {
   animals: IAnimal[]
   isAddAnimal: boolean
   isSideOpen: false | IAnimal | 'add-animal'
-  loading: boolean
   loggedUser: IUser | null
 }
 
@@ -41,14 +40,13 @@ export default class App extends Component<any, IState> {
       animals: [],
       isAddAnimal: false,
       isSideOpen: false,
-      loading: true,
       loggedUser: null
     }
   }
 
   authStateListener:any = null
   componentDidMount () { 
-    this.authStateListener = authState((loggedUser: IUser | null) => this.setState({ loggedUser, loading: false })) // add a loader in the login and Admin pages
+    this.authStateListener = authState((loggedUser: IUser | null) => this.setState({ loggedUser })) // add a loader in the login and Admin pages
   }
 
   componentWillUnmount () {
@@ -124,7 +122,7 @@ export default class App extends Component<any, IState> {
 
   renderAdminPage = () => {
     const { loggedUser } = this.state
-    if (!loggedUser) return <Redirect to="/portal" />
+    if (!loggedUser) return <Redirect to="/login" />
     return <Admin />
   }
   
@@ -142,8 +140,8 @@ export default class App extends Component<any, IState> {
         <Router>
           <Switch>
             <Route path="/" exact render={this.renderHomePage} />
-            <Route path="/portal" render={this.renderLoginPage} />
-            <Route path="/master" render={this.renderAdminPage} />
+            <Route path="/login" render={this.renderLoginPage} />
+            <Route path="/admin" render={this.renderAdminPage} />
             <Route render={this.renderNotFoundPage} />
           </Switch>
         </Router>
