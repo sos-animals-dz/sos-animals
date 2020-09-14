@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import { ViewportProps } from 'react-map-gl'
+import { User as IUser } from "firebase"
+
 import Search from './Search'
+import User from './User'
+
 import IAnimal from '../interfaces/IAnimal'
 
 import logo from '../assets/logo.jpg'
@@ -12,6 +16,7 @@ interface IProps {
   toggleIsAddAnimal: () => void
   isAddAnimal: boolean
   isSideOpen: false | IAnimal | 'add-animal'
+  loggedUser: IUser | null
 }
 
 export default class Navbar extends Component<IProps> {
@@ -24,7 +29,7 @@ export default class Navbar extends Component<IProps> {
   }
 
   render() {
-    const { setViewport, isAddAnimal } = this.props
+    const { setViewport, isAddAnimal, loggedUser } = this.props
     return (
       <div className="navbar-container">
         <div className="logo">
@@ -34,14 +39,19 @@ export default class Navbar extends Component<IProps> {
           title={`${isAddAnimal ? 'disable add-animal mode' : 'enable add-animal mode'}`} 
           className={`add-animal ${isAddAnimal ? 'active' : ''}`} 
           onClick={this.onAddAnimalClick}>
-        {
-          isAddAnimal ?
-            <img src={addActive} alt='add animal' /> 
-            : 
-            <img src={add} alt='add animal' />
-        }  
+          {
+            isAddAnimal ?
+              <img src={addActive} alt='add animal' /> 
+              : 
+              <img src={add} alt='add animal' />
+          }  
         </button>
-        <Search setViewport={setViewport} />
+        {
+          loggedUser ? 
+            <User loggedUser={loggedUser} />
+            :
+            <Search setViewport={setViewport} />          
+        }
       </div>
     )
   }
