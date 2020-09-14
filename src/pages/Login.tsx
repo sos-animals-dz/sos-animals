@@ -1,11 +1,13 @@
 import React, { Component, ChangeEvent, FormEvent } from 'react'
 import { Link } from 'react-router-dom'
+import { login } from '../firebase/utils'
 
 import logo from  '../assets/logo.jpg'
 
 interface IState {
-  username: string
+  email: string
   password: string
+  error: string | null
 }
 
 export default class Login extends Component<any, IState> {
@@ -13,15 +15,20 @@ export default class Login extends Component<any, IState> {
   constructor(props: any) {
     super(props)
     this.state = {
-      username: "",
-      password: ""
+      email: "",
+      password: "",
+      error: null
     }
   }
 
-  onFormSubmit = (e: FormEvent) => {
+  onFormSubmit = async (e: FormEvent) => {
     e.preventDefault()
-
-    console.log(this.state)
+    const { email, password } = this.state
+    try {
+      await login(email, password)
+    } catch (err) {
+      this.setState({ error: err.message }, () => setTimeout(() => this.setState({ error: null }), 4500) )
+    }
   }
 
   onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -31,7 +38,7 @@ export default class Login extends Component<any, IState> {
   }
 
   render() {
-    const { username, password } = this.state
+    const { email, password, error } = this.state
     return (
       <div className="login-container">
         <Link to="/">
@@ -39,13 +46,16 @@ export default class Login extends Component<any, IState> {
               <div className="logo">
                 <img src={logo} alt="dz sos animal logo"/>
               </div>
-              <h3>DZ SOS Animal</h3>
+              <h3>SOS Animal DZ</h3>
           </div>
         </Link>
         <form onSubmit={this.onFormSubmit}>
+        {
+          error && <p className="error">{error}</p>
+        }
         <div className="input">
-            <label>Your username: </label>
-            <input type="text" onChange={this.onInputChange} value={username} name="username" />
+            <label>Your email: </label>
+            <input type="email" onChange={this.onInputChange} value={email} name="email" />
           </div>
           <div className="input">
             <label>Your password: </label>
