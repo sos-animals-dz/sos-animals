@@ -12,14 +12,16 @@ import logo from '../assets/logo.jpg'
 import add from '../assets/add.jpg'
 import addActive from '../assets/add-active.jpg'
 import loginIcon from '../assets/login.svg'
+import Spinner from './Spinner';
 
 interface IProps {
-  setViewport?: (viewport: ViewportProps) => void
-  toggleIsAddAnimal?: () => void
   isAddAnimal?: boolean
   isSideOpen?: false | IAnimal | 'add-animal'
   loggedUser?: IUser | null
   isAdmin?: boolean
+  isLoadingAnimals: boolean
+  setViewport?: (viewport: ViewportProps) => void
+  toggleIsAddAnimal?: () => void
 }
 
 export default class Navbar extends Component<IProps> {
@@ -32,18 +34,25 @@ export default class Navbar extends Component<IProps> {
   }
 
   render() {
-    const { setViewport, isAddAnimal, loggedUser, isAdmin } = this.props
+    const { 
+      setViewport, 
+      isAddAnimal, 
+      loggedUser, 
+      isAdmin,
+      isLoadingAnimals
+    } = this.props
+
     return (
       <div className="navbar-container">
         <div className="logo">
           <img src={logo} alt='SOS Animal' />
         </div>
         {
+          isLoadingAnimals && <Spinner laoding={isLoadingAnimals} width={22} height={22} borderColor="#fafbfc" borderTopColor="transparent" />
+        }
+        {
           isAdmin ?
-          <>
-          
-          <p>back home</p>
-          </>
+            <Link className="admin-link" to="/">Home</Link> 
           :
           <>
             <button 
