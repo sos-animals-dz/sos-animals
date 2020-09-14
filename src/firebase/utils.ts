@@ -3,6 +3,8 @@ import firebase , { User } from "firebase/app"
 import "firebase/firestore"
 import "firebase/auth"
 
+import IAnimal from "../interfaces/IAnimal"
+
 firebase.initializeApp(config)
 const firestore = firebase.firestore()
 const auth = firebase.auth()
@@ -53,4 +55,8 @@ export const getAnimals = async () => {
     const { type, description, marker, picture, reports } = res.data()
     return { id: Number(res.id), type, description, marker: { latitude: marker.latitude, longitude: marker.longitude }, picture, reports}
   })
+}
+
+export const setAnimal = async (animal: IAnimal) => {
+  return await firestore.collection(`animals`).doc(animal.id.toString()).set(animal)
 }
