@@ -76,13 +76,13 @@ export default class Search extends Component<IProps, IState> {
       latitude: lat,
       width: window.innerWidth,
       height: window.innerHeight,
-      maxZoom: 15,
+      maxZoom: 22,
       minZoom: 8,
       bearing: 0,
-      pitch: 0,
-      altitude: 1.5,
+      pitch: 10,
+      altitude: 0,
       maxPitch: 60,
-      minPitch: 40
+      minPitch: 0
     })
     this.setState({found: { list: [] } })
   }
