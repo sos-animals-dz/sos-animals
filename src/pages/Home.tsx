@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { ViewportProps, MarkerProps } from 'react-map-gl'
+import { User } from "firebase"
 import Map from '../components/Map'
 import Navbar from '../components/Navbar'
 import Sidebar from '../components/Sidebar'
@@ -18,6 +19,7 @@ interface IProps {
   addAnimalMarker: (marker: MarkerProps) => void
   removeMarker: (id: number) => void
   displayAnimal: (id: number) => void
+  loggedUser: User | null
 }
 
 interface IState {
@@ -35,7 +37,7 @@ export default class Home extends Component<IProps, IState> {
   setViewport = (viewport: ViewportProps) => this.setState({ viewport })
   
   render() {
-    const { animals, isAddAnimal, isSideOpen, toggleIsAddAnimal, toggleSide, saveAnimal, cancelAnimal, reportAnimal, addAnimalMarker, removeMarker, displayAnimal } = this.props
+    const { animals, isAddAnimal, isSideOpen, toggleIsAddAnimal, toggleSide, saveAnimal, cancelAnimal, reportAnimal, addAnimalMarker, removeMarker, displayAnimal, loggedUser } = this.props
     const { viewport } = this.state
     
     return (<>
@@ -44,6 +46,7 @@ export default class Home extends Component<IProps, IState> {
         toggleIsAddAnimal={toggleIsAddAnimal}
         isAddAnimal={isAddAnimal}
         isSideOpen={isSideOpen}
+        loggedUser={loggedUser}
         />
       <div className="map-container">
         <Sidebar 
