@@ -1,19 +1,22 @@
 import React, { Component } from 'react'
 import { ViewportProps, MarkerProps } from 'react-map-gl'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
+import { User as IUser } from 'firebase'
+import { authState } from './firebase/utils'
 
-import Admin from './pages/Admin'
+import Home from './pages/Home'
 import Login from './pages/Login'
+import Admin from './pages/Admin'
 import NotFound from './pages/NotFound'
 import IAnimal from './interfaces/IAnimal'
-import Home from './pages/Home'
 
 interface IState {
   viewport: ViewportProps
   animals: IAnimal[]
   isAddAnimal: boolean
   isSideOpen: false | IAnimal | 'add-animal'
-  isLogged: boolean
+  loading: boolean
+  loggedUser: IUser | null
 }
 
 export default class App extends Component<any, IState> {
@@ -24,7 +27,7 @@ export default class App extends Component<any, IState> {
       viewport: {
         width: window.innerWidth,
         height: window.innerHeight,
-        maxZoom: 15,
+        maxZoom: 22,
         minZoom: 8,
         zoom: 12,
         longitude: 3.04197,
@@ -38,11 +41,19 @@ export default class App extends Component<any, IState> {
       animals: [],
       isAddAnimal: false,
       isSideOpen: false,
-      isLogged: false
+      loading: true,
+      loggedUser: null
     }
   }
 
-  componentDidMount () { /* check is user logged */ }
+  authStateListener:any = null
+  componentDidMount () { 
+    this.authStateListener = authState((loggedUser: IUser | null) => this.setState({ loggedUser, loading: false })) // add a loader in the login and Admin pages
+  }
+
+  componentWillUnmount () {
+    this.authStateListener()
+  }
 
   addAnimalMarker = (marker: MarkerProps) => {
     const { isAddAnimal } = this.state
@@ -93,7 +104,7 @@ export default class App extends Component<any, IState> {
   }
 
   renderHomePage = () => {
-    const { viewport, animals, isAddAnimal, isSideOpen } = this.state
+    const { viewport, animals, isAddAnimal, isSideOpen, loggedUser } = this.state
     return <Home 
       viewport={viewport} 
       animals={animals} 
@@ -107,19 +118,20 @@ export default class App extends Component<any, IState> {
       addAnimalMarker={this.addAnimalMarker}
       removeMarker={this.removeMarker}
       displayAnimal={this.displayAnimal}
+      loggedUser={loggedUser}
       />
   }
 
   renderAdminPage = () => {
-    const { isLogged } = this.state
-    if (isLogged) return <Admin />
-    return <Login />
+    const { loggedUser } = this.state
+    if (!loggedUser) return <Redirect to="/portal" />
+    return <Admin />
   }
   
   renderLoginPage = () => {
-    const { isLogged } = this.state
-    if (isLogged) return <Admin />
-    return <Login />
+    const { loggedUser } = this.state
+    if (!loggedUser) return <Login />
+    return <Redirect to="/" />
   }
 
   renderNotFoundPage = () => <NotFound />
@@ -131,7 +143,7 @@ export default class App extends Component<any, IState> {
           <Switch>
             <Route path="/" exact render={this.renderHomePage} />
             <Route path="/portal" render={this.renderLoginPage} />
-            <Route path="/admin" render={this.renderAdminPage} />
+            <Route path="/master" render={this.renderAdminPage} />
             <Route render={this.renderNotFoundPage} />
           </Switch>
         </Router>
