@@ -7,5 +7,6 @@ export default interface IAnimal {
   marker: MarkerProps
   picture?: string  
   reports?: string[]
+  created_at?: Date
 }
 
