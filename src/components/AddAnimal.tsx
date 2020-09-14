@@ -31,7 +31,11 @@ export default class AddAnimal extends Component<IProps, IState> {
 
   onInputChange = (e: ChangeEvent<HTMLSelectElement | HTMLTextAreaElement>) => {
     const value = e.currentTarget.value
-    e.currentTarget.name === 'type' ? this.setState({ type: value }) : this.setState({ description: value })     
+    if (e.currentTarget.name === 'type') {
+      this.setState({ type: value })
+    } else {
+      this.setState({ description: value })     
+    }
   }
   
   uploadPicture = (e: ChangeEvent<HTMLInputElement>) => {
@@ -41,12 +45,22 @@ export default class AddAnimal extends Component<IProps, IState> {
   uploadImage = (files: FileList, setImageToState: (images: string) => void ) => {
     const file = files[0]
     if (file.size > 1000000) {
+
       this.setState((state) => ({ 
         picture: "",
-        error: { ...state.error, picture: true } 
-      }), () => setTimeout(() => this.setState({ 
-        error: { type: false, description: false} 
-      }), 4000))
+        error: { 
+          ...state.error, 
+          picture: true 
+        } 
+      }), () => setTimeout(() => {
+        this.setState({ 
+          error: { 
+            type: false, 
+            description: false
+          } 
+        })
+      }, 4000))
+
     } else {
       const reader = new FileReader()
       reader.readAsDataURL(file)
@@ -66,7 +80,6 @@ export default class AddAnimal extends Component<IProps, IState> {
 
     if (this.validateInput(type, description)) {
       saveAnimal(type, description, picture)
-      this.setState({type: "", description: "", picture: ""})
     }
   }
 
