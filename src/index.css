@@ -60,7 +60,6 @@
 }
 
 .navbar-container .logo {
-  position: fixed;
   width: 45px;
   height: 45px;
 }
@@ -247,8 +246,8 @@
 }
 
 .map-container .pin {
-  width: 15px;
-  height: 15px;
+  width: 23px;
+  height: 23px;
   position: relative;
   cursor: pointer
 }
@@ -801,6 +800,32 @@
 .login-container form .input input:focus,
 .login-container form button:hover{
   box-shadow: none;
+}
+
+.login-container form .input .eye-btn{
+  display: block;
+  width: 32px;
+  height: 32px;
+  padding: 5px;
+  position: relative;
+  top: calc( 0px - 35px);
+  left: calc( 100% - 36px);
+  box-shadow: none;
+}
+
+.login-container form .buttons {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.login-container form .buttons .home-link {
+  font-size: 14px;
+  font-family: "Roboto";
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--white);
 }
 
 .not-found-container {
