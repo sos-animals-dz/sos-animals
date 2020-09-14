@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { ViewportProps, MarkerProps } from 'react-map-gl'
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import { User as IUser } from 'firebase'
-import { authState, getAnimals } from './firebase/utils'
+import { authState, getAnimals, setAnimal } from './firebase/utils'
 
 import Home from './pages/Home'
 import Login from './pages/Login'
@@ -16,6 +16,7 @@ interface IState {
   isAddAnimal: boolean
   isSideOpen: false | IAnimal | 'add-animal'
   loggedUser: IUser | null
+  isLoadingAnimals: boolean
 }
 
 export default class App extends Component<any, IState> {
@@ -40,7 +41,8 @@ export default class App extends Component<any, IState> {
       animals: [],
       isAddAnimal: false,
       isSideOpen: false,
-      loggedUser: null
+      loggedUser: null,
+      isLoadingAnimals: true
     }
   }
 
@@ -48,10 +50,19 @@ export default class App extends Component<any, IState> {
   componentDidMount () { 
 
     getAnimals()
-      .then(animals => { this.setState({ animals }) })
-      .catch(err => console.log("[!] Error@App.componentDidMount.getAnimals", err))
+      .then(animals => { 
+        this.setState({ 
+          animals, 
+          isLoadingAnimals: false 
+        })
+      })
+      .catch(err => {
+        console.log("[!] Error@App.componentDidMount.getAnimals", err)
+      })
 
-    this.authStateListener = authState((loggedUser: IUser | null) => this.setState({ loggedUser })) // add a loader in the login and Admin pages
+    this.authStateListener = authState((loggedUser: IUser | null) => {
+      this.setState({ loggedUser })
+    }) // add a loader in the login and Admin pages
   }
 
   componentWillUnmount () {
@@ -61,28 +72,54 @@ export default class App extends Component<any, IState> {
   addAnimalMarker = (marker: MarkerProps) => {
     const { isAddAnimal } = this.state
     if (isAddAnimal) {
-      this.setState((state) => ({ isAddAnimal: false, animals: [...state.animals, { id: new Date().getTime(), type: "", description: "", marker }], isSideOpen: 'add-animal' }))
+      this.setState((state) => ({ 
+          isAddAnimal: false, 
+          animals: [{ id: 0, type: "", description: "", marker }, ...state.animals], 
+          isSideOpen: 'add-animal' 
+        })
+      )
     }
   }
 
   removeMarker = (id: number) => { return; } // this.setState((state) => ({ animals: [...state.animals.filter((animal) => animal.id !== id)] })) // THIS IS AN ADMIN/BOT FUNCTIONALITY TO BE ADDED LATER.
   
-  toggleIsAddAnimal = () => this.setState((state) => ({ isAddAnimal: !state.isAddAnimal }))
+  toggleIsAddAnimal = () => {
+    this.setState((state) => ({ isAddAnimal: !state.isAddAnimal }))
+  }
 
   saveAnimal = (type: string, description: string, picture: string) => {
-    let { animals } = this.state
-    animals[animals.length - 1].description = description
-    animals[animals.length - 1].type = type
-    if( picture ) animals[animals.length - 1].picture = picture
+    const { animals } = this.state
+    setAnimal({ 
+        id: new Date().getTime(), 
+        type, 
+        description, 
+        picture, 
+        marker: animals[0].marker, 
+        reports: [], 
+        created_at: new Date()
+      }).then((res) => { 
 
-    this.setState({ animals}, () => {
-      // display success message then hide the form
-      this.toggleSide(false)
-    })
+        // display success message then hide the form
+
+        this.setState({ isLoadingAnimals: true }, () => {
+          getAnimals()
+            .then(animals => { 
+              this.setState({ animals }, () => {
+                this.setState({ isSideOpen: false, isLoadingAnimals: false })
+              }) 
+            })
+            .catch(err => { 
+              console.log("[!] Error@App.saveAnimal.setAnimal.getAnimals", err) 
+            })
+        })        
+      })
+      .catch(err => { 
+        console.log("[!] Error@App.saveAnimal.setAnimal", err)
+      })
   }
 
   cancelAnimal = () => {
-    this.setState((state) => ({ animals: [...state.animals.slice(0, state.animals.length - 2)] }))
+    this.setState((state) => ({ animals: [...state.animals.slice(1, state.animals.length - 1)] }))
   }
 
   toggleSide = (isSideOpen: false | IAnimal | 'add-animal') => this.setState({isSideOpen})
@@ -107,7 +144,7 @@ export default class App extends Component<any, IState> {
   }
 
   renderHomePage = () => {
-    const { viewport, animals, isAddAnimal, isSideOpen, loggedUser } = this.state
+    const { viewport, animals, isAddAnimal, isSideOpen, loggedUser, isLoadingAnimals } = this.state
     return <Home 
       viewport={viewport} 
       animals={animals} 
@@ -122,13 +159,16 @@ export default class App extends Component<any, IState> {
       removeMarker={this.removeMarker}
       displayAnimal={this.displayAnimal}
       loggedUser={loggedUser}
+      isLoadingAnimals={isLoadingAnimals}
       />
   }
 
+  setLoadingAnimals = (isLoadingAnimals: boolean) => this.setState({ isLoadingAnimals })
+
   renderAdminPage = () => {
-    const { loggedUser } = this.state
+    const { loggedUser, isLoadingAnimals } = this.state
     if (!loggedUser) return <Redirect to="/login" />
-    return <Admin />
+    return <Admin isLoadingAnimals={isLoadingAnimals} />
   }
   
   renderLoginPage = () => {
