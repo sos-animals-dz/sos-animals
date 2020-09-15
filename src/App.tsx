@@ -9,6 +9,7 @@ import Login from './pages/Login'
 import Admin from './pages/Admin'
 import NotFound from './pages/NotFound'
 import IAnimal from './interfaces/IAnimal'
+import Toast from './components/Toast';
 
 interface IState {
   viewport: ViewportProps
@@ -17,6 +18,7 @@ interface IState {
   isSideOpen: false | IAnimal | 'add-animal'
   loggedUser: IUser | null
   isLoadingAnimals: boolean
+  toast: { isSuccess: boolean, message: string, isHidden: boolean }
 }
 
 export default class App extends Component<any, IState> {
@@ -42,27 +44,48 @@ export default class App extends Component<any, IState> {
       isAddAnimal: false,
       isSideOpen: false,
       loggedUser: null,
-      isLoadingAnimals: true
+      isLoadingAnimals: true,
+      toast: { 
+        isSuccess: false, 
+        message: "", 
+        isHidden: true
+      }
     }
   }
 
   authStateListener:any = null
   componentDidMount () { 
-
-    getAnimals()
-      .then(animals => { 
-        this.setState({ 
-          animals, 
-          isLoadingAnimals: false 
+    try {
+      getAnimals()
+        .then(animals => { 
+          this.setState({ 
+            animals, 
+            isLoadingAnimals: false
+          })
         })
+        .catch(err => {
+          console.log("[!] Error@App.componentDidMount.getAnimals", err)
+          this.setState({ 
+            toast: { 
+              isSuccess: false, 
+              isHidden: false, 
+              message:"Sorry! We couldn't load the data, please check your internet connection then reload the page." 
+            } 
+          })
+        })
+      this.authStateListener = authState((loggedUser: IUser | null) => {
+        this.setState({ loggedUser })
       })
-      .catch(err => {
-        console.log("[!] Error@App.componentDidMount.getAnimals", err)
+    } catch (err) {
+      console.log(err)
+      this.setState({ 
+        toast: { 
+          isSuccess: false, 
+          isHidden: false, 
+          message:"Sorry! We couldn't load the data, please check your internet connection then reload the page." 
+        } 
       })
-
-    this.authStateListener = authState((loggedUser: IUser | null) => {
-      this.setState({ loggedUser })
-    }) // add a loader in the login and Admin pages
+    }
   }
 
   componentWillUnmount () {
@@ -98,23 +121,42 @@ export default class App extends Component<any, IState> {
         reports: [], 
         created_at: new Date()
       }).then((res) => { 
-
-        // display success message then hide the form
-
         this.setState({ isLoadingAnimals: true }, () => {
           getAnimals()
             .then(animals => { 
               this.setState({ animals }, () => {
-                this.setState({ isSideOpen: false, isLoadingAnimals: false })
+                this.setState({ 
+                  isSideOpen: false, 
+                  isLoadingAnimals: false,
+                  toast: { 
+                    isSuccess: true, 
+                    message: "The animal has been successfully added.", 
+                    isHidden: false 
+                  }
+                })
               }) 
             })
             .catch(err => { 
               console.log("[!] Error@App.saveAnimal.setAnimal.getAnimals", err) 
+              this.setState({ 
+                toast: { 
+                  isSuccess: false, 
+                  isHidden: false, 
+                  message:"Sorry! We couldn't load the data, please check your internet connection then try again." 
+                } 
+              })
             })
         })        
       })
       .catch(err => { 
         console.log("[!] Error@App.saveAnimal.setAnimal", err)
+        this.setState({ 
+          toast: { 
+            isSuccess: false, 
+            isHidden: false, 
+            message:"Sorry! We couldn't save the animal data, please check your internet connection then try again." 
+          } 
+        })
       })
   }
 
@@ -179,9 +221,15 @@ export default class App extends Component<any, IState> {
 
   renderNotFoundPage = () => <NotFound />
 
+  hideToast = () => {
+    this.setState(({ toast }) => ({ toast: { ...toast, isHidden: true} }))
+  }
+
   render() {
+    const { toast } = this.state
     return (
       <div className="app-container">
+        <Toast { ...toast } hideToast={this.hideToast} />
         <Router>
           <Switch>
             <Route path="/" exact render={this.renderHomePage} />
