@@ -2,6 +2,8 @@ import React, { Component, ChangeEvent, FormEvent } from 'react'
 import { Link } from 'react-router-dom'
 import { login } from '../firebase/utils'
 
+import Spinner from '../components/Spinner'
+
 import logo from  '../assets/logo.jpg'
 import openEye from '../assets/eye-on.svg'
 import closeEye from '../assets/eye-off.svg'
@@ -11,6 +13,7 @@ interface IState {
   password: string
   isShow: boolean
   error: string | null
+  isLoading: boolean
 }
 
 export default class Login extends Component<any, IState> {
@@ -21,7 +24,8 @@ export default class Login extends Component<any, IState> {
       email: "",
       password: "",
       isShow: false,
-      error: null
+      error: null,
+      isLoading: false
     }
   }
 
@@ -29,7 +33,9 @@ export default class Login extends Component<any, IState> {
     e.preventDefault()
     const { email, password } = this.state
     try {
+      this.setState({ isLoading: true })
       await login(email, password)
+      this.setState({ isLoading: false })
     } catch (err) {
       this.setState({ error: err.message }, () => setTimeout(() => this.setState({ error: null }), 4500) )
     }
@@ -44,7 +50,7 @@ export default class Login extends Component<any, IState> {
   toggleShowPassword = () => this.setState(({ isShow }) => ({ isShow: !isShow })) 
 
   render() {
-    const { email, password, isShow, error } = this.state
+    const { email, password, isShow, error, isLoading } = this.state
     return (
       <div className="login-container">
         <Link to="/">
@@ -55,6 +61,10 @@ export default class Login extends Component<any, IState> {
               <h3>SOS Animal DZ</h3>
           </div>
         </Link>
+        {
+          isLoading && <Spinner width={25} height={25} laoding={isLoading} borderColor="#fafbfc" borderTopColor="transparent"  />
+        }
+
         <form onSubmit={this.onFormSubmit}>
         {
           error && <p className="error">{error}</p>

@@ -772,10 +772,6 @@
   margin: 10px 0;
 }
 
-.login-container .header {
-  margin-bottom: 25px;
-}
-
 .login-container .header .logo {
   display: flex;
   justify-content: center;
@@ -803,6 +799,7 @@
   align-items: center;
   max-width: 350px;
   width: 90%;
+  margin-top: 20px;
 }
 
 .login-container form .error {
