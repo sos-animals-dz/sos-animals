@@ -58,6 +58,7 @@ export default class App extends Component<any, IState> {
     try {
       getAnimals()
         .then(animals => { 
+          console.log(animals)
           this.setState({ 
             animals, 
             isLoadingAnimals: false
@@ -174,15 +175,19 @@ export default class App extends Component<any, IState> {
 
   reportAnimal = (id: number, report: string) => {
     const { animals } = this.state
-    let reported = animals.map(animal => {
-      if (animal.id === id) {
-        if (animal.reports) animal.reports = [ ...animal.reports, report ]
-        else animal.reports= [ report ]
-      }
-      return animal
-    })
-
-    this.setState({animals: reported})
+    const animal = animals.filter((animal) => animal.id === id )[0]
+    if ( animal.reports ) {
+      animal.reports.push(report)
+      setAnimal(animal)
+    } else {
+      this.setState({ 
+        toast: { 
+          isSuccess: false, 
+          isHidden: false, 
+          message:"Sorry! We couldn't save the report, please reload the page and try again." 
+        } 
+      })
+    }
   }
 
   renderHomePage = () => {
