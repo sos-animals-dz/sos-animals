@@ -133,6 +133,7 @@
 .navbar-container .logo {
   width: 45px;
   height: 45px;
+  margin-right: auto;
 }
 
 .navbar-container .logo img {
@@ -151,9 +152,9 @@
   padding: 1px;
   background: var(--white);
   cursor: pointer;
-  margin-left: auto;
   outline: none;
   position: relative;
+  margin-left: 15px;
 }
 
 .navbar-container .add-animal img {
@@ -274,6 +275,7 @@
 
 .navbar-container .user{
   display: flex;
+  align-items: center;
 }
 
 .navbar-container .login-link,
@@ -300,6 +302,16 @@
   width: 100%;
   height: 100%;
   border-radius: 50%;
+}
+
+.navbar-container .user .home-link {
+  font-size: 14px;
+  font-family: "Roboto";
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--white);
+  text-decoration: none;
+  margin: 0 5px;
 }
 
 .map-container {
@@ -619,6 +631,11 @@
   color: var(--dark);
   letter-spacing: 0.25px;
   line-height: 1.5;
+}
+
+.display-animal-container .animal-description p.date  {
+  font-size: 12px;
+  margin-bottom: 5px;
 }
 
 .display-animal-container .report-container {
