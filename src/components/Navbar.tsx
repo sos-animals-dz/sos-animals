@@ -12,12 +12,12 @@ import logo from '../assets/logo.jpg'
 import add from '../assets/add.jpg'
 import addActive from '../assets/add-active.jpg'
 import loginIcon from '../assets/login.svg'
-import Spinner from './Spinner';
+import Spinner from './Spinner'
 
 interface IProps {
   isAddAnimal?: boolean
   isSideOpen?: false | IAnimal | 'add-animal'
-  loggedUser?: IUser | null
+  loggedUser: IUser | null
   isAdmin?: boolean
   isLoadingAnimals: boolean
   setViewport?: (viewport: ViewportProps) => void
@@ -48,25 +48,43 @@ export default class Navbar extends Component<IProps> {
           <img src={logo} alt='SOS Animal' />
         </div>
         {
-          isLoadingAnimals && <Spinner laoding={isLoadingAnimals} width={22} height={22} borderColor="#fafbfc" borderTopColor="transparent" />
+          isLoadingAnimals && 
+            <Spinner 
+              laoding={isLoadingAnimals} 
+              width={20} 
+              height={20} 
+              borderColor="#fafbfc" 
+              borderTopColor="transparent" 
+            />
         }
+        
         {
-          isAdmin ?
-            <Link className="admin-link" to="/">Home</Link> 
-          :
-          <>
+          !isAdmin && <>
             <button 
               title={`${isAddAnimal ? 'disable add-animal' : 'enable add-animal'}`} 
               className={`add-animal ${isAddAnimal ? 'active' : ''}`} 
               onClick={this.onAddAnimalClick}
               >
-              { isAddAnimal ? <img src={addActive} alt='add animal' /> :  <img src={add} alt='add animal' /> }  
+                { 
+                  isAddAnimal ? 
+                    <img src={addActive} alt='add animal' /> 
+                    :
+                    <img src={add} alt='add animal' /> 
+                }  
             </button>
-            { setViewport && <Search setViewport={setViewport} /> }
-            { loggedUser ? <User loggedUser={loggedUser} /> : <Link className="login-link" to="/login"><img src={loginIcon} alt="login" title="login" /></Link> }
+            { 
+              setViewport && 
+                <Search setViewport={setViewport} /> 
+            }
           </>
         }
         
+        { 
+          loggedUser ? 
+            <User isAdmin={isAdmin} loggedUser={loggedUser} /> 
+            : 
+            <Link className="login-link" to="/login"><img src={loginIcon} alt="login" title="login" /></Link> 
+        }
       </div>
     )
   }
