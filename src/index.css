@@ -6,13 +6,30 @@
   --white: #fafbfc;
   --light: #e1e2e3;
   --dark: #212121;
-  --dark-grey: #767676;
+  --grey: #767676;
+  --dark-grey: #373737;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--light);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--red);
+}
+
+body {
+  font-family: 'Roboto', 'arial', sans-serif;
 }
 
 .spinner {
@@ -437,7 +454,7 @@
   font-weight: 700 !important;
   color: var(--dark);
   padding: 8px;
-  border: 1px solid var(--dark-grey);
+  border: 1px solid var(--grey);
   border-radius: 3px;
   outline: none;
   background: var(--white);
@@ -455,7 +472,7 @@
   max-height: 150px;
   padding: 10px;
   background-color: var(--white);
-  border: 1px solid var(--dark-grey);
+  border: 1px solid var(--grey);
   border-radius: 3px;
   outline: none;
 }
@@ -485,7 +502,7 @@
   font-size: 12px;
   cursor: pointer;
   background: var(--white);
-  border: 1px solid var(--dark-grey);
+  border: 1px solid var(--grey);
   border-radius: 3px;
   outline: none;
 }
@@ -534,7 +551,7 @@
 .add-animal-container .preview-picture .picture img {
   width: 100%;
   height: 100%;
-  border: 1px solid var(--dark-grey);
+  border: 1px solid var(--grey);
   border-radius: 3px;
 }
 
@@ -548,8 +565,8 @@
   width: 90px;
   padding: 8px;
   background: var(--white);
-  box-shadow: 0 0 4px -3px var(--dark-grey);
-  border: 1px solid var(--dark-grey);
+  box-shadow: 0 0 4px -3px var(--grey);
+  border: 1px solid var(--grey);
   border-radius: 3px;
   font-family: 'Roboto', Arial, sans-serif;
   text-transform: uppercase;
@@ -670,7 +687,7 @@
   resize: none;
   padding: 10px;
   background-color: var(--white);
-  border: 1px solid var(--dark-grey);
+  border: 1px solid var(--grey);
   border-radius: 3px;
   outline: none;
   margin-bottom: 7px;
@@ -763,6 +780,8 @@
   }
 
 }
+
+/* the login page */
 
 .login-container {
   display: flex;
@@ -913,6 +932,8 @@
   color: var(--white);
 }
 
+/* the not-found page */
+
 .not-found-container {
   background: var(--red);
   display: flex;
@@ -1001,5 +1022,177 @@
 }
 
 .not-found-container .main a:hover {
+  color: var(--grey)
+}
+
+/* the admin page */
+
+.admin-container {
+  display: flex;
+  flex-direction: column; 
+  width: 100%;
+  height: 100vh;
+}
+
+.admin-container .dashboard {
+  display: flex;
+  flex-direction: column; 
+  width: 100%;
+  height: calc( 100vh - 45px );
+  margin-top: 45px;
+  padding: 0 25px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.admin-container .dashboard .animals-list h2{
+  color: var(--dark);
+  font-size: 27px;
+  margin: 20px 0;
+}
+
+.admin-container .dashboard .animals-list .animal-card {
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 160px;
+  overflow: hidden;
+  margin: 20px 0;
+  border: 1px solid var(--grey);
+}
+
+.admin-container .dashboard .animals-list .animal-card > div {
+  margin: 10px;
+}
+
+.admin-container .dashboard .animals-list .animal-card .animal-type {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.admin-container .dashboard .animals-list .animal-card .animal-type img {
+  width: 20px;
+  height: 20px;
+}
+
+.admin-container .dashboard .animals-list .animal-card .animal-type b {
+  color: var(--dark-grey);
+  font-size: 12px;
+  margin: 5px; 
+}
+
+.admin-container .dashboard .animals-list .animal-card .animal-type .time {
+  width: 70px;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
   color: var(--dark-grey)
+}
+
+.admin-container .dashboard .animals-list .animal-card .animal-picture {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 160px;
+  min-width: 160px;
+  max-height: 160px;
+}
+
+.admin-container .dashboard .animals-list .animal-card .animal-picture img {
+  width: 100%;
+  height: auto;
+  border: 1px solid #21212121;
+}
+
+.admin-container .dashboard .animals-list .animal-card .animal-description,
+.admin-container .dashboard .animals-list .animal-card .animal-reports {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  max-height: 180px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 10px;
+  border: 1px solid #21212121
+}
+
+.admin-container .dashboard .animals-list .animal-card .animal-description b,
+.admin-container .dashboard .animals-list .animal-card .animal-reports b {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: var(--red)
+}
+
+.admin-container .dashboard .animals-list .animal-card .animal-reports .no-report {
+  display: flex;
+  font-size: 14px;
+  text-align: center;
+  margin: auto;
+}
+
+.admin-container .dashboard .animals-list .animal-card .animal-description p,
+.admin-container .dashboard .animals-list .animal-card .animal-reports .report {
+  display: flex;
+  font-size: 14px;
+  width: 100%;
+  word-break: break-word;
+  margin: 10px 0;
+  line-height: 1.4
+}
+
+.admin-container .dashboard .animals-list .animal-card .animal-buttons {
+  display: flex;
+  width: 30px;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+.admin-container .dashboard .animals-list .animal-card .animal-buttons button {
+  width: 25px;
+  height: 25px;
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.admin-container .dashboard .animals-list .animal-card .animal-buttons button img {
+  width: 100%;
+  height: 100%;
+}
+
+@media only screen and (max-width: 740px) {
+
+  .admin-container .dashboard .animals-list .animal-card {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 0
+  }
+
+  .admin-container .dashboard .animals-list .animal-card .animal-type .time {
+    width: auto;
+  }
+
+  .admin-container .dashboard .animals-list .animal-card .animal-picture {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 280px;
+    min-width: 220px;
+    max-height: 280px;
+  }
+
+  .admin-container .dashboard .animals-list .animal-card .animal-description, 
+  .admin-container .dashboard .animals-list .animal-card .animal-reports {
+    width: calc(100% - 20px);
+    margin: 10px;
+  }
+
+  .admin-container .dashboard .animals-list .animal-card .animal-buttons {
+    margin: 15px 0
+  }
+
 }
