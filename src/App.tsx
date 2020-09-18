@@ -55,30 +55,12 @@ export default class App extends Component<any, IState> {
 
   authStateListener:any = null
   componentDidMount () { 
+    const loggedUser = localStorage.getItem("loggedUser") 
+    if (loggedUser) this.setState({ loggedUser: JSON.parse(loggedUser) })
+
     try {
-      getAnimals()
-        .then(animals => { 
-          console.log(animals)
-          this.setState({ 
-            animals, 
-            isLoadingAnimals: false
-          })
-        })
-        .catch(err => {
-          console.log("[!] Error@App.componentDidMount.getAnimals", err)
-          this.setState({ 
-            toast: { 
-              isSuccess: false, 
-              isHidden: false, 
-              message:"Sorry! We couldn't load the data, please check your internet connection then reload the page." 
-            } 
-          })
-        })
-      this.authStateListener = authState((loggedUser: IUser | null) => {
-        this.setState({ loggedUser })
-      })
+      this.loadAnimals()
     } catch (err) {
-      console.log(err)
       this.setState({ 
         toast: { 
           isSuccess: false, 
@@ -113,42 +95,17 @@ export default class App extends Component<any, IState> {
 
   saveAnimal = (type: string, description: string, picture: string) => {
     const { animals } = this.state
+    const now = new Date().getTime()
     setAnimal({ 
-        id: new Date().getTime(), 
+        id: new Date().getTime(),
         type, 
         description, 
         picture, 
         marker: animals[0].marker, 
         reports: [], 
-        created_at: new Date()
-      }).then((res) => { 
-        this.setState({ isLoadingAnimals: true }, () => {
-          getAnimals()
-            .then(animals => { 
-              this.setState({ animals }, () => {
-                this.setState({ 
-                  isSideOpen: false, 
-                  isLoadingAnimals: false,
-                  toast: { 
-                    isSuccess: true, 
-                    message: "The animal has been successfully added.", 
-                    isHidden: false 
-                  }
-                })
-              }) 
-            })
-            .catch(err => { 
-              console.log("[!] Error@App.saveAnimal.setAnimal.getAnimals", err) 
-              this.setState({ 
-                toast: { 
-                  isSuccess: false, 
-                  isHidden: false, 
-                  message:"Sorry! We couldn't load the data, please check your internet connection then try again." 
-                } 
-              })
-            })
-        })        
+        created_at: { nanoseconds: ( now * 1000 ), seconds: (now / 1000) }
       })
+      .then((res) => { this.loadAnimals() })
       .catch(err => { 
         console.log("[!] Error@App.saveAnimal.setAnimal", err)
         this.setState({ 
@@ -159,6 +116,28 @@ export default class App extends Component<any, IState> {
           } 
         })
       })
+  }
+
+  loadAnimals = ( callback?:() => void ) => {
+    this.setState({ isLoadingAnimals: true })
+    getAnimals()
+      .then(animals => { 
+        this.setState({ animals, isLoadingAnimals: false }, callback)
+      })
+      .catch(err => {
+        console.log("[!] Error@App.componentDidMount.getAnimals", err)
+        this.setState({ 
+          toast: { 
+            isSuccess: false, 
+            isHidden: false, 
+            message:"Sorry! We couldn't load the data, please check your internet connection then reload the page." 
+          } 
+        })
+      })
+    this.authStateListener = authState((loggedUser: IUser | null) => {
+      this.setState({ loggedUser })
+      localStorage.setItem("loggedUser", JSON.stringify(loggedUser))
+    })
   }
 
   cancelAnimal = () => {
@@ -213,28 +192,37 @@ export default class App extends Component<any, IState> {
   setLoadingAnimals = (isLoadingAnimals: boolean) => this.setState({ isLoadingAnimals })
 
   renderAdminPage = () => {
-    const { loggedUser, isLoadingAnimals } = this.state
+    const { animals, loggedUser, isLoadingAnimals } = this.state
     if (!loggedUser) return <Redirect to="/login" />
-    return <Admin isLoadingAnimals={isLoadingAnimals} />
+    return <Admin 
+      animals={animals}
+      loggedUser={loggedUser} 
+      isLoadingAnimals={isLoadingAnimals} 
+      setToast={this.setToast}
+      loadAnimals={this.loadAnimals}
+      />
   }
-  
+
   renderLoginPage = () => {
     const { loggedUser } = this.state
-    if (!loggedUser) return <Login />
-    return <Redirect to="/" />
+    if (!loggedUser && localStorage.getItem("loggedUser") === "null") {
+      return <Login />
+    } else {
+      return <Redirect to="/" />
+    }
   }
 
   renderNotFoundPage = () => <NotFound />
 
-  hideToast = () => {
-    this.setState(({ toast }) => ({ toast: { ...toast, isHidden: true} }))
+  setToast = (isSuccess: boolean, message: string, isHidden: boolean ) => {
+    this.setState({ toast: { isSuccess, message, isHidden} })
   }
 
   render() {
     const { toast } = this.state
     return (
       <div className="app-container">
-        <Toast { ...toast } hideToast={this.hideToast} />
+        <Toast { ...toast } setToast={this.setToast} />
         <Router>
           <Switch>
             <Route path="/" exact render={this.renderHomePage} />
