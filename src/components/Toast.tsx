@@ -8,12 +8,12 @@ interface IProps {
   isSuccess: boolean
   message: string
   isHidden: boolean
-  hideToast: () => void
+  setToast: (isSuccess: boolean, message: string, isHidden: boolean) => void
 }
 
 export default class Toast extends Component<IProps> {  
   render() {
-    const { isSuccess, message, isHidden, hideToast } = this.props
+    const { isSuccess, message, isHidden, setToast } = this.props
     if ( isHidden ) return null
     return (
       <div className={`toast ${isSuccess ? "success" : "error"}`}>
@@ -24,7 +24,7 @@ export default class Toast extends Component<IProps> {
           <p>{ message }</p>
         </div>
         <div className="close-btn">
-          <button onClick={hideToast}>
+          <button onClick={() => setToast(false, "", true)}>
             <img src={closeIcon} alt="close icon" />
           </button>
         </div>
