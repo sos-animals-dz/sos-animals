@@ -1,5 +1,6 @@
 {
-  "name": "sos-animal",
+  "name": "sos-animals",
+  "description":"A web application that allows animals to ask for help.",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
