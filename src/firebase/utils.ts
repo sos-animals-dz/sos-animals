@@ -52,11 +52,15 @@ export const getAnimals = async () => {
   const animals = await firestore.collection(`animals`).get()
 
   return animals.docs.map(res => {
-    const { type, description, marker, picture, reports } = res.data()
-    return { id: Number(res.id), type, description, marker: { latitude: marker.latitude, longitude: marker.longitude }, picture, reports}
+    const { type, description, marker, picture, reports, created_at } = res.data()
+    return { id: Number(res.id), type, description, marker: { latitude: marker.latitude, longitude: marker.longitude }, picture, reports, created_at}
   })
 }
 
 export const setAnimal = async (animal: IAnimal) => {
   return await firestore.collection(`animals`).doc(animal.id.toString()).set(animal)
+}
+
+export const deleteAnimal = async (id: number) => {
+  return await firestore.collection(`animals`).doc(id.toString()).delete()
 }
