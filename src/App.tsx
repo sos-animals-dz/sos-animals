@@ -54,6 +54,7 @@ export default class App extends Component<any, IState> {
   }
 
   authStateListener:any = null
+
   componentDidMount () { 
     const loggedUser = localStorage.getItem("loggedUser") 
     if (loggedUser) this.setState({ loggedUser: JSON.parse(loggedUser) })
@@ -80,7 +81,7 @@ export default class App extends Component<any, IState> {
     if (isAddAnimal) {
       this.setState((state) => ({ 
           isAddAnimal: false, 
-          animals: [{ id: 0, type: "", description: "", marker }, ...state.animals], 
+          animals: [{ id: 0, type: "", description: "", marker, created_at: new Date() }, ...state.animals], 
           isSideOpen: 'add-animal' 
         })
       )
@@ -95,7 +96,8 @@ export default class App extends Component<any, IState> {
 
   saveAnimal = (type: string, description: string, picture: string) => {
     const { animals } = this.state
-    const now = new Date().getTime()
+    this.setState({ isLoadingAnimals: true })
+
     setAnimal({ 
         id: new Date().getTime(),
         type, 
@@ -103,9 +105,13 @@ export default class App extends Component<any, IState> {
         picture, 
         marker: animals[0].marker, 
         reports: [], 
-        created_at: { nanoseconds: ( now * 1000 ), seconds: (now / 1000) }
+        created_at: new Date()
       })
-      .then((res) => { this.loadAnimals() })
+      .then(_ => { 
+        this.loadAnimals(() => {
+          this.setState({isSideOpen: false, isLoadingAnimals: false }, () => this.setToast(true, "The animal was pinned successfully", false))
+        })
+      })
       .catch(err => { 
         console.log("[!] Error@App.saveAnimal.setAnimal", err)
         this.setState({ 
@@ -113,13 +119,15 @@ export default class App extends Component<any, IState> {
             isSuccess: false, 
             isHidden: false, 
             message:"Sorry! We couldn't save the animal data, please check your internet connection then try again." 
-          } 
+          },
+          isLoadingAnimals: false
         })
       })
   }
 
   loadAnimals = ( callback?:() => void ) => {
     this.setState({ isLoadingAnimals: true })
+
     getAnimals()
       .then(animals => { 
         this.setState({ animals, isLoadingAnimals: false }, callback)
@@ -131,9 +139,11 @@ export default class App extends Component<any, IState> {
             isSuccess: false, 
             isHidden: false, 
             message:"Sorry! We couldn't load the data, please check your internet connection then reload the page." 
-          } 
+          },
+          isLoadingAnimals: false
         })
       })
+
     this.authStateListener = authState((loggedUser: IUser | null) => {
       this.setState({ loggedUser })
       localStorage.setItem("loggedUser", JSON.stringify(loggedUser))

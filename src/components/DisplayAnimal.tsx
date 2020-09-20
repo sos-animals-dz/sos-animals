@@ -68,7 +68,7 @@ export default class DisplayAnimal extends Component<IProps, IState> {
         </div>
         <div className="animal-description">
           <h4>description: </h4>
-          <p className="date"><b>created in: </b><span>{new Date(created_at.seconds * 1000).toLocaleString("en-US")}</span></p>
+          <p className="date"><b>created in: </b><span>{created_at.toLocaleString("en-US")}</span></p>
           <p className="desc">{description}</p>
         </div>
         <div className="footer">

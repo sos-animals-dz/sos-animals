@@ -58,15 +58,12 @@ export default class AnimalCard extends Component<IProps> {
 
   render() {
     const { animal: {id, type, picture, description, created_at, reports } } = this.props
-
-    console.log(picture)
-
     return (
       <div className="animal-card">
         <div className="animal-type">
           { this.generateTypeIcon(type) }
           <b>{type}</b>
-          <p className="time">{ new Date(created_at.seconds * 1000).toLocaleString("en-US") }</p>
+          <p className="time">{ created_at.toLocaleString("en-US") }</p>
         </div>
         <div className="animal-picture">
           <img src={ picture ? picture : noImg } alt='the animal' />

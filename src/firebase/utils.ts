@@ -50,10 +50,20 @@ export const logout = async () => {
 
 export const getAnimals = async () => {
   const animals = await firestore.collection(`animals`).get()
-
   return animals.docs.map(res => {
     const { type, description, marker, picture, reports, created_at } = res.data()
-    return { id: Number(res.id), type, description, marker: { latitude: marker.latitude, longitude: marker.longitude }, picture, reports, created_at}
+    return { 
+      id: Number(res.id), 
+      type, 
+      description, 
+      marker: { 
+        latitude: marker.latitude, 
+        longitude: marker.longitude 
+      }, 
+      picture, 
+      reports, 
+      created_at: created_at.toDate()
+    }
   })
 }
 
