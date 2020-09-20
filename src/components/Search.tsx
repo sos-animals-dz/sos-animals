@@ -57,7 +57,6 @@ export default class Search extends Component<IProps, IState> {
         } else  this.setState({ found: { message: `Could not find ${search}.`, list: []}})
       })
       .catch(err => {
-        console.dir(err)
         if (err.response.status === 404 ) this.setState({ found: { message: `Could not find ${search}.`, list: []}})
         else this.setState({ found: { message: `There was an error while looking for ${search}`, list: []}})
       })
@@ -87,7 +86,7 @@ export default class Search extends Component<IProps, IState> {
     this.setState({found: { list: [] } })
   }
 
-  toggleSearch = () => this.setState((state) => ({isActiveSreach: !state.isActiveSreach}))
+  toggleSearch = () => this.setState((state) => ({ isActiveSreach: !state.isActiveSreach, found: { message: "", list: []} }))
 
   render() {
     const { searching, found, isActiveSreach } = this.state

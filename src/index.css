@@ -171,7 +171,7 @@ body {
   cursor: pointer;
   outline: none;
   position: relative;
-  margin-left: 15px;
+  margin-left: 7px;
 }
 
 .navbar-container .add-animal img {
@@ -226,7 +226,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-left: 15px;
+  margin-left: 7px;
   position: relative;
 }
 
@@ -240,8 +240,10 @@ body {
 }
 
 .navbar-container .search-container .search .icon {
-  width: 26px;
-  height: 26px;
+  min-width: 26px;
+  min-height: 26px;
+  max-width: 26px;
+  max-height: 26px;
 }
 
 .navbar-container .search-container .search .icon img {
@@ -740,7 +742,7 @@ body {
 @media only screen and (max-width: 640px) {
 
   .navbar-container .search-container {
-    margin-left: 7px;
+    transition: all 250ms ease
   }
 
   .navbar-container .search-container .search {
@@ -754,11 +756,17 @@ body {
   }
 
   .navbar-container .search-container .search div:last-child {
-    width: 0 !important 
+    max-width: 0 !important;
+    max-height: 0 !important;
+    overflow: hidden;
   }
 
   .navbar-container .search-container .suggestions {
     display: none;
+  }
+
+  .navbar-container .search-container.active {
+    flex: 1;
   }
 
   .navbar-container .search-container.active .search {
@@ -766,13 +774,26 @@ body {
     cursor: pointer;
   }
 
-  .navbar-container .search-container.active .search .input-field input {
-    width: 140px;
+  .navbar-container .search-container.active .search .input-field {
+    flex: 1;
     padding: 5px;
   }
 
+  .navbar-container .search-container .search .input-field {
+    width: 0;
+    padding: 0px;
+    transition: all 250ms ease
+  }
+
+  .navbar-container .search-container .search .input-field input {
+    width: 100%;
+  }
+
   .navbar-container .search-container.active .search div:last-child {
-    width: 20px !important
+    min-width: 20px;
+    max-width: 20px;
+    min-height: 20px;
+    max-height: 20px;
   }
 
   .navbar-container .search-container.active .suggestions {
