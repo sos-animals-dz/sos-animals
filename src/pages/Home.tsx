@@ -17,7 +17,6 @@ interface IProps {
   cancelAnimal: () => void
   reportAnimal: (id: number, report: string) => void
   addAnimalMarker: (marker: MarkerProps) => void
-  removeMarker: (id: number) => void
   displayAnimal: (id: number) => void
   loggedUser: User | null
   isLoadingAnimals: boolean
@@ -48,7 +47,6 @@ export default class Home extends Component<IProps, IState> {
       cancelAnimal, 
       reportAnimal, 
       addAnimalMarker, 
-      removeMarker, 
       displayAnimal, 
       loggedUser, 
       isLoadingAnimals 
@@ -77,7 +75,6 @@ export default class Home extends Component<IProps, IState> {
           viewport={viewport} 
           animals={animals} 
           addAnimalMarker={addAnimalMarker} 
-          removeMarker={removeMarker}
           setViewport={this.setViewport} 
           isSideOpen={isSideOpen}
           displayAnimal={displayAnimal}

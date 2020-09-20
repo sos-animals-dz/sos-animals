@@ -9,7 +9,6 @@ interface IProps {
   viewport: ViewportProps
   animals: IAnimal[]
   addAnimalMarker: (marker: MarkerProps) => void
-  removeMarker: (index: number) =>  void
   setViewport: (viewport: ViewportProps) => void
   isSideOpen: false | IAnimal | 'add-animal'
   displayAnimal: (id: number) => void
