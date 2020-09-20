@@ -87,8 +87,6 @@ export default class App extends Component<any, IState> {
       )
     }
   }
-
-  removeMarker = (id: number) => { return; } // this.setState((state) => ({ animals: [...state.animals.filter((animal) => animal.id !== id)] })) // THIS IS AN ADMIN/BOT FUNCTIONALITY TO BE ADDED LATER.
   
   toggleIsAddAnimal = () => {
     this.setState((state) => ({ isAddAnimal: !state.isAddAnimal }))
@@ -129,8 +127,22 @@ export default class App extends Component<any, IState> {
     this.setState({ isLoadingAnimals: true })
 
     getAnimals()
-      .then(animals => { 
-        this.setState({ animals, isLoadingAnimals: false }, callback)
+      .then(res => { 
+        if ( res === "internet-error") {
+          this.setState({ 
+            toast: { 
+              isSuccess: false, 
+              message: "Unable to load the animals list, Please check your internet connection and try again.", 
+              isHidden: false 
+            }, 
+            isLoadingAnimals: false
+          })
+        } else {
+          this.setState({ 
+            animals: res, 
+            isLoadingAnimals: false 
+          }, callback)
+        }
       })
       .catch(err => {
         console.log("[!] Error@App.componentDidMount.getAnimals", err)
@@ -192,7 +204,6 @@ export default class App extends Component<any, IState> {
       cancelAnimal={this.cancelAnimal}
       reportAnimal={this.reportAnimal}
       addAnimalMarker={this.addAnimalMarker}
-      removeMarker={this.removeMarker}
       displayAnimal={this.displayAnimal}
       loggedUser={loggedUser}
       isLoadingAnimals={isLoadingAnimals}
