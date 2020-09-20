@@ -32,12 +32,17 @@ export default class Login extends Component<any, IState> {
   onFormSubmit = async (e: FormEvent) => {
     e.preventDefault()
     const { email, password } = this.state
-    try {
-      this.setState({ isLoading: true })
-      await login(email, password)
-      this.setState({ isLoading: false })
-    } catch (err) {
-      this.setState({ error: err.message }, () => setTimeout(() => this.setState({ error: null }), 4500) )
+    const inputValidation = this.validateInput(email, password)
+    if (inputValidation === "valide")  {
+      try {
+        this.setState({ isLoading: true })
+        await login(email, password)
+        this.setState({ isLoading: false })
+      } catch (err) {
+        this.setState({ isLoading: false, error: err.message }, () => setTimeout(() => this.setState({ error: null }), 4500) )
+      }
+    } else {
+      this.setState({ error: inputValidation }, () => setTimeout(() => this.setState({ error: null }), 4500) )
     }
   }
 
@@ -45,6 +50,13 @@ export default class Login extends Component<any, IState> {
     const name = e.currentTarget.name
     const value = e.currentTarget.value
     this.setState((state) => ({...state, [name]: value}))
+  }
+
+  validateInput = (email: string, password: string) => {
+    //eslint-disable-next-line
+    if (!/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email.toLowerCase())) { return "Unvalid email address. Please verify your email and try again." }
+    if ( password.length < 8 ) { return "Unvalid password. Please verify your password and try again." }
+    return "valide"
   }
 
   toggleShowPassword = () => this.setState(({ isShow }) => ({ isShow: !isShow })) 
@@ -71,11 +83,11 @@ export default class Login extends Component<any, IState> {
         }
         <div className="input">
             <label>Your email: </label>
-            <input type="email" onChange={this.onInputChange} value={email} name="email" />
+            <input type="email" onChange={this.onInputChange} value={email} name="email" required/>
           </div>
           <div className="input">
             <label>Your password: </label>
-            <input type={isShow ? "text" : "password"} onChange={this.onInputChange} value={password} name="password" />
+            <input type={isShow ? "text" : "password"} onChange={this.onInputChange} value={password} name="password" required/>
             <button type="button" onClick={this.toggleShowPassword} className="eye-btn">
               <img src={ isShow ? openEye : closeEye } alt="eye show/hide password" />
             </button>
