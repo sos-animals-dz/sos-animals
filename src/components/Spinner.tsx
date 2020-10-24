@@ -1,18 +1,21 @@
-import React, { Component } from 'react'
+import React from 'react';
 
 interface IProps {
-  width: number
-  height: number
-  laoding: boolean
-  borderColor: string
-  borderTopColor: string
+  width: number;
+  height: number;
+  laoding: boolean;
+  borderColor: string;
+  borderTopColor: string;
 }
 
-export default class Spinner extends Component<IProps> {
-  render() {
-    const { width, height, laoding } = this.props
-    return (<div style={{ width, height }}>
-      <div style={laoding ? { display: 'block' } : { display: 'none' }} className="spinner"></div>
-    </div>)
-  }
+export default function Spinner(props: IProps) {
+  const { width, height, laoding, borderColor, borderTopColor } = props;
+  return (
+    <div style={{ width, height, borderColor, borderTopColor }}>
+      <div
+        style={laoding ? { display: 'block' } : { display: 'none' }}
+        className="spinner"
+      />
+    </div>
+  );
 }

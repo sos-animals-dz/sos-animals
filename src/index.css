@@ -244,6 +244,10 @@ body {
   min-height: 26px;
   max-width: 26px;
   max-height: 26px;
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
 }
 
 .navbar-container .search-container .search .icon img {
@@ -278,7 +282,9 @@ body {
   padding: 14px 22px;
   font-family: 'Roboto', 'arial', sans-serif;
   color: var(--dark);
-  background-color: var(--white);
+  background: none;
+  border: none;
+  outline: none;
   cursor: pointer;
   transition: all 250ms ease;
 }
@@ -289,7 +295,7 @@ body {
 
 .navbar-container .search-container .suggestions .sug:hover {
   color: var(--red);
-  background-color: var(--light);
+  text-decoration: underline;
 }
 
 .navbar-container .user{
@@ -310,7 +316,7 @@ body {
   padding: 5px;
   background: var(--white);
   cursor: pointer;
-  margin-left: 7px;  
+  margin-left: 7px;
   outline: none;
   position: relative;
 }
@@ -580,7 +586,7 @@ body {
   transition: all 250ms ease;
 }
 
-.add-animal-container .footer button.save, 
+.add-animal-container .footer button.save,
 .display-animal-container .footer button.close {
   margin-right: auto;
 }
@@ -843,7 +849,7 @@ body {
 .login-container .header h3 {
   display: flex;
   justify-content: center;
-  font-size: 30px; 
+  font-size: 30px;
   font-family: "Roboto", Arial, sans-serif;
   color: var(--light);
   text-transform: uppercase;
@@ -973,7 +979,7 @@ body {
   max-width: 120px;
   text-align: center;
   margin-bottom: 30px;
-    
+
 }
 
 .not-found-container .header .logo {
@@ -1050,14 +1056,14 @@ body {
 
 .admin-container {
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   width: 100%;
   height: 100vh;
 }
 
 .admin-container .dashboard {
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   width: 100%;
   height: calc( 100vh - 45px );
   margin-top: 45px;
@@ -1090,6 +1096,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 10px;
 }
 
 .admin-container .dashboard .animals-list .animal-card .animal-type img {
@@ -1100,7 +1107,7 @@ body {
 .admin-container .dashboard .animals-list .animal-card .animal-type b {
   color: var(--dark-grey);
   font-size: 12px;
-  margin: 5px; 
+  margin: 5px;
 }
 
 .admin-container .dashboard .animals-list .animal-card .animal-type .time {
@@ -1108,7 +1115,8 @@ body {
   font-size: 12px;
   font-weight: 700;
   text-align: center;
-  color: var(--dark-grey)
+  color: var(--dark-grey);
+  margin: auto;
 }
 
 .admin-container .dashboard .animals-list .animal-card .animal-picture {
@@ -1168,6 +1176,7 @@ body {
   justify-content: center;
   align-content: center;
   align-items: center;
+  margin: auto;
 }
 
 .admin-container .dashboard .animals-list .animal-card .animal-buttons button {
@@ -1206,7 +1215,7 @@ body {
     max-height: 280px;
   }
 
-  .admin-container .dashboard .animals-list .animal-card .animal-description, 
+  .admin-container .dashboard .animals-list .animal-card .animal-description,
   .admin-container .dashboard .animals-list .animal-card .animal-reports {
     width: calc(100% - 20px);
     margin: 10px;
