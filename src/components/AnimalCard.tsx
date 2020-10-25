@@ -76,8 +76,8 @@ export default class AnimalCard extends Component<IProps> {
               className="delete"
             >
               <img src={deleteIcon} alt="trash can" />
+              <span>Delete</span>
             </button>
-            <span>Delete</span>
           </div>
         </div>
         <div className="animal-picture">
