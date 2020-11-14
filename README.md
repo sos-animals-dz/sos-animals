@@ -18,9 +18,7 @@
 - [Firebase](https://firebase.google.com/): a platform developed by Google for creating mobile and web applications.s
 - [Mapbx](https://www.mapbox.com/): a provider of custom online maps for websites and applications.
 
-## Testing link:
-
-  `https://sos-animals-dz-test.vercel.app`
+## Testing link: [SOS Animals DZ](https://sos-animals.vercel.app)
 
 ## Contribtion:
 
