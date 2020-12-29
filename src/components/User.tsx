@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import { logout } from '../firebase/utils';
 
 import logoutIcon from '../assets/svg/logout.svg';
-import settingsIcon from '../assets/svg/settings.svg';
+import homeIcon from '../assets/svg/home.svg';
+import dashboardIcon from '../assets/svg/dashboard.svg';
 
 interface IProps {
   isAdmin?: boolean;
@@ -15,11 +16,11 @@ export default function User(props: IProps) {
     <div className="user">
       {isAdmin ? (
         <Link className="home-link" to="/">
-          Home
+          <img src={homeIcon} alt="Home page" title="Home page" />
         </Link>
       ) : (
-        <Link className="logout-link" to="/admin">
-          <img src={settingsIcon} alt="dashboard" title="admin dashboard" />
+        <Link className="dashboard-link" to="/admin">
+          <img src={dashboardIcon} alt="dashboard" title="admin dashboard" />
         </Link>
       )}
       <button type="button" className="logout-btn" onClick={logout}>
