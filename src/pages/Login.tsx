@@ -56,8 +56,14 @@ export default class Login extends Component<any, IState> {
   };
 
   validateInput = (email: string, password: string) => {
-    // eslint-disable-next-line
-    if (!/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email.toLowerCase())) { return "Unvalid email address. Please verify your email and try again." }
+    if (
+      // eslint-disable-next-line
+      !/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+        email.toLowerCase()
+      )
+    ) {
+      return 'Unvalid email address. Please verify your email and try again.';
+    }
     if (password.length < 8) {
       return 'Unvalid password. Please verify your password and try again.';
     }
