@@ -5,14 +5,15 @@ import { Link } from 'react-router-dom';
 
 import Search from './Search';
 import User from './User';
+import Spinner from './Spinner';
 
 import IAnimal from '../interfaces/IAnimal';
 
-import logo from '../assets/jpeg/logo.jpg';
+import logo from '../assets/logo-white.png';
 import add from '../assets/jpeg/add.jpg';
 import addActive from '../assets/jpeg/add-active.jpg';
 import homeIcon from '../assets/svg/home.svg';
-import Spinner from './Spinner';
+import usageIcon from '../assets/svg/usage.svg';
 
 interface IProps {
   isAddAnimal?: boolean;
@@ -82,7 +83,13 @@ export default class Navbar extends Component<IProps> {
           </>
         )}
 
-        {loggedUser && <User isAdmin={isAdmin} />}
+        {loggedUser ? (
+          <User isAdmin={isAdmin} />
+        ) : (
+          <Link className="usage-link" to="/usage">
+            <img src={usageIcon} alt="usage" title="how to use the app" />
+          </Link>
+        )}
 
         {allowBack && (
           <Link className="home-link" to="/">
