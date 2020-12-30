@@ -13,6 +13,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Admin from './pages/Admin';
 import PrivacyPolicy from './pages/PrivacyPolicy';
+import HowToUse from './pages/HowToUse';
 import NotFound from './pages/NotFound';
 import IAnimal from './interfaces/IAnimal';
 import Toast from './components/Toast';
@@ -265,7 +266,9 @@ export default class App extends Component<any, IState> {
     return <Redirect to="/" />;
   };
 
-  renderPrivacyPolicy = () => <PrivacyPolicy />;
+  renderPrivacyPolicyPage = () => <PrivacyPolicy />;
+
+  renderHowToUsePage = () => <HowToUse />;
 
   renderNotFoundPage = () => <NotFound />;
 
@@ -290,7 +293,8 @@ export default class App extends Component<any, IState> {
             <Route path="/" exact render={this.renderHomePage} />
             <Route path="/login" render={this.renderLoginPage} />
             <Route path="/admin" render={this.renderAdminPage} />
-            <Route path="/privacy" render={this.renderPrivacyPolicy} />
+            <Route path="/privacy" render={this.renderPrivacyPolicyPage} />
+            <Route path="/usage" render={this.renderHowToUsePage} />
             <Route render={this.renderNotFoundPage} />
           </Switch>
         </Router>
