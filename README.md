@@ -1,8 +1,8 @@
 <p align="center"><img width="192px" height="192px" style="border-radius: 100% 100% 100% 0% / 100% 100% 100% 100%" src="./public/logo.png" alt="SOS Animals DZ logo"></p>
 
 <p align="center">
-  <a href="/LICENCE">
-    <img src="https://img.shields.io/github/license/am-77/SOS%20Animals%20DZ?color=%23CC0202&logoColor=%23CC0202" alt="MIT License" />
+  <a href="./LICENSE">
+    <img src="https://img.shields.io/github/license/sos-animals-dz/sos-animals?color=%23CC0202&logoColor=%23CC0202" alt="MIT License" />
   </a>
   <a href="https://sos-animals.vercel.app" alt="Website" >
     <img src="https://img.shields.io/badge/website-SOS%20Animals%20DZ-%23CC0202" alt="website badge" />
@@ -27,7 +27,7 @@
 
 Feel free to open a pull requset 💁, report a bug 🐛 or request a feature 🌟 anytime you want.
 
-## Contribtion Guide:
+## Contribution Guide:
 
 If you want to contribute to this project, please make sur to follow this steps, this will make it easy for us to manage and review the pull requsets.
 
