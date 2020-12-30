@@ -1,33 +1,40 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 
+import logo from '../assets/logo-white.png';
+
 const PrivacyPolicy = () => {
   return (
     <div className="privacy-policy">
       <Navbar isLoadingAnimals={false} loggedUser={null} allowBack />
       <div className="privacy-content">
-        <h1>Privacy Policy</h1>
-        <p>Last updated: December 29, 2020</p>
-        <p>
-          This Privacy Policy describes Our policies and procedures on the
-          collection, use and disclosure of Your information when You use the
-          Service and tells You about Your privacy rights and how the law
-          protects You.
-        </p>
-        <p>
-          We use Your Personal data to provide and improve the Service. By using
-          the Service, You agree to the collection and use of information in
-          accordance with this Privacy Policy. This Privacy Policy has been
-          created with the help of the{' '}
-          <a
-            href="https://www.privacypolicies.com/privacy-policy-generator/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Privacy Policy Generator
-          </a>
-          .
-        </p>
+        <div className="header">
+          <div className="logo">
+            <img src={logo} alt="SOS Animals DZ" />
+          </div>
+          <h1>Privacy Policy</h1>
+          <p>Last updated: December 29, 2020</p>
+          <p>
+            This Privacy Policy describes Our policies and procedures on the
+            collection, use and disclosure of Your information when You use the
+            Service and tells You about Your privacy rights and how the law
+            protects You.
+          </p>
+          <p>
+            We use Your Personal data to provide and improve the Service. By
+            using the Service, You agree to the collection and use of
+            information in accordance with this Privacy Policy. This Privacy
+            Policy has been created with the help of the{' '}
+            <a
+              href="https://www.privacypolicies.com/privacy-policy-generator/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Privacy Policy Generator
+            </a>
+            .
+          </p>
+        </div>
         <h1>Interpretation and Definitions</h1>
         <h2>Interpretation</h2>
         <p>

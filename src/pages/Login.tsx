@@ -4,7 +4,7 @@ import { login } from '../firebase/utils';
 
 import Spinner from '../components/Spinner';
 
-import logo from '../assets/jpeg/logo.jpg';
+import logo from '../assets/logo-white.png';
 import openEye from '../assets/svg/eye-on.svg';
 import closeEye from '../assets/svg/eye-off.svg';
 
@@ -82,7 +82,6 @@ export default class Login extends Component<any, IState> {
             <div className="logo">
               <img src={logo} alt="dz sos animal logo" />
             </div>
-            <h3>SOS Animal DZ</h3>
           </div>
         </Link>
         {isLoading && (

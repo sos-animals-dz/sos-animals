@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import logo from '../assets/jpeg/logo.jpg';
+import logo from '../assets/logo-white.png';
 import notFound from '../assets/svg/404.svg';
 
 export default function NotFound() {
@@ -11,7 +11,7 @@ export default function NotFound() {
         <div className="logo">
           <img src={logo} alt="dz sos animal logo" />
         </div>
-        <h3>DZ SOS Animal</h3>
+        <h3>SOS Animals DZ</h3>
       </div>
       <div className="main">
         <div className="not-found">
