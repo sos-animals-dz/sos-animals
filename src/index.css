@@ -152,6 +152,7 @@ body {
 .navbar-container .logo {
   width: 45px;
   height: 45px;
+  padding: 4px;
   margin-right: auto;
 }
 
@@ -306,6 +307,7 @@ body {
 }
 
 .navbar-container .home-link,
+.navbar-container .usage-link,
 .navbar-container .dashboard-link,
 .navbar-container .settings-link,
 .navbar-container .logout-link,
@@ -326,6 +328,7 @@ body {
 }
 
 .navbar-container .home-link img,
+.navbar-container .usage-link img,
 .navbar-container .dashboard-link img,
 .navbar-container .settings-link img,
 .navbar-container .logout-link img,
@@ -336,7 +339,8 @@ body {
 }
 
 .navbar-container .home-link img,
-.navbar-container .dashboard-link img {
+.navbar-container .dashboard-link img,
+.navbar-container .logout-btn img {
   border-radius: 0%;
   padding: 1px;
 }
@@ -360,6 +364,9 @@ body {
   height: 20px;
   position: relative;
   cursor: pointer;
+  background: none;
+  outline: none;
+  border: none;
 }
 
 .pin-container .pin img {
@@ -836,21 +843,12 @@ body {
 .login-container .header .logo {
   display: flex;
   justify-content: center;
-  width: 120px;
-  height: 120px;
+  width: 180px;
+  height: 180px;
 }
 
 .login-container .header .logo img {
   width: 100%;
-}
-
-.login-container .header h3 {
-  display: flex;
-  justify-content: center;
-  font-size: 30px;
-  font-family: 'Roboto', Arial, sans-serif;
-  color: var(--light);
-  text-transform: uppercase;
 }
 
 .login-container form {
@@ -974,7 +972,7 @@ body {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  max-width: 120px;
+  width: 100%;
   text-align: center;
   margin-bottom: 30px;
 }
@@ -983,7 +981,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 70%;
+  width: 80px;
 }
 
 .not-found-container .header .logo img {
@@ -993,10 +991,9 @@ body {
 .not-found-container .header h3 {
   display: flex;
   justify-content: center;
-  font-size: 15px;
+  font-size: 32px;
   font-family: 'Roboto', Arial, sans-serif;
   color: var(--light);
-  text-transform: uppercase;
 }
 
 .not-found-container .main {
@@ -1011,7 +1008,7 @@ body {
 }
 
 .not-found-container .main .not-found {
-  width: 200px;
+  width: 150px;
   margin-bottom: 15px;
 }
 
@@ -1239,6 +1236,8 @@ body {
 .privacy-policy {
   display: flex;
   flex-direction: column;
+  background-color: var(--white);
+  height: 100vh;
 }
 
 .privacy-policy .privacy-content {
@@ -1249,7 +1248,31 @@ body {
   overflow-y: auto;
   overflow-x: hidden;
   margin: 0 auto;
-  padding: 25px 10%;
+  padding: 75px 10%;
+}
+
+.privacy-policy .privacy-content .header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 25px;
+  margin-bottom: 75px;
+  max-width: 750px;
+}
+
+.privacy-policy .privacy-content .header .logo {
+  width: 190px;
+  height: 190px;
+  background: var(--red);
+  border-radius: 50%;
+  padding: 19px;
+}
+
+.privacy-policy .privacy-content .header .logo img {
+  width: 100%;
 }
 
 .privacy-policy .privacy-content h1,
@@ -1273,10 +1296,114 @@ body {
   color: var(--dark);
   line-height: 1.4;
   font-size: 16px;
+  line-height: 1.7;
 }
 
 .privacy-policy .privacy-content li {
   margin-left: 25px;
+  line-height: 1.7;
+}
+
+.how-to-use {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white);
+  height: 100vh;
+}
+
+.how-to-use .usage-content {
+  height: calc(100vh - 45px);
+  position: relative;
+  top: 45px;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin: 0 auto;
+  padding: 75px 10%;
+}
+
+.how-to-use .usage-content .header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 25px;
+  margin-bottom: 75px;
+  max-width: 750px;
+}
+
+.how-to-use .usage-content .header .logo {
+  width: 190px;
+  height: 190px;
+  background: var(--red);
+  border-radius: 50%;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.how-to-use .usage-content .header .logo img {
+  width: 100%;
+}
+
+.how-to-use .usage-content h1,
+.how-to-use .usage-content h2,
+.how-to-use .usage-content h3 {
+  color: var(--red);
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.how-to-use .usage-content h1,
+.how-to-use .usage-content > p {
+  text-align: center;
+  max-width: 450px;
+  margin: 0 auto;
+  margin-bottom: 15px;
+}
+
+.how-to-use .usage-content .options {
+  margin-top: 50px;
+}
+
+.how-to-use .usage-content .options .option {
+  margin-top: 50px;
+}
+
+.how-to-use .usage-content .options .option .title {
+  display: flex;
+  align-items: center;
+}
+
+.how-to-use .usage-content .options .option .title img {
+  width: 20px;
+  height: 20px;
+}
+
+.how-to-use .usage-content .options .option .title h2 {
+  margin-left: 15px;
+}
+
+.how-to-use .usage-content .options .option ul li {
+  margin-top: 35px;
+}
+
+.how-to-use .usage-content .options .option h4 {
+  font-size: 21px;
+  margin-bottom: 10px;
+  color: var(--red);
+}
+
+.how-to-use .usage-content .options .option p {
+  line-height: 1.7;
+  text-indent: 15px;
+}
+
+.how-to-use .usage-content .options .option .icon {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
 }
 
 @media only screen and (max-width: 740px) {
