@@ -1,14 +1,16 @@
 <p align="center"><img width="192px" height="192px" style="border-radius: 100% 100% 100% 0% / 100% 100% 100% 100%" src="./public/logo.png" alt="SOS Animals DZ logo"></p>
 
 <p align="center">
-  <a href="">
-  <img src="https://img.shields.io/github/license/am-77/savednotes?color=%23CC0202&logoColor=%23CC0202" alt="MIT License" />
+  <a href="./LICENSE">
+    <img src="https://img.shields.io/github/license/sos-animals-dz/sos-animals?color=%23CC0202&logoColor=%23CC0202" alt="MIT License" />
   </a>
-  <a href="" alt="Website" ><img src="https://img.shields.io/badge/website-savednotes-%23CC0202" alt="website badge" /></a>
+  <a href="https://sos-animals.vercel.app" alt="Website" >
+    <img src="https://img.shields.io/badge/website-SOS%20Animals%20DZ-%23CC0202" alt="website badge" />
+  </a>
 </p>
 
 <h2 align="center">SOS Animals DZ</h2>
-<p align="center">Save & Share note.</p>
+<p align="center">An web platform for helping animals in Algerian.</p>
 
 ## Built with:
 
@@ -17,16 +19,33 @@
 - [Firebase](https://firebase.google.com/): a platform developed by Google for creating mobile and web applications.s
 - [Mapbx](https://www.mapbox.com/): a provider of custom online maps for websites and applications.
 
-## Testing link: [SOS Animals DZ](https://sos-animals.vercel.app)
+## Testing link:
+
+[SOS Animals DZ](https://sos-animals.vercel.app)
 
 ## Contribtion:
 
 Feel free to open a pull requset 💁, report a bug 🐛 or request a feature 🌟 anytime you want.
 
-## License & copyright:
+## Contribution Guide:
 
-© AM-77
-Licensed under the [MIT License](LICENSE).
+If you want to contribute to this project, please make sur to follow this steps, this will make it easy for us to manage and review the pull requsets.
+
+- Fork the repository.
+
+- Clone the repository.
+
+- Create a branch with a name:
+
+  - fix/[issue number]
+
+  - feature/[feature name]
+
+- Commit your changes following the [conventional commits](https://www.conventionalcommits.org/).
+
+- Push & and make a pull request.
+
+- Thank you very much.
 
 ## Icons
 
@@ -53,3 +72,8 @@ Icons made by:
 <div>Pawprint by <a href="http://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 
 <div>Question Mark by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+
+## License & copyright:
+
+© AM-77
+Licensed under the [MIT License](LICENSE).
