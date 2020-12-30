@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 :root {
-  --red: #CC0202;
+  --red: #cc0202;
   --green: #119955;
   --white: #fafbfc;
   --light: #e1e2e3;
@@ -13,11 +13,11 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box
+  box-sizing: border-box;
 }
 
 ::-webkit-scrollbar {
-  width: 7px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
@@ -51,11 +51,13 @@ body {
   height: 100%;
   border: 2px solid var(--light);
   border-top-color: var(--red);
-  animation: spinner .6s linear infinite;
+  animation: spinner 0.6s linear infinite;
 }
 
 @keyframes spinner {
-  to {transform: rotate(360deg);}
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .app-container {
@@ -150,6 +152,7 @@ body {
 .navbar-container .logo {
   width: 45px;
   height: 45px;
+  padding: 4px;
   margin-right: auto;
 }
 
@@ -193,15 +196,15 @@ body {
   left: 50%;
   transform-origin: center;
   transform: translate(-50%, -50%);
-  z-index: -1
+  z-index: -1;
 }
 
 .navbar-container .add-animal.active::before {
-  animation: add-animal-button 1100ms ease infinite running
+  animation: add-animal-button 1100ms ease infinite running;
 }
 
 .navbar-container .add-animal.active::after {
-  animation: add-animal-button 1100ms ease 750ms infinite running
+  animation: add-animal-button 1100ms ease 750ms infinite running;
 }
 
 @keyframes add-animal-button {
@@ -222,7 +225,7 @@ body {
   }
 }
 
-.navbar-container .search-container  {
+.navbar-container .search-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -274,7 +277,7 @@ body {
   background: var(--white);
   border-radius: 15px;
   overflow: hidden;
-  box-shadow: 0 0 4px -2px var(--dark)
+  box-shadow: 0 0 4px -2px var(--dark);
 }
 
 .navbar-container .search-container .suggestions .sug {
@@ -298,14 +301,17 @@ body {
   text-decoration: underline;
 }
 
-.navbar-container .user{
+.navbar-container .user {
   display: flex;
   align-items: center;
 }
 
-.navbar-container .login-link,
-.navbar-container .user .logout-link,
-.navbar-container .user .logout-btn  {
+.navbar-container .home-link,
+.navbar-container .usage-link,
+.navbar-container .dashboard-link,
+.navbar-container .settings-link,
+.navbar-container .logout-link,
+.navbar-container .logout-btn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -321,22 +327,22 @@ body {
   position: relative;
 }
 
-.navbar-container .login-link img,
-.navbar-container .user .logout-link img,
-.navbar-container .user .logout-btn img {
+.navbar-container .home-link img,
+.navbar-container .usage-link img,
+.navbar-container .dashboard-link img,
+.navbar-container .settings-link img,
+.navbar-container .logout-link img,
+.navbar-container .logout-btn img {
   width: 100%;
   height: 100%;
   border-radius: 50%;
 }
 
-.navbar-container .user .home-link {
-  font-size: 14px;
-  font-family: "Roboto";
-  text-transform: uppercase;
-  font-weight: 700;
-  color: var(--white);
-  text-decoration: none;
-  margin: 0 5px;
+.navbar-container .home-link img,
+.navbar-container .dashboard-link img,
+.navbar-container .logout-btn img {
+  border-radius: 0%;
+  padding: 1px;
 }
 
 .map-container {
@@ -350,21 +356,24 @@ body {
 }
 
 .map-gl-container.side-open {
-  padding-left: 300px
+  padding-left: 300px;
 }
 
 .map-container .pin {
   width: 20px;
   height: 20px;
   position: relative;
-  cursor: pointer
+  cursor: pointer;
+  background: none;
+  outline: none;
+  border: none;
 }
 
 .pin-container .pin img {
   height: 100%;
   width: 100%;
   position: absolute;
-  top: -50%
+  top: -50%;
 }
 
 .pin-container .show-type {
@@ -404,10 +413,10 @@ body {
 }
 
 .map-container .sidebar-container.side-open {
-  left: 0
+  left: 0;
 }
 
-.sidebar-container .add-animal-container{
+.sidebar-container .add-animal-container {
   height: 100%;
   padding: 20px 20px 20px 20px;
   overflow-y: auto;
@@ -452,12 +461,12 @@ body {
   font-size: 13px;
 }
 
-.add-animal-container  .form-animal .input-form label .red {
+.add-animal-container .form-animal .input-form label .red {
   color: var(--red);
   cursor: help;
 }
 
-.add-animal-container  .form-animal .input-form select {
+.add-animal-container .form-animal .input-form select {
   font-family: 'Roboto', Arial, sans-serif !important;
   font-weight: 700 !important;
   color: var(--dark);
@@ -487,7 +496,7 @@ body {
 
 .add-animal-container .form-animal .input-form select:hover,
 .add-animal-container .form-animal .input-form textarea:hover {
-  border-color: var(--red)
+  border-color: var(--red);
 }
 
 .add-animal-container .add-file {
@@ -591,18 +600,16 @@ body {
   margin-right: auto;
 }
 
-
 .add-animal-container .footer button.save:hover {
   border-color: var(--green);
-  color: var(--green)
+  color: var(--green);
 }
 
 .add-animal-container .footer button.cancel:hover,
 .display-animal-container .footer button.report:hover {
   border-color: var(--red);
-  color: var(--red)
+  color: var(--red);
 }
-
 
 .sidebar-container .display-animal-container {
   height: 100%;
@@ -640,7 +647,7 @@ body {
   margin: 25px 0;
 }
 
-.display-animal-container .animal-description h4{
+.display-animal-container .animal-description h4 {
   color: var(--red);
   font-size: 18px;
   font-family: 'Roboto', Arial, sans-serif;
@@ -658,7 +665,7 @@ body {
   line-height: 1.5;
 }
 
-.display-animal-container .animal-description p.date  {
+.display-animal-container .animal-description p.date {
   font-size: 12px;
   margin-bottom: 5px;
 }
@@ -702,7 +709,7 @@ body {
 }
 
 .display-animal-container .report-container textarea:hover {
-  border-color: var(--red)
+  border-color: var(--red);
 }
 
 .display-animal-container .report-container .report-buttons {
@@ -726,11 +733,11 @@ body {
 
 .display-animal-container .report-container button.submit {
   margin-right: 15px;
-  color: var(--green)
+  color: var(--green);
 }
 
 .display-animal-container .report-container button.cancel {
-  color: var(--red)
+  color: var(--red);
 }
 
 .display-animal-container .report-container p.error {
@@ -746,9 +753,8 @@ body {
 }
 
 @media only screen and (max-width: 640px) {
-
   .navbar-container .search-container {
-    transition: all 250ms ease
+    transition: all 250ms ease;
   }
 
   .navbar-container .search-container .search {
@@ -788,7 +794,7 @@ body {
   .navbar-container .search-container .search .input-field {
     width: 0;
     padding: 0px;
-    transition: all 250ms ease
+    transition: all 250ms ease;
   }
 
   .navbar-container .search-container .search .input-field input {
@@ -805,7 +811,6 @@ body {
   .navbar-container .search-container.active .suggestions {
     display: block;
   }
-
 }
 
 /* the login page */
@@ -818,7 +823,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: var(--red)
+  background: var(--red);
 }
 
 .login-container a {
@@ -838,21 +843,12 @@ body {
 .login-container .header .logo {
   display: flex;
   justify-content: center;
-  width: 120px;
-  height: 120px;
+  width: 180px;
+  height: 180px;
 }
 
 .login-container .header .logo img {
   width: 100%;
-}
-
-.login-container .header h3 {
-  display: flex;
-  justify-content: center;
-  font-size: 30px;
-  font-family: "Roboto", Arial, sans-serif;
-  color: var(--light);
-  text-transform: uppercase;
 }
 
 .login-container form {
@@ -867,7 +863,7 @@ body {
 
 .login-container form .error {
   color: var(--light);
-  font-family: "Roboto", Arial, sans-serif;
+  font-family: 'Roboto', Arial, sans-serif;
   font-size: 14px;
   font-weight: 700;
   position: relative;
@@ -884,7 +880,7 @@ body {
 
 .login-container form .input label {
   color: var(--light);
-  font-family: "Roboto", Arial, sans-serif;
+  font-family: 'Roboto', Arial, sans-serif;
   font-size: 14px;
   font-weight: 700;
   position: relative;
@@ -900,7 +896,7 @@ body {
   outline: none;
   padding: 0 15px;
   margin-top: 5px;
-  font-family: "Roboto", Arial, sans-serif;
+  font-family: 'Roboto', Arial, sans-serif;
   font-size: 14px;
   font-weight: 700;
   color: var(--dark);
@@ -913,7 +909,7 @@ body {
   border: 1px solid var(--light);
   border-radius: 18px;
   outline: none;
-  font-family: "Roboto", Arial, sans-serif;
+  font-family: 'Roboto', Arial, sans-serif;
   font-size: 14px;
   font-weight: 700;
   color: var(--red);
@@ -924,23 +920,23 @@ body {
 .login-container form .input input,
 .login-container form button {
   box-shadow: 0 4px 9px -3px var(--dark);
-  transition: all 250ms ease
+  transition: all 250ms ease;
 }
 
 .login-container form .input input:hover,
 .login-container form .input input:focus,
-.login-container form button:hover{
+.login-container form button:hover {
   box-shadow: none;
 }
 
-.login-container form .input .eye-btn{
+.login-container form .input .eye-btn {
   display: block;
   width: 32px;
   height: 32px;
   padding: 5px;
   position: relative;
-  top: calc( 0px - 35px);
-  left: calc( 100% - 36px);
+  top: calc(0px - 35px);
+  left: calc(100% - 36px);
   box-shadow: none;
 }
 
@@ -953,7 +949,7 @@ body {
 
 .login-container form .buttons .home-link {
   font-size: 14px;
-  font-family: "Roboto";
+  font-family: 'Roboto';
   text-transform: uppercase;
   font-weight: 700;
   color: var(--white);
@@ -976,17 +972,16 @@ body {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  max-width: 120px;
+  width: 100%;
   text-align: center;
   margin-bottom: 30px;
-
 }
 
 .not-found-container .header .logo {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 70%;
+  width: 80px;
 }
 
 .not-found-container .header .logo img {
@@ -996,13 +991,12 @@ body {
 .not-found-container .header h3 {
   display: flex;
   justify-content: center;
-  font-size: 15px;
-  font-family: "Roboto", Arial, sans-serif;
+  font-size: 32px;
+  font-family: 'Roboto', Arial, sans-serif;
   color: var(--light);
-  text-transform: uppercase;
 }
 
-.not-found-container .main{
+.not-found-container .main {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1014,7 +1008,7 @@ body {
 }
 
 .not-found-container .main .not-found {
-  width: 200px;
+  width: 150px;
   margin-bottom: 15px;
 }
 
@@ -1027,15 +1021,15 @@ body {
   justify-content: center;
   font-size: 40px;
   font-weight: 700;
-  font-family: "Roboto", Arial, sans-serif;
+  font-family: 'Roboto', Arial, sans-serif;
   color: var(--light);
   text-transform: uppercase;
   margin-bottom: 5px;
 }
 
-.not-found-container .main p{
+.not-found-container .main p {
   color: var(--light);
-  font-family: "Roboto", Arial, sans-serif;
+  font-family: 'Roboto', Arial, sans-serif;
   margin-bottom: 15px;
 }
 
@@ -1044,12 +1038,12 @@ body {
   text-transform: uppercase;
   font-size: 13px;
   color: var(--light);
-  font-family: "Roboto", Arial, sans-serif;
-  transition: all 250ms ease
+  font-family: 'Roboto', Arial, sans-serif;
+  transition: all 250ms ease;
 }
 
 .not-found-container .main a:hover {
-  color: var(--grey)
+  color: var(--grey);
 }
 
 /* the admin page */
@@ -1065,14 +1059,14 @@ body {
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: calc( 100vh - 45px );
+  height: calc(100vh - 45px);
   margin-top: 45px;
   padding: 0 25px;
   overflow-x: hidden;
   overflow-y: scroll;
 }
 
-.admin-container .dashboard .animals-list h2{
+.admin-container .dashboard .animals-list h2 {
   color: var(--dark);
   font-size: 27px;
   margin: 20px 0;
@@ -1157,10 +1151,15 @@ body {
 .admin-container .dashboard .animals-list .animal-card .animal-reports b {
   font-size: 11px;
   text-transform: uppercase;
-  color: var(--red)
+  color: var(--red);
 }
 
-.admin-container .dashboard .animals-list .animal-card .animal-reports .no-report {
+.admin-container
+  .dashboard
+  .animals-list
+  .animal-card
+  .animal-reports
+  .no-report {
   display: flex;
   font-size: 14px;
   text-align: center;
@@ -1174,7 +1173,7 @@ body {
   width: 100%;
   word-break: break-word;
   margin: 10px 0;
-  line-height: 1.4
+  line-height: 1.4;
 }
 
 .admin-container .dashboard .animals-list .animal-card .animal-buttons {
@@ -1197,27 +1196,217 @@ body {
   cursor: pointer;
 }
 
-.admin-container .dashboard .animals-list .animal-card .animal-buttons button img {
+.admin-container
+  .dashboard
+  .animals-list
+  .animal-card
+  .animal-buttons
+  button
+  img {
   width: 15px;
   height: 15px;
 }
 
-.admin-container .dashboard .animals-list .animal-card .animal-buttons button span {
+.admin-container
+  .dashboard
+  .animals-list
+  .animal-card
+  .animal-buttons
+  button
+  span {
   font-size: 12px;
   font-weight: 700;
-  font-family: "Roboto", Arial, sans-serif;
+  font-family: 'Roboto', Arial, sans-serif;
   color: var(--dark-grey);
   text-align: center;
   margin: auto;
   transition: color 250ms ease;
 }
 
-.admin-container .dashboard .animals-list .animal-card .animal-buttons button:hover span {
+.admin-container
+  .dashboard
+  .animals-list
+  .animal-card
+  .animal-buttons
+  button:hover
+  span {
   color: var(--red);
 }
 
-@media only screen and (max-width: 740px) {
+.privacy-policy {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white);
+  height: 100vh;
+}
 
+.privacy-policy .privacy-content {
+  position: relative;
+  top: 45px;
+  width: 100%;
+  height: calc(100vh - 45px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin: 0 auto;
+  padding: 75px 10%;
+}
+
+.privacy-policy .privacy-content .header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 25px;
+  margin-bottom: 75px;
+  max-width: 750px;
+}
+
+.privacy-policy .privacy-content .header .logo {
+  width: 190px;
+  height: 190px;
+  background: var(--red);
+  border-radius: 50%;
+  padding: 19px;
+}
+
+.privacy-policy .privacy-content .header .logo img {
+  width: 100%;
+}
+
+.privacy-policy .privacy-content h1,
+.privacy-policy .privacy-content h2,
+.privacy-policy .privacy-content h3 {
+  color: var(--red);
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.privacy-policy .privacy-content strong {
+  color: var(--red);
+  margin-bottom: 10px;
+}
+
+.privacy-policy .privacy-content a {
+  color: var(--red);
+}
+
+.privacy-policy .privacy-content p {
+  color: var(--dark);
+  line-height: 1.4;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.privacy-policy .privacy-content li {
+  margin-left: 25px;
+  line-height: 1.7;
+}
+
+.how-to-use {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white);
+  height: 100vh;
+}
+
+.how-to-use .usage-content {
+  height: calc(100vh - 45px);
+  position: relative;
+  top: 45px;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin: 0 auto;
+  padding: 75px 10%;
+}
+
+.how-to-use .usage-content .header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 25px;
+  margin-bottom: 75px;
+  max-width: 750px;
+}
+
+.how-to-use .usage-content .header .logo {
+  width: 190px;
+  height: 190px;
+  background: var(--red);
+  border-radius: 50%;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.how-to-use .usage-content .header .logo img {
+  width: 100%;
+}
+
+.how-to-use .usage-content h1,
+.how-to-use .usage-content h2,
+.how-to-use .usage-content h3 {
+  color: var(--red);
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.how-to-use .usage-content h1,
+.how-to-use .usage-content > p {
+  text-align: center;
+  max-width: 450px;
+  margin: 0 auto;
+  margin-bottom: 15px;
+}
+
+.how-to-use .usage-content .options {
+  margin-top: 50px;
+}
+
+.how-to-use .usage-content .options .option {
+  margin-top: 50px;
+}
+
+.how-to-use .usage-content .options .option .title {
+  display: flex;
+  align-items: center;
+}
+
+.how-to-use .usage-content .options .option .title img {
+  width: 20px;
+  height: 20px;
+}
+
+.how-to-use .usage-content .options .option .title h2 {
+  margin-left: 15px;
+}
+
+.how-to-use .usage-content .options .option ul li {
+  margin-top: 35px;
+}
+
+.how-to-use .usage-content .options .option h4 {
+  font-size: 21px;
+  margin-bottom: 10px;
+  color: var(--red);
+}
+
+.how-to-use .usage-content .options .option p {
+  line-height: 1.7;
+  text-indent: 15px;
+}
+
+.how-to-use .usage-content .options .option .icon {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+}
+
+@media only screen and (max-width: 740px) {
   .admin-container .dashboard {
     padding: 0 10px;
   }
@@ -1226,7 +1415,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 0px 0
+    padding: 0px 0;
   }
 
   .admin-container .dashboard .animals-list .animal-card .animal-type {
@@ -1255,7 +1444,10 @@ body {
   }
 
   .admin-container .dashboard .animals-list .animal-card .animal-buttons {
-    margin: 10px 0
+    margin: 10px 0;
   }
 
+  .privacy-policy .privacy-content {
+    padding: 25px;
+  }
 }

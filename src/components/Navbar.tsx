@@ -5,20 +5,23 @@ import { Link } from 'react-router-dom';
 
 import Search from './Search';
 import User from './User';
+import Spinner from './Spinner';
 
 import IAnimal from '../interfaces/IAnimal';
 
-import logo from '../assets/jpeg/logo.jpg';
+import logo from '../assets/logo-white.png';
 import add from '../assets/jpeg/add.jpg';
 import addActive from '../assets/jpeg/add-active.jpg';
-import loginIcon from '../assets/svg/login.svg';
-import Spinner from './Spinner';
+import homeIcon from '../assets/svg/home.svg';
+import usageIcon from '../assets/svg/usage.svg';
 
 interface IProps {
   isAddAnimal?: boolean;
   isSideOpen?: false | IAnimal | 'add-animal';
   loggedUser: IUser | null;
   isAdmin?: boolean;
+  allowBack?: boolean;
+  allowAdd?: boolean;
   isLoadingAnimals: boolean;
   setViewport?: (viewport: ViewportProps) => void;
   toggleIsAddAnimal?: () => void;
@@ -38,13 +41,17 @@ export default class Navbar extends Component<IProps> {
       isAddAnimal,
       loggedUser,
       isAdmin,
+      allowBack,
+      allowAdd,
       isLoadingAnimals,
     } = this.props;
 
     return (
       <div className="navbar-container">
         <div className="logo">
-          <img src={logo} alt="SOS Animal" />
+          <Link to="/">
+            <img src={logo} alt="SOS Animal" />
+          </Link>
         </div>
         {isLoadingAnimals && (
           <Spinner
@@ -56,7 +63,7 @@ export default class Navbar extends Component<IProps> {
           />
         )}
 
-        {!isAdmin && (
+        {allowAdd && (
           <>
             <button
               type="button"
@@ -79,8 +86,14 @@ export default class Navbar extends Component<IProps> {
         {loggedUser ? (
           <User isAdmin={isAdmin} />
         ) : (
-          <Link className="login-link" to="/login">
-            <img src={loginIcon} alt="login" title="login" />
+          <Link className="usage-link" to="/usage">
+            <img src={usageIcon} alt="usage" title="how to use the app" />
+          </Link>
+        )}
+
+        {allowBack && (
+          <Link className="home-link" to="/">
+            <img src={homeIcon} alt="home" title="go home page" />
           </Link>
         )}
       </div>

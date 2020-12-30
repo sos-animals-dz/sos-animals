@@ -12,6 +12,8 @@ import { authState, getAnimals, setAnimal } from './firebase/utils';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Admin from './pages/Admin';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import HowToUse from './pages/HowToUse';
 import NotFound from './pages/NotFound';
 import IAnimal from './interfaces/IAnimal';
 import Toast from './components/Toast';
@@ -264,6 +266,10 @@ export default class App extends Component<any, IState> {
     return <Redirect to="/" />;
   };
 
+  renderPrivacyPolicyPage = () => <PrivacyPolicy />;
+
+  renderHowToUsePage = () => <HowToUse />;
+
   renderNotFoundPage = () => <NotFound />;
 
   setToast = (isSuccess: boolean, message: string, isHidden: boolean) => {
@@ -287,6 +293,8 @@ export default class App extends Component<any, IState> {
             <Route path="/" exact render={this.renderHomePage} />
             <Route path="/login" render={this.renderLoginPage} />
             <Route path="/admin" render={this.renderAdminPage} />
+            <Route path="/privacy" render={this.renderPrivacyPolicyPage} />
+            <Route path="/usage" render={this.renderHowToUsePage} />
             <Route render={this.renderNotFoundPage} />
           </Switch>
         </Router>

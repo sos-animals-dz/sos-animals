@@ -61,6 +61,7 @@ export default class Home extends Component<IProps, IState> {
           isSideOpen={isSideOpen}
           loggedUser={loggedUser}
           isLoadingAnimals={isLoadingAnimals}
+          allowAdd
         />
         <div className="map-container">
           <Sidebar

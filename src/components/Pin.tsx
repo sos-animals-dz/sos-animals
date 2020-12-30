@@ -14,7 +14,7 @@ interface IProps {
 }
 
 export default class Pin extends Component<IProps> {
-  onPinDoubleClick = () => {
+  onPinClick = () => {
     const { id, displayAnimal, isSideOpen } = this.props;
     if (isSideOpen !== 'add-animal') {
       displayAnimal(id);
@@ -44,13 +44,14 @@ export default class Pin extends Component<IProps> {
     const { type } = this.props;
     return (
       <div className="pin-container">
-        <div
-          onDoubleClick={this.onPinDoubleClick}
+        <button
+          type="button"
+          onClick={this.onPinClick}
           className="pin"
-          title="Double click to get all the informations."
+          title="Click to get all the informations."
         >
           {this.renderPin(type)}
-        </div>
+        </button>
       </div>
     );
   }
