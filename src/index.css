@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
 
 :root {
   --red: #cc0202;
@@ -6,6 +7,7 @@
   --white: #fafbfc;
   --light: #e1e2e3;
   --dark: #212121;
+  --dark-transparent: #21212121;
   --grey: #767676;
   --dark-grey: #373737;
 }
@@ -29,7 +31,7 @@
 }
 
 body {
-  font-family: 'Roboto', 'arial', sans-serif;
+  font-family: 'Source Sans Pro', 'Roboto', 'arial', sans-serif;
 }
 
 .spinner {
@@ -106,7 +108,7 @@ body {
 
 .toast .message p {
   color: var(--dark);
-  font-family: 'Roboto', 'arial', sans-serif;
+  font-family: 'Source Sans Pro', 'Roboto', 'arial', sans-serif;
   font-size: 12px;
   letter-spacing: 0.25px;
   line-height: 1.35;
@@ -265,7 +267,7 @@ body {
   border: none;
   outline: none;
   font-size: 15px;
-  font-family: 'Roboto', 'arial', sans-serif;
+  font-family: 'Source Sans Pro', 'Roboto', 'arial', sans-serif;
   color: var(--dark);
   transition: all 250ms ease;
 }
@@ -283,7 +285,7 @@ body {
 .navbar-container .search-container .suggestions .sug {
   font-size: 14px;
   padding: 14px 22px;
-  font-family: 'Roboto', 'arial', sans-serif;
+  font-family: 'Source Sans Pro', 'Roboto', 'arial', sans-serif;
   color: var(--dark);
   background: none;
   border: none;
@@ -441,7 +443,7 @@ body {
 
 .pin-container .show-type p {
   color: var(--red);
-  font-family: 'Roboto', Arial, sans-serif;
+  font-family: 'Source Sans Pro', 'Roboto', Arial, sans-serif;
   font-size: 13.5px;
   font-weight: 700;
 }
@@ -473,7 +475,7 @@ body {
 
 .add-animal-container .error {
   font-size: 13px;
-  font-family: 'Roboto', Arial, sans-serif;
+  font-family: 'Source Sans Pro', 'Roboto', Arial, sans-serif;
   color: var(--red);
   padding: 4px 0;
 }
@@ -483,7 +485,7 @@ body {
 }
 
 .add-animal-container .header h2 {
-  font-family: 'Roboto', Arial, sans-serif;
+  font-family: 'Source Sans Pro', 'Roboto', Arial, sans-serif;
   text-transform: uppercase;
   color: var(--dark);
 }
@@ -502,7 +504,7 @@ body {
 }
 
 .add-animal-container .form-animal .input-form label {
-  font-family: 'Roboto', Arial, sans-serif;
+  font-family: 'Source Sans Pro', 'Roboto', Arial, sans-serif;
   color: var(--dark);
   margin-bottom: 5px;
   text-transform: uppercase;
@@ -516,7 +518,7 @@ body {
 }
 
 .add-animal-container .form-animal .input-form select {
-  font-family: 'Roboto', Arial, sans-serif !important;
+  font-family: 'Source Sans Pro', 'Roboto', Arial, sans-serif !important;
   font-weight: 700 !important;
   color: var(--dark);
   padding: 8px;
@@ -529,7 +531,7 @@ body {
 }
 
 .add-animal-container .form-animal .input-form textarea {
-  font-family: 'Roboto', Arial, sans-serif !important;
+  font-family: 'Source Sans Pro', 'Roboto', Arial, sans-serif !important;
   letter-spacing: 0.25px;
   font-size: 15px;
   min-width: 100%;
@@ -561,7 +563,7 @@ body {
   height: 100%;
   align-items: center;
   justify-content: center;
-  font-family: 'Roboto', Arial, sans-serif;
+  font-family: 'Source Sans Pro', 'Roboto', Arial, sans-serif;
   text-transform: uppercase;
   font-weight: 700;
   color: var(--dark);
@@ -634,7 +636,7 @@ body {
   box-shadow: 0 0 4px -3px var(--grey);
   border: 1px solid var(--grey);
   border-radius: 3px;
-  font-family: 'Roboto', Arial, sans-serif;
+  font-family: 'Source Sans Pro', 'Roboto', Arial, sans-serif;
   text-transform: uppercase;
   font-weight: 700;
   color: var(--dark);
@@ -674,7 +676,7 @@ body {
 .display-animal-container .animal-type h3 {
   color: var(--red);
   font-size: 24px;
-  font-family: 'Roboto', Arial, sans-serif;
+  font-family: 'Source Sans Pro', 'Roboto', Arial, sans-serif;
   text-transform: uppercase;
 }
 
@@ -699,7 +701,7 @@ body {
 .display-animal-container .animal-description h4 {
   color: var(--red);
   font-size: 18px;
-  font-family: 'Roboto', Arial, sans-serif;
+  font-family: 'Source Sans Pro', 'Roboto', Arial, sans-serif;
   text-transform: uppercase;
   margin: 5px 0;
 }
@@ -707,7 +709,7 @@ body {
 .display-animal-container .animal-description p {
   width: 100%;
   word-break: break-all;
-  font-family: 'Roboto', Arial, sans-serif;
+  font-family: 'Source Sans Pro', 'Roboto', Arial, sans-serif;
   font-size: 15px;
   color: var(--dark);
   letter-spacing: 0.25px;
@@ -735,13 +737,13 @@ body {
 .display-animal-container .report-container h4 {
   color: var(--red);
   font-size: 13px;
-  font-family: 'Roboto', Arial, sans-serif;
+  font-family: 'Source Sans Pro', 'Roboto', Arial, sans-serif;
   text-transform: uppercase;
   margin: 5px 0;
 }
 
 .display-animal-container .report-container textarea {
-  font-family: 'Roboto', Arial, sans-serif !important;
+  font-family: 'Source Sans Pro', 'Roboto', Arial, sans-serif !important;
   letter-spacing: 0.25px;
   font-size: 15px;
   min-width: 100%;
@@ -770,7 +772,7 @@ body {
   background: transparent;
   box-shadow: none;
   border: none;
-  font-family: 'Roboto', Arial, sans-serif;
+  font-family: 'Source Sans Pro', 'Roboto', Arial, sans-serif;
   text-transform: uppercase;
   font-weight: 700;
   color: var(--dark);
@@ -790,13 +792,13 @@ body {
 }
 
 .display-animal-container .report-container p.error {
-  font-family: 'Roboto', Arial, sans-serif;
+  font-family: 'Source Sans Pro', 'Roboto', Arial, sans-serif;
   font-size: 13px;
   color: var(--red);
 }
 
 .display-animal-container .report-container p.sent {
-  font-family: 'Roboto', Arial, sans-serif;
+  font-family: 'Source Sans Pro', 'Roboto', Arial, sans-serif;
   font-size: 13px;
   color: var(--green);
 }
@@ -912,7 +914,7 @@ body {
 
 .login-container form .error {
   color: var(--light);
-  font-family: 'Roboto', Arial, sans-serif;
+  font-family: 'Source Sans Pro', 'Roboto', Arial, sans-serif;
   font-size: 14px;
   font-weight: 700;
   position: relative;
@@ -929,7 +931,7 @@ body {
 
 .login-container form .input label {
   color: var(--light);
-  font-family: 'Roboto', Arial, sans-serif;
+  font-family: 'Source Sans Pro', 'Roboto', Arial, sans-serif;
   font-size: 14px;
   font-weight: 700;
   position: relative;
@@ -945,7 +947,7 @@ body {
   outline: none;
   padding: 0 15px;
   margin-top: 5px;
-  font-family: 'Roboto', Arial, sans-serif;
+  font-family: 'Source Sans Pro', 'Roboto', Arial, sans-serif;
   font-size: 14px;
   font-weight: 700;
   color: var(--dark);
@@ -958,7 +960,7 @@ body {
   border: 1px solid var(--light);
   border-radius: 18px;
   outline: none;
-  font-family: 'Roboto', Arial, sans-serif;
+  font-family: 'Source Sans Pro', 'Roboto', Arial, sans-serif;
   font-size: 14px;
   font-weight: 700;
   color: var(--red);
@@ -998,7 +1000,7 @@ body {
 
 .login-container form .buttons .home-link {
   font-size: 14px;
-  font-family: 'Roboto';
+  font-family: 'Source Sans Pro', 'Roboto';
   text-transform: uppercase;
   font-weight: 700;
   color: var(--white);
@@ -1041,7 +1043,7 @@ body {
   display: flex;
   justify-content: center;
   font-size: 32px;
-  font-family: 'Roboto', Arial, sans-serif;
+  font-family: 'Source Sans Pro', 'Roboto', Arial, sans-serif;
   color: var(--light);
 }
 
@@ -1070,7 +1072,7 @@ body {
   justify-content: center;
   font-size: 40px;
   font-weight: 700;
-  font-family: 'Roboto', Arial, sans-serif;
+  font-family: 'Source Sans Pro', 'Roboto', Arial, sans-serif;
   color: var(--light);
   text-transform: uppercase;
   margin-bottom: 5px;
@@ -1078,7 +1080,7 @@ body {
 
 .not-found-container .main p {
   color: var(--light);
-  font-family: 'Roboto', Arial, sans-serif;
+  font-family: 'Source Sans Pro', 'Roboto', Arial, sans-serif;
   margin-bottom: 15px;
 }
 
@@ -1087,7 +1089,7 @@ body {
   text-transform: uppercase;
   font-size: 13px;
   color: var(--light);
-  font-family: 'Roboto', Arial, sans-serif;
+  font-family: 'Source Sans Pro', 'Roboto', Arial, sans-serif;
   transition: all 250ms ease;
 }
 
@@ -1104,6 +1106,308 @@ body {
   height: 100vh;
 }
 
+.admin-container .animal-card-details-warrper {
+  width: 100%;
+  height: calc(100vh - 45px);
+  display: flex;
+  position: fixed;
+  z-index: 2;
+  top: 45px;
+  overflow: auto;
+  background: #212121bb;
+  animation: fade-in 450ms ease forwards running;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0.8;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.admin-container .animal-card-details-warrper .animal-card-details {
+  display: flex;
+  position: relative;
+  max-width: 90%;
+  width: 950px;
+  height: 450px;
+  margin: auto;
+  background: var(--white);
+  box-shadow: 0 0 4px 1px #212121;
+  border-left: 1px solid var(--dark-transparent);
+  animation: scale-in 250ms ease forwards running;
+}
+
+@keyframes scale-in {
+  0% {
+    transform: scale(0.97);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.admin-container .animal-card-details-warrper .animal-card-details .picture {
+  display: flex;
+  width: 50%;
+  height: 100%;
+  padding: 25px;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-container
+  .animal-card-details-warrper
+  .animal-card-details
+  .picture
+  img {
+  width: 100%;
+}
+
+.admin-container
+  .animal-card-details-warrper
+  .animal-card-details
+  .animal-informations {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  border-left: 1px solid var(--dark-transparent);
+  overflow-y: auto;
+}
+
+.admin-container
+  .animal-card-details-warrper
+  .animal-card-details
+  .animal-informations
+  .head {
+  display: flex;
+  border-bottom: 1px solid var(--dark-transparent);
+  padding: 15px;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  background: var(--white);
+}
+
+.admin-container
+  .animal-card-details-warrper
+  .animal-card-details
+  .animal-informations
+  .head
+  .icon {
+  width: 25px;
+  height: 25px;
+}
+
+.admin-container
+  .animal-card-details-warrper
+  .animal-card-details
+  .animal-informations
+  .head
+  .icon
+  img {
+  width: 100%;
+  height: 100%;
+}
+
+.admin-container
+  .animal-card-details-warrper
+  .animal-card-details
+  .animal-informations
+  .head
+  .type {
+  align-self: flex-end;
+  color: var(--red);
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-left: 5px;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.admin-container
+  .animal-card-details-warrper
+  .animal-card-details
+  .animal-informations
+  .head
+  .created-at {
+  text-transform: uppercase;
+  font-size: 11px;
+  padding: 6px 10px;
+  background: #e6717170;
+  color: var(--red);
+  border-radius: 20px;
+  margin-left: auto;
+}
+
+.admin-container
+  .animal-card-details-warrper
+  .animal-card-details
+  .animal-informations
+  .head
+  .delete-button,
+.admin-container
+  .animal-card-details-warrper
+  .animal-card-details
+  .animal-informations
+  .head
+  .close-button {
+  width: 28px;
+  height: 28px;
+  border: none;
+  padding: 7px;
+  cursor: pointer;
+  outline: none;
+  margin-left: 10px;
+  border-radius: 14px;
+  background-color: transparent;
+  transition: all 250ms ease;
+}
+
+.admin-container
+  .animal-card-details-warrper
+  .animal-card-details
+  .animal-informations
+  .head
+  .close-button {
+  padding: 8px;
+}
+
+.admin-container
+  .animal-card-details-warrper
+  .animal-card-details
+  .animal-informations
+  .head
+  .delete-button:hover,
+.admin-container
+  .animal-card-details-warrper
+  .animal-card-details
+  .animal-informations
+  .head
+  .close-button:hover {
+  background: var(--dark-transparent);
+}
+
+.admin-container
+  .animal-card-details-warrper
+  .animal-card-details
+  .animal-informations
+  .head
+  .delete-button
+  svg,
+.admin-container
+  .animal-card-details-warrper
+  .animal-card-details
+  .animal-informations
+  .head
+  .close-button
+  svg {
+  fill: var(--red);
+}
+
+.admin-container
+  .animal-card-details-warrper
+  .animal-card-details
+  .animal-informations
+  .description {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  border-bottom: 1px solid var(--dark-transparent);
+}
+
+.admin-container
+  .animal-card-details-warrper
+  .animal-card-details
+  .animal-informations
+  .description
+  .title {
+  font-size: 15px;
+  color: var(--red);
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+.admin-container
+  .animal-card-details-warrper
+  .animal-card-details
+  .animal-informations
+  .description
+  .content {
+  font-size: 16px;
+  color: var(--dark-grey);
+  word-break: break-all;
+}
+
+.admin-container .reports {
+  display: flex;
+  flex-direction: column;
+  padding-top: 15px;
+  padding-left: 15px;
+  padding-bottom: 15px;
+}
+
+.animal-card-details-warrper .reports .title {
+  display: flex;
+  font-size: 15px;
+  color: var(--red);
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+  align-items: center;
+}
+
+.animal-card-details .reports .title .reports-count {
+  width: fit-content;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--dark-grey);
+  margin-left: auto;
+  margin-right: 20px;
+}
+
+.admin-container
+  .animal-card-details-warrper
+  .animal-card-details
+  .reports
+  .title
+  .reports-count
+  .no-report {
+  opacity: 0.7;
+  color: var(--red);
+  font-size: 12px;
+}
+
+.admin-container
+  .animal-card-details-warrper
+  .animal-card-details
+  .reports
+  .report-list {
+  display: flex;
+  flex-direction: column;
+  padding-right: 15px;
+}
+
+.admin-container
+  .animal-card-details-warrper
+  .animal-card-details
+  .reports
+  .report-list
+  .report {
+  width: 100%;
+  border: 1px solid var(--dark-transparent);
+  padding: 10px;
+  color: var(--dark-grey);
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+
 .admin-container .dashboard {
   display: flex;
   flex-direction: column;
@@ -1113,27 +1417,288 @@ body {
   padding: 0 25px;
   overflow-x: hidden;
   overflow-y: scroll;
+  background: var(--white);
 }
 
-.admin-container .dashboard .animals-list h2 {
+.admin-container .dashboard .admin-firlers-bar {
+  display: flex;
+  align-items: center;
+  background: var(--white);
+  border: 1px solid var(--dark-transparent);
+  box-shadow: 0 0px 2px #2121212b;
+  margin: 10px 0;
+}
+
+.admin-container .dashboard .admin-firlers-bar .title {
+  margin-left: 15px;
+}
+
+.admin-container .dashboard .admin-firlers-bar .title span {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--red);
+}
+
+.admin-container .dashboard .admin-firlers-bar .filters {
+  display: flex;
+  margin-left: auto;
+}
+
+.admin-container .dashboard .admin-firlers-bar .filters .by-date {
+  display: flex;
+  align-items: center;
+  padding: 5px 0px 5px 10px;
+  border-left: 1px solid var(--dark-transparent);
+  border-right: 1px solid var(--dark-transparent);
+  margin-right: 10px;
+}
+
+.admin-container
+  .dashboard
+  .admin-firlers-bar
+  .filters
+  .by-date
+  .timetable-icon {
+  width: 18px;
+  height: 18px;
+  margin-right: 5px;
+}
+
+.admin-container
+  .dashboard
+  .admin-firlers-bar
+  .filters
+  .by-date
+  .timetable-icon
+  svg {
+  width: 100%;
+  height: 100%;
+  fill: var(--red);
+}
+
+.admin-container .dashboard .admin-firlers-bar .filters .by-date .options {
+  width: 150px;
+  font-weight: 700;
+  text-transform: capitalize;
+  font-size: 14px;
   color: var(--dark);
-  font-size: 27px;
-  margin: 20px 0;
+}
+
+.admin-container
+  .dashboard
+  .admin-firlers-bar
+  .filters
+  .by-date
+  .options
+  > div
+  > div {
+  border: none;
+  box-shadow: none;
+}
+
+.admin-container
+  .dashboard
+  .admin-firlers-bar
+  .filters
+  .by-date
+  .options
+  > div
+  > div:nth-child(1),
+.admin-container
+  .dashboard
+  .admin-firlers-bar
+  .filters
+  .by-date
+  .options
+  > div
+  > div:nth-child(2) {
+  background: transparent;
+  background-color: transparent;
+}
+
+.admin-container
+  .dashboard
+  .admin-firlers-bar
+  .filters
+  .by-date
+  .options
+  > div
+  > div:nth-child(3) {
+  box-shadow: 0 0px 2px #2121212b;
+}
+
+.admin-container .dashboard .admin-firlers-bar .filters .by-type {
+  display: flex;
+  align-items: center;
+}
+
+.admin-container .dashboard .admin-firlers-bar .filters .by-type .sort-icon {
+  width: 18px;
+  height: 18px;
+  margin-right: 5px;
+}
+
+.admin-container
+  .dashboard
+  .admin-firlers-bar
+  .filters
+  .by-type
+  .sort-icon
+  svg {
+  width: 100%;
+  height: 100%;
+  fill: var(--red);
+}
+
+.admin-container .dashboard .admin-firlers-bar .filters .by-type .options {
+  width: 150px;
+  font-weight: 700;
+  text-transform: capitalize;
+  font-size: 14px;
+  color: var(--dark);
+}
+
+.admin-container
+  .dashboard
+  .admin-firlers-bar
+  .filters
+  .by-type
+  .options
+  > div
+  > div {
+  border: none;
+  box-shadow: none;
+}
+
+.admin-container
+  .dashboard
+  .admin-firlers-bar
+  .filters
+  .by-type
+  .options
+  > div
+  > div:nth-child(1),
+.admin-container
+  .dashboard
+  .admin-firlers-bar
+  .filters
+  .by-type
+  .options
+  > div
+  > div:nth-child(2) {
+  background: transparent;
+  background-color: transparent;
+}
+
+.admin-container
+  .dashboard
+  .admin-firlers-bar
+  .filters
+  .by-type
+  .options
+  > div
+  > div:nth-child(3) {
+  box-shadow: 0 0px 2px #2121212b;
+}
+
+.admin-container .dashboard .animals-list {
+  border: 1px solid var(--dark-transparent);
+  box-shadow: 0 0px 2px #2121212b;
+}
+
+.admin-container .dashboard .animals-list .no-data {
+  text-align: center;
+  padding: 20px 0px;
+  font-weight: 700;
+  color: var(--dark-grey);
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.admin-container .dashboard .animals-list .header-card {
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 40px;
+  overflow: hidden;
+  background: var(--white);
+  border-bottom: 1px solid var(--dark-transparent);
+}
+
+.admin-container .dashboard .animals-list .header-card > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.admin-container .dashboard .animals-list .header-card > div span {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--red);
+  text-transform: uppercase;
+}
+
+.admin-container .dashboard .animals-list .header-card .animal-type {
+  width: 70px;
+}
+
+.admin-container .dashboard .animals-list .header-card .animal-picture {
+  width: 80px;
+}
+
+.admin-container .dashboard .animals-list .header-card .animal-description {
+  width: calc(100% - (70px + 80px + 90px + 120px + 75px));
+}
+
+.admin-container .dashboard .animals-list .header-card .animal-reports {
+  width: 90px;
+}
+
+.admin-container .dashboard .animals-list .header-card .animal-created-at {
+  width: 120px;
+}
+
+.admin-container .dashboard .animals-list .header-card .animal-buttons {
+  width: 75px;
 }
 
 .admin-container .dashboard .animals-list .animal-card {
   display: flex;
   flex-wrap: wrap;
-  min-height: 160px;
+  min-height: 80px;
   overflow: hidden;
-  margin: 20px 0;
-  border: 1px solid #21212121;
-  border-radius: 3px;
-  box-shadow: 0 0 3px -2px var(--dark);
+  background: var(--white);
+  position: relative;
+  cursor: pointer;
+  border-bottom: 1px solid var(--dark-transparent);
+  opacity: 0.75;
+  transition: all 200ms ease;
 }
 
-.admin-container .dashboard .animals-list .animal-card > div {
-  margin: 10px;
+.admin-container .dashboard .animals-list .animal-card:hover {
+  box-shadow: 0 0px 7px #2121213b;
+  opacity: 1;
+  z-index: 0;
+}
+
+.admin-container .dashboard .animals-list .animal-card:before {
+  display: block;
+  content: '';
+  width: 4px;
+  height: 100%;
+  background: transparent;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: all 200ms ease;
+}
+
+.admin-container .dashboard .animals-list .animal-card:hover:before {
+  background: var(--red);
+}
+
+.admin-container .dashboard .animals-list .animal-card:last-child {
+  border: none;
 }
 
 .admin-container .dashboard .animals-list .animal-card .animal-type {
@@ -1141,8 +1706,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 10px;
-  border: 1px solid #21212121;
+  padding: 10px 25px;
   border-radius: 3px;
 }
 
@@ -1170,9 +1734,10 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  max-width: 160px;
-  min-width: 160px;
-  max-height: 160px;
+  max-width: 80px;
+  min-width: 80px;
+  max-height: 80px;
+  padding: 5px;
   border-radius: 3px;
   overflow: hidden;
 }
@@ -1180,27 +1745,68 @@ body {
 .admin-container .dashboard .animals-list .animal-card .animal-picture img {
   width: 100%;
   height: 100%;
-  border: 1px solid #21212121;
-}
-
-.admin-container .dashboard .animals-list .animal-card .animal-description,
-.admin-container .dashboard .animals-list .animal-card .animal-reports {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  max-height: 180px;
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding: 10px;
-  border: 1px solid #21212121;
   border-radius: 3px;
 }
 
-.admin-container .dashboard .animals-list .animal-card .animal-description b,
-.admin-container .dashboard .animals-list .animal-card .animal-reports b {
+.admin-container .dashboard .animals-list .animal-card .animal-description {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 10px;
+  border-radius: 3px;
+}
+
+.admin-container .dashboard .animals-list .animal-card .animal-description b {
   font-size: 11px;
   text-transform: uppercase;
   color: var(--red);
+}
+
+.admin-container .dashboard .animals-list .animal-card .animal-reports {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90px;
+}
+
+.admin-container .dashboard .animals-list .animal-card .animal-reports span {
+  display: flex;
+  border-radius: 15px;
+  font-size: 13px;
+  text-transform: capitalize;
+  font-weight: 700;
+}
+
+.admin-container .dashboard .animals-list .animal-card .animal-reports .title {
+  color: var(--dark);
+}
+
+.admin-container .dashboard .animals-list .animal-card .animal-reports .count {
+  margin-left: 5px;
+  color: var(--red);
+}
+
+.admin-container .dashboard .animals-list .animal-card .animal-created-at {
+  display: flex;
+  align-items: center;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 10px;
+  border-radius: 3px;
+  width: 120px;
+}
+
+.admin-container .dashboard .animals-list .animal-card .animal-created-at span {
+  padding: 7px 10px;
+  background: var(--dark-transparent);
+  color: var(--dark);
+  border-radius: 15px;
+  font-size: 11px;
+  text-transform: uppercase;
+  font-weight: 700;
 }
 
 .admin-container
@@ -1231,18 +1837,20 @@ body {
   align-content: center;
   align-items: center;
   margin: auto;
+  padding: 10px 20px;
 }
 
 .admin-container .dashboard .animals-list .animal-card .animal-buttons button {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 60px;
   height: 15px;
+  padding: 17px 10px;
+  border-radius: 20px;
   background: none;
   border: none;
   outline: none;
   cursor: pointer;
+  transition: all 200ms ease-in;
 }
 
 .admin-container
@@ -1251,9 +1859,57 @@ body {
   .animal-card
   .animal-buttons
   button
-  img {
+  img,
+.admin-container
+  .dashboard
+  .animals-list
+  .animal-card
+  .animal-buttons
+  button
+  svg {
   width: 15px;
   height: 15px;
+}
+
+.admin-container
+  .dashboard
+  .animals-list
+  .animal-card
+  .animal-buttons
+  button.delete {
+  background: var(--dark-transparent);
+}
+
+.admin-container
+  .dashboard
+  .animals-list
+  .animal-card
+  .animal-buttons
+  button.delete
+  svg {
+  fill: var(--dark);
+  transition: all 200ms ease-in;
+}
+
+.admin-container
+  .dashboard
+  .animals-list
+  .animal-card
+  .animal-buttons
+  button:hover {
+  transform: rotate(15deg);
+  background: #cc020220;
+  box-shadow: 0px 0px 4px -2px var(--red);
+}
+
+.admin-container
+  .dashboard
+  .animals-list
+  .animal-card
+  .animal-buttons
+  button:hover
+  svg {
+  fill: var(--red);
 }
 
 .admin-container
@@ -1265,7 +1921,7 @@ body {
   span {
   font-size: 12px;
   font-weight: 700;
-  font-family: 'Roboto', Arial, sans-serif;
+  font-family: 'Source Sans Pro', 'Roboto', Arial, sans-serif;
   color: var(--dark-grey);
   text-align: center;
   margin: auto;
@@ -1280,6 +1936,10 @@ body {
   button:hover
   span {
   color: var(--red);
+}
+
+.admin-container .dashboard .animals-list .animal-card .sm-screen {
+  display: none;
 }
 
 .privacy-policy {
@@ -1460,11 +2120,24 @@ body {
     padding: 0 10px;
   }
 
+  .admin-container .dashboard .animals-list {
+    border: none;
+    box-shadow: none;
+  }
+
   .admin-container .dashboard .animals-list .animal-card {
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 0px 0;
+    margin-bottom: 15px;
+    border: 1px solid var(--dark-transparent);
+    box-shadow: 0 0px 2px #2121212b;
+  }
+
+  .admin-container .dashboard .animals-list .animal-card .lg-screen,
+  .admin-container .dashboard .animals-list .animal-card:hover::before {
+    display: none;
   }
 
   .admin-container .dashboard .animals-list .animal-card .animal-type {
@@ -1483,20 +2156,185 @@ body {
     min-width: 220px;
     max-height: 280px;
     overflow: hidden;
-    border: 1px solid #21212121;
+    border: 1px solid var(--dark-transparent);
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    width: 100%;
   }
 
-  .admin-container .dashboard .animals-list .animal-card .animal-description,
-  .admin-container .dashboard .animals-list .animal-card .animal-reports {
+  .admin-container .dashboard .animals-list .animal-card .animal-description {
     width: calc(100% - 20px);
-    margin: 10px;
+    margin: 25px 0;
+  }
+
+  .admin-container .dashboard .animals-list .animal-card .sm-screen {
+    display: flex;
+    width: 100%;
+    margin-bottom: 15px;
+    margin-top: 10px;
+  }
+
+  .admin-container .dashboard .animals-list .animal-card .animal-reports {
+    width: auto;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  .admin-container
+    .dashboard
+    .animals-list
+    .animal-card
+    .animal-reports
+    .count {
+    padding: 7px 10px;
+    background: var(--dark-transparent);
+    color: var(--red);
+    border-radius: 15px;
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: 700;
+    box-shadow: 0 0px 1px #2121212b;
+  }
+
+  .admin-container .dashboard .animals-list .animal-card .animal-created-at {
+    padding: 0;
+    width: auto;
+    margin-left: 5px;
+  }
+
+  .admin-container
+    .dashboard
+    .animals-list
+    .animal-card
+    .animal-created-at.time {
+    box-shadow: 0 0px 1px #2121212b;
   }
 
   .admin-container .dashboard .animals-list .animal-card .animal-buttons {
-    margin: 10px 0;
+    padding: 0;
+    width: auto;
+    margin-right: 10px;
+    margin-left: auto;
+  }
+
+  .admin-container
+    .dashboard
+    .animals-list
+    .animal-card
+    .animal-buttons
+    button.delete {
+    box-shadow: 0 0px 1px #2121212b;
   }
 
   .privacy-policy .privacy-content {
     padding: 25px;
+  }
+
+  .admin-container .dashboard .admin-firlers-bar {
+    flex-direction: column;
+  }
+
+  .admin-container .dashboard .admin-firlers-bar .title {
+    margin-left: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: 0;
+  }
+
+  .admin-container .dashboard .admin-firlers-bar .filters {
+    flex-direction: column;
+    margin: 0;
+    width: 100%;
+  }
+
+  .admin-container .dashboard .admin-firlers-bar .filters .by-date {
+    width: 100%;
+    margin: 0;
+    border: none;
+    padding: 2px 15px;
+    border-top: 1px solid var(--dark-transparent);
+  }
+
+  .admin-container .dashboard .admin-firlers-bar .filters .by-date .options {
+    width: 100%;
+  }
+
+  .admin-container .dashboard .admin-firlers-bar .filters .by-type {
+    width: 100%;
+    margin: 0;
+    border: none;
+    padding: 2px 15px;
+    border-top: 1px solid var(--dark-transparent);
+  }
+
+  .admin-container .dashboard .admin-firlers-bar .filters .by-type .options {
+    width: 100%;
+  }
+
+  .admin-container .dashboard .animals-list .header-card {
+    display: none;
+  }
+
+  .admin-container .dashboard .animals-list .animal-card {
+    opacity: 1;
+  }
+
+  .admin-container .animal-card-details-warrper .animal-card-details {
+    flex-direction: column;
+    width: 100%;
+    min-height: calc(100vh - 45px);
+    max-width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .admin-container
+    .animal-card-details-warrper
+    .animal-card-details
+    .animal-informations {
+    width: 100%;
+    min-height: fit-content;
+    overflow: initial;
+    background: var(--white);
+  }
+
+  .admin-container
+    .animal-card-details-warrper
+    .animal-card-details
+    .animal-informations
+    .head {
+    border-top: 1px solid var(--dark-transparent);
+    padding: 15px 5px;
+  }
+
+  .admin-container .animal-card-details-warrper .animal-card-details .picture {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    min-height: 420px;
+    padding: 25px;
+    overflow: hidden;
+  }
+
+  .admin-container
+    .animal-card-details-warrper
+    .animal-card-details
+    .animal-informations
+    .description {
+    padding: 15px 5px;
+  }
+
+  .admin-container .reports {
+    padding-left: 5px;
+  }
+
+  .admin-container
+    .animal-card-details-warrper
+    .animal-card-details
+    .reports
+    .report-list {
+    padding-right: 5px;
   }
 }
