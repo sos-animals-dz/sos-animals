@@ -27,7 +27,37 @@ interface IProps {
   toggleIsAddAnimal?: () => void;
 }
 
-export default class Navbar extends Component<IProps> {
+interface IState {
+  isFirstTime: boolean;
+}
+
+const asyncLS = {
+  setItem(key: string, value: any) {
+    return Promise.resolve().then(function () {
+      localStorage.setItem(key, value);
+    });
+  },
+  getItem(key: string) {
+    return Promise.resolve().then(function () {
+      return localStorage.getItem(key);
+    });
+  },
+};
+
+export default class Navbar extends Component<IProps, IState> {
+  constructor(props: IProps) {
+    super(props);
+    this.state = { isFirstTime: false };
+  }
+
+  componentDidMount() {
+    asyncLS.getItem('alreadyHaveBeenHere').then((res) => {
+      if (!res) {
+        this.setState({ isFirstTime: true });
+      }
+    });
+  }
+
   onAddAnimalClick = () => {
     const { isSideOpen, toggleIsAddAnimal } = this.props;
     if (isSideOpen !== 'add-animal' && toggleIsAddAnimal) {
@@ -45,6 +75,8 @@ export default class Navbar extends Component<IProps> {
       allowAdd,
       isLoadingAnimals,
     } = this.props;
+
+    const { isFirstTime } = this.state;
 
     return (
       <div className="navbar-container">
@@ -86,8 +118,21 @@ export default class Navbar extends Component<IProps> {
         {loggedUser ? (
           <User isAdmin={isAdmin} />
         ) : (
-          <Link className="usage-link" to="/usage">
-            <img src={usageIcon} alt="usage" title="how to use the app" />
+          <Link
+            onClick={() => {
+              if (isFirstTime) asyncLS.setItem('alreadyHaveBeenHere', false);
+            }}
+            className="usage-link"
+            to="/usage"
+          >
+            {isFirstTime ? (
+              <div className="first-time">
+                <img src={usageIcon} alt="usage" title="how to use the app" />
+                <span>Please read the usage guide</span>
+              </div>
+            ) : (
+              <img src={usageIcon} alt="usage" title="how to use the app" />
+            )}
           </Link>
         )}
 
