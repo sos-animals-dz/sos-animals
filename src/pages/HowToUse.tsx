@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 import logo from '../assets/logo-white.png';
 import addAnimal from '../assets/jpeg/add.jpg';
@@ -18,14 +19,16 @@ export default function HowToUse() {
           </div>
 
           <h1>Welcome to SOS Animals DZ&apos;s usage guide</h1>
-          <p>
+          <p className="intro">
             In this guide we will show you how you can use this app and get the
             most out of it to help as many animals as possible.
           </p>
         </div>
 
         <div className="options">
-          <p>We offer you three options on how you can help:</p>
+          <p className="intro">
+            We offer you three options on how you can help:
+          </p>
 
           <div className="option">
             <div className="title">
@@ -153,6 +156,7 @@ export default function HowToUse() {
             </ul>
           </div>
         </div>
+        <Footer />
       </div>
     </div>
   );
