@@ -1,15 +1,26 @@
 {
-  "short_name": "DZ SOS Animal",
+  "short_name": "SOS Animals DZ",
   "name": "a non-governmental organization and non-profit association for animal and environmental protection ",
   "icons": [
     {
-      "src": "logo.jp",
+      "src": "/logo-pwa.png",
       "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/jpg"
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
     }
   ],
-  "start_url": ".",
+  "scope": ".",
+  "start_url": "/",
   "display": "standalone",
-  "theme_color": "#212121",
+  "theme_color": "#cc0202",
   "background_color": "#f1f2f3"
 }
