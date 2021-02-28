@@ -1957,6 +1957,9 @@ body {
   overflow-y: auto;
   overflow-x: hidden;
   margin: 0 auto;
+}
+
+.privacy-policy .privacy-content .content-wrapper {
   padding: 75px 10%;
 }
 
@@ -2028,7 +2031,7 @@ body {
   overflow-y: auto;
   overflow-x: hidden;
   margin: 0 auto;
-  padding: 75px 10%;
+  padding-top: 75px;
 }
 
 .how-to-use .usage-content .header {
@@ -2057,32 +2060,51 @@ body {
 }
 
 .how-to-use .usage-content h1,
-.how-to-use .usage-content h2,
 .how-to-use .usage-content h3 {
   color: var(--red);
   margin-top: 15px;
   margin-bottom: 15px;
 }
 
-.how-to-use .usage-content h1,
-.how-to-use .usage-content > p {
+.how-to-use .usage-content h2 {
+  color: var(--red);
+}
+
+.how-to-use .usage-content .header h1,
+.how-to-use .usage-content .header .intro {
   text-align: center;
   max-width: 450px;
   margin: 0 auto;
   margin-bottom: 15px;
 }
 
-.how-to-use .usage-content .options {
-  margin-top: 50px;
+.how-to-use .usage-content .header .intro::after {
+  content: '';
+  display: flex;
+  width: 50%;
+  height: 2px;
+  background: var(--red);
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 25px;
+}
+
+.how-to-use .usage-content .options .intro {
+  font-weight: 700;
+  color: var(--dark);
+  padding: 0 10%;
+  margin-bottom: 25px;
 }
 
 .how-to-use .usage-content .options .option {
-  margin-top: 50px;
+  border-top: 1px solid var(--dark-transparent);
+  padding: 35px 10%;
 }
 
 .how-to-use .usage-content .options .option .title {
   display: flex;
   align-items: center;
+  margin-bottom: 25px;
 }
 
 .how-to-use .usage-content .options .option .title img {
@@ -2094,8 +2116,9 @@ body {
   margin-left: 15px;
 }
 
-.how-to-use .usage-content .options .option ul li {
-  margin-top: 35px;
+.how-to-use .usage-content .options .option > ul li {
+  list-style: none;
+  margin-top: 20px;
 }
 
 .how-to-use .usage-content .options .option h4 {
@@ -2113,6 +2136,159 @@ body {
   width: 45px;
   height: 45px;
   border-radius: 50%;
+}
+
+.how-to-use .usage-content .options .option ul li span i {
+  font-weight: 700;
+  text-decoration: underline;
+  margin-right: 8px;
+}
+
+.how-to-use .usage-content .options .option b {
+  color: var(--red);
+}
+
+.contact-us {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white);
+  height: 100vh;
+}
+
+.contact-us .contact-content {
+  height: calc(100vh - 45px);
+  position: relative;
+  top: 45px;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin: 0 auto;
+  padding-top: 75px;
+}
+
+.contact-us .contact-content .header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 25px;
+  margin-bottom: 75px;
+  max-width: 750px;
+}
+
+.contact-us .contact-content .header .logo {
+  width: 190px;
+  height: 190px;
+  background: var(--red);
+  border-radius: 50%;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.contact-us .contact-content .header .logo img {
+  width: 100%;
+}
+
+.contact-us .contact-content h1,
+.contact-us .contact-content h3 {
+  color: var(--red);
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.contact-us .contact-content h2 {
+  color: var(--red);
+}
+
+.contact-us .contact-content .header h1,
+.contact-us .contact-content .header .intro {
+  text-align: center;
+  max-width: 450px;
+  margin: 0 auto;
+  margin-bottom: 15px;
+}
+
+.contact-us .contact-content .header .intro::after {
+  content: '';
+  display: flex;
+  width: 50%;
+  height: 2px;
+  background: var(--red);
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 25px;
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  background: var(--red);
+}
+
+.footer-container .footer-logo {
+  display: flex;
+  margin: 25px auto;
+  width: 77px;
+  margin-bottom: 25px;
+}
+
+.footer-container .footer-logo img {
+  width: 100%;
+}
+
+.footer-container .rights-links {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-container .rights-links::before {
+  display: flex;
+  content: '';
+  height: 1px;
+  width: 90%;
+  background: var(--white);
+  margin: 0 auto;
+  opacity: 0.5;
+}
+
+.footer-container .rights-links .rights-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 35px 5%;
+}
+
+.footer-container .rights-links .rights-wrapper .rights,
+.footer-container .rights-links .rights-wrapper .love {
+  display: flex;
+  color: var(--white);
+  font-size: 15px;
+}
+
+.footer-container .rights-links .rights-wrapper .links {
+  display: flex;
+}
+
+.footer-container .rights-links .rights-wrapper .links {
+  display: flex;
+}
+
+.footer-container .rights-links .rights-wrapper .links li {
+  list-style: none;
+  margin: 0 8px;
+}
+
+.footer-container .rights-links .rights-wrapper .links li a {
+  color: var(--white);
+  text-decoration: none;
+  font-size: 15px;
+  transition: all 250ms ease;
+}
+
+.footer-container .rights-links .rights-wrapper .links li a:hover {
+  font-weight: 700;
 }
 
 @media only screen and (max-width: 740px) {
@@ -2227,7 +2403,7 @@ body {
     box-shadow: 0 0px 1px #2121212b;
   }
 
-  .privacy-policy .privacy-content {
+  .privacy-policy .privacy-content .content-wrapper {
     padding: 25px;
   }
 
@@ -2336,5 +2512,47 @@ body {
     .reports
     .report-list {
     padding-right: 5px;
+  }
+
+  .how-to-use .usage-content .header {
+    padding: 0 10px;
+  }
+
+  .how-to-use .usage-content .options .intro {
+    padding: 0 10px;
+    text-align: center;
+  }
+
+  .how-to-use .usage-content .options .option {
+    padding: 20px;
+  }
+
+  .contact-us .contact-content .header {
+    padding: 0 10px;
+  }
+
+  .contact-us .contact-content .options .intro {
+    padding: 0 10px;
+    text-align: center;
+  }
+
+  .contact-us .contact-content .options .option {
+    padding: 20px;
+  }
+
+  .footer-container .rights-links .rights-wrapper {
+    flex-direction: column;
+  }
+
+  .footer-container .rights-links .rights-wrapper .rights,
+  .footer-container .rights-links .rights-wrapper .love {
+    text-align: center;
+    line-height: 2;
+  }
+
+  .footer-container .rights-links .rights-wrapper .links {
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 25px;
   }
 }
