@@ -2221,6 +2221,219 @@ body {
   margin-top: 25px;
 }
 
+.contact-us .contact-content .content .map {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 500px;
+  overflow: hidden;
+  margin-bottom: 75px;
+}
+
+.contact-us .contact-content .content .map h2 {
+  text-transform: uppercase;
+  margin-bottom: 40px;
+}
+
+.contact-us .contact-content .content .map .pin-container {
+  width: 20px;
+}
+
+.contact-us .contact-content .content .contact-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 75px;
+}
+
+.contact-us .contact-content .content .contact-form h2 {
+  text-transform: uppercase;
+  margin-bottom: 50px;
+}
+
+.contact-us .contact-content .content .contact-form form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0 10%;
+}
+
+.contact-us .contact-content .content .contact-form form .input,
+.contact-us .contact-content .content .contact-form form .submit-wrap .submit {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+  position: relative;
+  transition: all 250ms ease;
+}
+
+.contact-us .contact-content .content .contact-form form .input:hover label,
+.contact-us
+  .contact-content
+  .content
+  .contact-form
+  form
+  .input
+  input:focus
+  + label,
+.contact-us
+  .contact-content
+  .content
+  .contact-form
+  form
+  .input
+  textarea:focus
+  + label,
+.contact-us
+  .contact-content
+  .content
+  .contact-form
+  form
+  .submit-wrap
+  .submit
+  button:hover {
+  color: var(--red);
+}
+
+.contact-us .contact-content .content .contact-form form .input:hover input,
+.contact-us .contact-content .content .contact-form form .input:hover textarea,
+.contact-us .contact-content .content .contact-form form .input input:focus,
+.contact-us .contact-content .content .contact-form form .input textarea:focus,
+.contact-us
+  .contact-content
+  .content
+  .contact-form
+  form
+  .submit-wrap
+  .submit
+  button:hover {
+  border-color: var(--red);
+}
+
+.contact-us .contact-content .content .contact-form form .input label {
+  position: absolute;
+  top: -9px;
+  left: 10px;
+  padding: 0 2px;
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--grey);
+  background: var(--white);
+  font-family: 'Source Sans Pro', 'Roboto', Arial, sans-serif;
+  transition: all 250ms ease;
+}
+
+.contact-us
+  .contact-content
+  .content
+  .contact-form
+  form
+  .input
+  label
+  .required {
+  color: var(--red);
+}
+
+.contact-us .contact-content .content .contact-form form .input input {
+  padding: 10px 20px;
+  border-radius: 0;
+  border: 1px solid var(--grey);
+  background: var(--white);
+  outline: none;
+  font-size: 16px;
+  font-family: 'Source Sans Pro', 'Roboto', Arial, sans-serif;
+  transition: all 250ms ease;
+}
+
+.contact-us .contact-content .content .contact-form form .input textarea {
+  min-width: 100%;
+  max-width: 100%;
+  min-height: 150px;
+  padding: 10px 20px;
+  text-indent: 15px;
+  font-family: 'Source Sans Pro', 'Roboto', Arial, sans-serif;
+  background: var(--white);
+  outline: none;
+  font-size: 16px;
+  transition: all 250ms ease;
+}
+
+.contact-us .contact-content .content .contact-form form .submit-wrap {
+  display: flex;
+}
+
+.contact-us
+  .contact-content
+  .content
+  .contact-form
+  form
+  .submit-wrap
+  .submit
+  button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  border-radius: 0;
+  border: 1px solid var(--grey);
+  background: var(--white);
+  outline: none;
+  font-size: 13px;
+  font-family: 'Source Sans Pro', 'Roboto', Arial, sans-serif;
+  transition: all 250ms ease;
+  width: 100px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.contact-us
+  .contact-content
+  .content
+  .contact-form
+  form
+  .submit
+  button
+  .spinner {
+  margin: auto;
+}
+
+.contact-us
+  .contact-content
+  .content
+  .contact-form
+  form
+  .submit-wrap
+  .sending-status {
+  display: flex;
+  margin-left: 15px;
+  padding-top: 10px;
+  width: 100%;
+  text-align: center;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.contact-us
+  .contact-content
+  .content
+  .contact-form
+  form
+  .sending-status
+  .success {
+  color: var(--green);
+}
+
+.contact-us
+  .contact-content
+  .content
+  .contact-form
+  form
+  .sending-status
+  .error {
+  color: var(--red);
+}
+
 .footer-container {
   display: flex;
   flex-direction: column;
@@ -2265,6 +2478,10 @@ body {
   display: flex;
   color: var(--white);
   font-size: 15px;
+}
+
+.footer-container .rights-links .rights-wrapper .love span {
+  margin: 0 4px;
 }
 
 .footer-container .rights-links .rights-wrapper .links {
@@ -2538,6 +2755,43 @@ body {
 
   .contact-us .contact-content .options .option {
     padding: 20px;
+  }
+
+  .contact-us .contact-content .content h2 {
+    width: 80%;
+    text-align: center;
+  }
+
+  .contact-us .contact-content .content .contact-form form {
+    padding: 0 2%;
+  }
+
+  .contact-us
+    .contact-content
+    .content
+    .contact-form
+    form
+    .submit-wrap
+    .submit
+    button {
+    width: 100%;
+  }
+
+  .contact-us .contact-content .content .contact-form form .submit-wrap {
+    flex-direction: column;
+  }
+
+  .contact-us
+    .contact-content
+    .content
+    .contact-form
+    form
+    .submit-wrap
+    .sending-status {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
   }
 
   .footer-container .rights-links .rights-wrapper {
