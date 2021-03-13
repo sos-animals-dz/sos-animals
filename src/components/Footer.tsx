@@ -17,7 +17,7 @@ const Footer = () => {
           <p className="love">
             Made with{' '}
             <span role="img" aria-label="heart">
-              💚
+              💙
             </span>{' '}
             in{' '}
             <span role="img" aria-label="flag">
